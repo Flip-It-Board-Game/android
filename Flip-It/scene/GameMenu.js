@@ -1,18 +1,24 @@
 import React, { Component } from 'react';
 import { View, Button, StyleSheet } from 'react-native';
+import GameScreen from './GameScreen';
+import LevelSelector from './LevelSelector';
 
 class GameMenu extends Component {
+
+
   render() {
     return (
           <View style={styles.container} >
             <Button
-              title="Start"
-              color="#841584"
+            onPress={() => this.props.navigation.navigate('GameScreen')}
+            title="Start"
             />
             <Button
-              title="Level Select"
+            onPress={() => this.props.navigation.navigate('LevelSelector')}
+            title="Level Select"
               color="#841584"
             />
+
             <Button
               title="My Awesome Stats"
               color="#841584"
@@ -32,7 +38,7 @@ let styles = StyleSheet.create({
       backgroundColor: '#C0C0C0',
       justifyContent: 'center',
      }
-  
+
   });
 
-export default GameMenu
+export default GameMenu;
