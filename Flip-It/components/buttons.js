@@ -1,30 +1,47 @@
 import React, { Component } from 'react'
-import { View, StyleSheet, TouchableOpacity } from 'react-native'
-import {
-  Table,
-  TableWrapper,
-  Row,
-  Rows,
-  Col,
-  Cols,
-  Cell
-} from 'react-native-table-component'
-import { Container, Header, Content, Button, Text } from 'native-base'
+import { View } from 'react-native'
+import { Button } from 'native-base'
+import { connect } from 'react-redux'
+import { newArray } from './store/store'
 
-class button extends Component {
+const userInput = 5
+const width = 4
+const height = 4
+const totalSquares = width * height
+
+class Buttons extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      bool: true
-    }
     this.toggleColor = this.toggleColor.bind(this)
   }
 
   toggleColor() {
-    this.setState({ bool: !this.state.bool })
+    const iNum = this.props.iNum
+    let tempArr = this.props.bool.slice(0)
+    tempArr.splice(iNum, 1, !this.props.bool[iNum])
+    if (iNum - 1 >= 0 && iNum % width !== 0) {
+      let oneBeforeNum = iNum - 1
+      tempArr.splice(oneBeforeNum, 1, !this.props.bool[oneBeforeNum])
+    }
+    if (iNum + 1 !== width && (iNum + 1) % width !== 0) {
+      let oneAfterNum = iNum + 1
+      tempArr.splice(oneAfterNum, 1, !this.props.bool[oneAfterNum])
+    }
+    if (iNum < totalSquares) {
+      let widthLessNum = iNum - width
+      tempArr.splice(widthLessNum, 1, !this.props.bool[widthLessNum])
+    }
+    if (iNum < totalSquares) {
+      let widthPlusNum = iNum + width
+      tempArr.splice(widthPlusNum, 1, !this.props.bool[widthPlusNum])
+    }
+    this.props.newArray(tempArr)
   }
 
   render() {
+    const displayBool = !!this.props.bool[this.props.iNum]
+    let color = displayBool ? '#A8E1FD' : '#CCEEFE'
+
     return (
       <View>
         <Button transparent light onPress={this.toggleColor}>
@@ -32,9 +49,9 @@ class button extends Component {
             style={{
               width: 50,
               height: 50,
-              backgroundColor: `${this.state.bool ? 'black' : 'white'}`,
+              backgroundColor: color,
               borderWidth: 1,
-              borderColor: 'orange'
+              borderColor: 'white'
             }}
           />
         </Button>
@@ -43,4 +60,18 @@ class button extends Component {
   }
 }
 
-export default button
+const mapstate = state => {
+  return {
+    bool: state.bool
+  }
+}
+
+const mapDispatch = dispatch => {
+  return {
+    newArray: array => dispatch(newArray(array))
+  }
+}
+
+export default connect(mapstate, mapDispatch)(Buttons)
+
+// if props i === j = flip color

@@ -92,7 +92,7 @@ export default class JustifyContentBasics extends Component {
         'black',
         'black'
       ]
-    } whwee
+    }
     this.handleClick = this.handleClick.bind(this)
     this.changeBoolean = this.changeBoolean.bind(this)
   }

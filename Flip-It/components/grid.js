@@ -1,38 +1,32 @@
 import React, { Component } from 'react'
-import { View, StyleSheet, TouchableOpacity } from 'react-native'
-import {
-  Table,
-  TableWrapper,
-  Row,
-  Rows,
-  Col,
-  Cols,
-  Cell
-} from 'react-native-table-component'
-import { Container, Header, Content, Button, Text } from 'native-base'
+import { View, StyleSheet, Text } from 'react-native'
+import { Table, Row, Rows } from 'react-native-table-component'
 import Buttons from './buttons'
+import { Button } from 'native-base'
+import { connect } from 'react-redux'
+import Solution from './solution'
 
-export default class tableView extends Component {
+class tableView extends Component {
   constructor(props) {
     super(props)
-    this.test = true
   }
-  render() {
-    this.test = true
-    const rowNum = 5
-    const colNum = 5
-    let num = rowNum * colNum
 
+  render() {
+    //Renders table based on user input
+    const userInput = 4
+    const width = 4
+    const height = 4
+    let num = width * height
     let rowButtons = []
     let tableData = []
     for (let i = 0; i < num; i++) {
       rowButtons.push(<Buttons iNum={i} />)
-      if ((i + 1) % rowNum === 0) {
+      if ((i + 1) % width === 0) {
         tableData.push(rowButtons)
         rowButtons = []
       }
     }
-    const rowWidth = rowNum * 50
+    const rowWidth = width * 50
     const styles = StyleSheet.create({
       TopBuffer: { height: 300, backgroundColor: 'white', borderWidth: 0 },
       text: { marginLeft: 5 },
@@ -47,7 +41,17 @@ export default class tableView extends Component {
           <Row style={styles.TopBuffer} data={blankData} />
           <Rows data={tableData} style={styles.row} textStyle={styles.text} />
         </Table>
+        <Text>{'\n'}</Text>
+        <Solution />
       </View>
     )
   }
 }
+
+const mapstate = state => {
+  return {
+    bool: state.bool
+  }
+}
+
+export default connect(mapstate)(tableView)
