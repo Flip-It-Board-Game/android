@@ -12,9 +12,11 @@ import { StackNavigator } from 'react-navigation'
 import GameMenu from './scene/GameMenu'
 import GameScreen from './scene/GameScreen'
 import LevelSelector from './scene/LevelSelector'
-// import LevelCreate from './scene/levelCreate'
-import store from './components/store/store'
-import { Provider } from 'react-redux'
+import GameSettings from './scene/GameSettings'
+import About from './scene/About'
+import store from './components/store/store';
+import { Provider } from 'react-redux';
+
 
 class HomeScreen extends Component {
   static navigationOptions = {
@@ -50,9 +52,16 @@ const ModalStack = StackNavigator({
     screen: GameScreen
   },
   LevelSelector: {
-    screen: LevelSelector
+    screen: LevelSelector,
+  },
+  GameSettings: {
+    screen: GameSettings,
+  },
+  About:{
+    screen: About
   }
-})
+});
+
 
 let styles = StyleSheet.create({
   container: {
