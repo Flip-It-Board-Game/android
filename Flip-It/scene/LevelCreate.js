@@ -35,20 +35,25 @@ import { Button } from 'native-base'
 import { connect } from 'react-redux'
 
 class LevelCreate extends Component {
+  constructor(props) {
+    super(props)
+  }
+
   render() {
-    let buttons = []
-    {
-      for (let i = 1; i <= 16; i++) {
-        buttons.push(
-          <Button
-            title={`Level ${i}`}
-            onPress={() => {
-              this.props.navigation.navigate('GameScreen')
-            }}
-          />
-        )
-      }
-    }
+    // let buttons = []
+    // {
+    //   for (let i = 1; i <= 16; i++) {
+    //     buttons.push(
+    //       <Button
+    //         title={`Level ${i}`}
+    //         onPress={() => {
+    //           this.props.navigation.navigate('GameScreen')
+    //         }}
+    //       />
+    //     )
+    //   }
+    // }
+    console.log('move', this.props)
     return (
       <View style={styles.container}>
         <Text>here</Text>

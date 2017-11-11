@@ -12,6 +12,7 @@ import { StackNavigator } from 'react-navigation'
 import GameMenu from './scene/GameMenu'
 import GameScreen from './scene/GameScreen'
 import LevelSelector from './scene/LevelSelector'
+import Levels from './scene/Levels'
 // import LevelCreate from './scene/levelCreate'
 import store from './components/store/store'
 import { Provider } from 'react-redux'
@@ -24,7 +25,6 @@ class HomeScreen extends Component {
     return (
       <Provider store={store}>
         <View style={styles.container}>
-          <Text> Lets Play! </Text>
           <TouchableHighlight
             onPress={() => this.props.navigation.navigate('GameMenu')}
           >
@@ -51,6 +51,9 @@ const ModalStack = StackNavigator({
   },
   LevelSelector: {
     screen: LevelSelector
+  },
+  Levels: {
+    screen: Levels
   }
 })
 

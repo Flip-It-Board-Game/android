@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { View, Button, StyleSheet } from 'react-native'
 import GameScreen from './GameScreen'
 import LevelSelector from './LevelSelector'
+import Levels from './Levels'
 
 class GameMenu extends Component {
   render() {
