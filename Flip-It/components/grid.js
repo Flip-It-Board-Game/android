@@ -5,6 +5,7 @@ import Buttons from './buttons'
 import { Button } from 'native-base'
 import { connect } from 'react-redux'
 import Reset from './reset'
+import Solution from './solution'
 
 class tableView extends Component {
   constructor(props) {
@@ -13,9 +14,8 @@ class tableView extends Component {
 
   render() {
     //Renders table based on user input
-    const userInput = 4
-    const width = 4
-    const height = 4
+    const width = 5
+    const height = 5
     let num = width * height
     let rowButtons = []
     let tableData = []
@@ -35,14 +35,27 @@ class tableView extends Component {
     })
 
     const blankData = []
+    console.log(this.props && this.props.bool)
     return (
-      <View style={styles.app}>
-        <Table style={styles.table}>
-          <Row style={styles.TopBuffer} data={blankData} />
-          <Rows data={tableData} style={styles.row} textStyle={styles.text} />
-        </Table>
-        <Text>{'\n'}</Text>
-        <Reset />
+      <View>
+        {this.props &&
+        this.props.bool.indexOf(true) === this.props.bool.length ? (
+          <Text>You Won!</Text>
+        ) : (
+          <View style={styles.app}>
+            <Table style={styles.table}>
+              <Row style={styles.TopBuffer} data={blankData} />
+              <Rows
+                data={tableData}
+                style={styles.row}
+                textStyle={styles.text}
+              />
+            </Table>
+            <Text>{'\n'}</Text>
+            <Reset />
+            <Solution />
+          </View>
+        )}
       </View>
     )
   }
