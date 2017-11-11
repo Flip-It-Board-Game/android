@@ -16,6 +16,9 @@ import Levels from './scene/Levels'
 // import LevelCreate from './scene/levelCreate'
 import store from './components/store/store'
 import { Provider } from 'react-redux'
+import GameSettings from './scene/GameSettings'
+import About from './scene/About'
+
 
 class HomeScreen extends Component {
   static navigationOptions = {
@@ -50,12 +53,23 @@ const ModalStack = StackNavigator({
     screen: GameScreen
   },
   LevelSelector: {
+<<<<<<< HEAD
     screen: LevelSelector
   },
   Levels: {
     screen: Levels
+=======
+    screen: LevelSelector,
+  },
+  GameSettings: {
+    screen: GameSettings,
+  },
+  About:{
+    screen: About
+>>>>>>> master
   }
-})
+});
+
 
 let styles = StyleSheet.create({
   container: {
