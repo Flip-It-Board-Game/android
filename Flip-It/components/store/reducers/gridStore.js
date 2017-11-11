@@ -12,10 +12,16 @@ const initialState = boolArray
 
 //Actions
 const NEW_ARRAY = 'NEW_ARRAY'
+const RESET = 'RESET'
 
 //Action Creators
 export function newArray(array) {
   const action = { type: NEW_ARRAY, array }
+  return action
+}
+
+export function reset() {
+  const action = { type: RESET }
   return action
 }
 
@@ -26,6 +32,10 @@ export default function reducer(state = initialState, action) {
   switch (action.type) {
     case NEW_ARRAY:
       newState = action.array
+      return newState
+
+    case RESET:
+      newState = initialState
       return newState
 
     default:
