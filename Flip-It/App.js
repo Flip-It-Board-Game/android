@@ -1,5 +1,13 @@
-import React, { Component } from 'react';
-import { AppRegistry, Button, Text, View, Image, StyleSheet, TouchableHighlight } from 'react-native';
+import React, { Component } from 'react'
+import {
+  AppRegistry,
+  Button,
+  Text,
+  View,
+  Image,
+  StyleSheet,
+  TouchableHighlight
+} from 'react-native'
 import { StackNavigator } from 'react-navigation'
 import GameMenu from './scene/GameMenu'
 import GameScreen from './scene/GameScreen'
@@ -9,16 +17,19 @@ import About from './scene/About'
 import store from './components/store/store';
 import { Provider } from 'react-redux';
 
+
 class HomeScreen extends Component {
   static navigationOptions = {
-    title: 'Home',
+    title: 'Home'
   }
   render() {
     return (
       <Provider store={store}>
         <View style={styles.container}>
           <Text> Lets Play! </Text>
-          <TouchableHighlight onPress={() => this.props.navigation.navigate('GameMenu')}>
+          <TouchableHighlight
+            onPress={() => this.props.navigation.navigate('GameMenu')}
+          >
             <Image
               style={styles.button}
               source={require('./wei-chi-29466_1280.jpg')}
@@ -26,19 +37,19 @@ class HomeScreen extends Component {
           </TouchableHighlight>
         </View>
       </Provider>
-    );
+    )
   }
 }
 
 const ModalStack = StackNavigator({
   Home: {
-    screen: HomeScreen,
+    screen: HomeScreen
   },
   GameMenu: {
-    screen: GameMenu,
+    screen: GameMenu
   },
   GameScreen: {
-    screen: GameScreen,
+    screen: GameScreen
   },
   LevelSelector: {
     screen: LevelSelector,
@@ -51,16 +62,17 @@ const ModalStack = StackNavigator({
   }
 });
 
+
 let styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
+    backgroundColor: 'white'
   },
   backdrop: {
     resizeMode: 'cover'
-  },
+  }
+})
 
-});
-
-export default ModalStack;
+export default ModalStack
 // AppRegistry.registerComponent('Flip-it', () => MyHomeScreen);

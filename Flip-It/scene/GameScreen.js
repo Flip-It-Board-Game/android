@@ -36,7 +36,7 @@ class GameScreen extends Component {
           </Footer>
         </Container>
       </Provider>
-    );
+    )
   }
 }
 
@@ -48,4 +48,3 @@ export default GameScreen
 //   };
 // };
 // export default connect(mapstate)(GameScreen);
-
