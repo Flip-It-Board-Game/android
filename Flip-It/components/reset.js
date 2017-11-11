@@ -22,17 +22,7 @@ class Reset extends Component {
             this.props.reset()
           }}
         >
-          <Text
-            style={{
-              width: width * 50,
-              height: 50,
-              backgroundColor: 'white',
-              borderWidth: 1,
-              borderColor: 'white'
-            }}
-          >
-            Reset Board
-          </Text>
+          <Text>Reset Board</Text>
         </Button>
       </View>
     )
