@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { View, Button, StyleSheet } from 'react-native';
-import GameScreen from './GameScreen';
-import LevelSelector from './LevelSelector';
+import { View, Button, StyleSheet, Text } from 'react-native';
 
 class GameMenu extends Component {
 
@@ -24,7 +22,13 @@ class GameMenu extends Component {
               color="#841584"
             />
             <Button
-              title="Settings"
+            onPress={() => this.props.navigation.navigate('GameSettings')}
+            title="Settings"
+            />
+
+            <Button 
+            onPress={() => this.props.navigation.navigate('About')}
+              title="About"
               color="#841584"
             />
           </View>

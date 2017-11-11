@@ -23,7 +23,7 @@ class GameScreen extends Component {
           <Footer>
             <FooterTab>
               <Button badge vertical>
-                <Badge><Text>2</Text></Badge>
+               
                 <Icon name="apps" />
                 <Text>Back To Game</Text>
               </Button>
