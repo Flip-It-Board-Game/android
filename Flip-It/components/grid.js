@@ -6,6 +6,7 @@ import { Button } from 'native-base'
 import { connect } from 'react-redux'
 import Reset from './reset'
 import Solution from './solution'
+import Menu from './menu'
 
 class tableView extends Component {
   constructor(props) {
@@ -14,8 +15,8 @@ class tableView extends Component {
 
   render() {
     //Renders table based on user input
-    const width = 5
-    const height = 5
+    const width = this.props.dimensions && this.props.dimensions.width
+    const height = this.props.dimensions && this.props.dimensions.height
     let num = width * height
     let rowButtons = []
     let tableData = []
@@ -31,20 +32,25 @@ class tableView extends Component {
       TopBuffer: { height: 300, backgroundColor: 'white', borderWidth: 0 },
       text: { marginLeft: 5 },
       row: { height: 50, width: rowWidth },
-      app: { justifyContent: 'center', alignItems: 'center' }
+      top: { height: 60, width: 500 },
+      app: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'white'
+      }
     })
-
-    const blankData = []
-    console.log(this.props && this.props.bool)
+    const datas = [[<Text>{'\n'}</Text>], [<Menu />]]
     return (
-      <View>
+      <View style={{ backgroundColor: 'white' }}>
         {this.props &&
         this.props.bool.indexOf(true) === this.props.bool.length ? (
           <Text>You Won!</Text>
         ) : (
           <View style={styles.app}>
-            <Table style={styles.table}>
-              <Row style={styles.TopBuffer} data={blankData} />
+            <Table borderStyle={{ borderWidth: 0, borderColor: 'white' }}>
+              <Rows data={datas} style={styles.top} textStyle={styles.text} />
+            </Table>
+            <Table borderStyle={{ borderWidth: 0, borderColor: 'white' }}>
               <Rows
                 data={tableData}
                 style={styles.row}
@@ -63,7 +69,8 @@ class tableView extends Component {
 
 const mapstate = state => {
   return {
-    bool: state.bool
+    bool: state.bool,
+    dimensions: state.dimensions
   }
 }
 

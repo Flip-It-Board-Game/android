@@ -4,18 +4,19 @@ import { Button } from 'native-base'
 import { connect } from 'react-redux'
 import { newArray } from './store/store'
 
-const width = 5
-const height = 5
-const totalSquares = width * height
-
 class Solution extends Component {
   constructor(props) {
     super(props)
     this.toggleColor = this.toggleColor.bind(this)
+    this.num = null
   }
 
   toggleColor(iNum) {
+    this.num = iNum + 1
     let tempArr = this.props.bool.slice(0)
+    let width = this.props.dimensions && this.props.dimensions.width
+    let height = this.props.dimensions && this.props.dimensions.height
+    let totalSquares = width * height
     tempArr.splice(iNum, 1, !this.props.bool[iNum])
     if (iNum - 1 >= 0 && iNum % width !== 0) {
       let oneBeforeNum = iNum - 1
@@ -43,42 +44,44 @@ class Solution extends Component {
           transparent
           light
           onPress={() => {
-            if (width === 4 && height === 4) {
-              this.toggleColor(1)
-              setTimeout(() => this.toggleColor(14), 1500)
-              setTimeout(() => this.toggleColor(7), 3000)
-              setTimeout(() => this.toggleColor(8), 4500)
+            let time = 1200
+            let num = 0
+            const timeFunc = () => {
+              num += 1
+              return time * num
             }
-            if (width === 5 && height === 5) {
+            if (
+              this.props.dimensions.width === 4 &&
+              this.props.dimensions.height === 4
+            ) {
+              this.toggleColor(1)
+              setTimeout(() => this.toggleColor(14), timeFunc())
+              setTimeout(() => this.toggleColor(7), timeFunc())
+              setTimeout(() => this.toggleColor(8), timeFunc())
+            }
+            if (
+              this.props.dimensions.width === 5 &&
+              this.props.dimensions.height === 5
+            ) {
               this.toggleColor(0)
-              setTimeout(() => this.toggleColor(1), 1500)
-              setTimeout(() => this.toggleColor(5), 3000)
-              setTimeout(() => this.toggleColor(6), 4500)
-              setTimeout(() => this.toggleColor(8), 6000)
-              setTimeout(() => this.toggleColor(9), 7500)
-              setTimeout(() => this.toggleColor(12), 9000)
-              setTimeout(() => this.toggleColor(13), 10500)
-              setTimeout(() => this.toggleColor(14), 12000)
-              setTimeout(() => this.toggleColor(16), 13500)
-              setTimeout(() => this.toggleColor(17), 15000)
-              setTimeout(() => this.toggleColor(18), 16500)
-              setTimeout(() => this.toggleColor(21), 18000)
-              setTimeout(() => this.toggleColor(22), 19500)
-              setTimeout(() => this.toggleColor(24), 21000)
+              setTimeout(() => this.toggleColor(1), timeFunc())
+              setTimeout(() => this.toggleColor(5), timeFunc())
+              setTimeout(() => this.toggleColor(6), timeFunc())
+              setTimeout(() => this.toggleColor(8), timeFunc())
+              setTimeout(() => this.toggleColor(9), timeFunc())
+              setTimeout(() => this.toggleColor(12), timeFunc())
+              setTimeout(() => this.toggleColor(13), timeFunc())
+              setTimeout(() => this.toggleColor(14), timeFunc())
+              setTimeout(() => this.toggleColor(16), timeFunc())
+              setTimeout(() => this.toggleColor(17), timeFunc())
+              setTimeout(() => this.toggleColor(18), timeFunc())
+              setTimeout(() => this.toggleColor(21), timeFunc())
+              setTimeout(() => this.toggleColor(22), timeFunc())
+              setTimeout(() => this.toggleColor(24), timeFunc())
             }
           }}
         >
-          <Text
-            style={{
-              width: width * 50,
-              height: 50,
-              backgroundColor: 'blue',
-              borderWidth: 1,
-              borderColor: 'white'
-            }}
-          >
-            See Solution
-          </Text>
+          <Text>'See Solution' : Square #: {this.iNum}}</Text>
         </Button>
       </View>
     )
@@ -87,7 +90,8 @@ class Solution extends Component {
 
 const mapstate = state => {
   return {
-    bool: state.bool
+    bool: state.bool,
+    dimensions: state.dimensions
   }
 }
 
