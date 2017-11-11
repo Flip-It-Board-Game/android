@@ -1,23 +1,40 @@
-import { StyleSheet, TabNavigator, View, Text  } from 'react-native';
+import { StyleSheet, TabNavigator, View, Text } from 'react-native';
 import React, { Component } from 'react';
 import { connect, Provider } from 'react-redux';
 import Grid from '../components/grid';
 import store from '../components/store/store';
-import { Icon } from 'react-native-elements'
+import {
+  Container, Header, Content, Footer, FooterTab, Button, Icon,
+  Badge
+} from 'native-base';
 
 class GameScreen extends Component {
   render() {
     return (
       <Provider store={store}>
-        <View>
-          <Text>Counter Placeholder</Text>
-        <Grid />
-        <Icon
-          name='sc-telegram'
-          type='evilicon'
-          color='#517fa4'
-        />
-        </View>
+        <Container>
+
+          <Content>
+            <View>
+              <Text>Counter Placeholder</Text>
+              <Grid />
+            </View>
+          </Content>
+          <Footer>
+            <FooterTab>
+              <Button badge vertical>
+                <Badge><Text>2</Text></Badge>
+                <Icon name="apps" />
+                <Text>Back To Game</Text>
+              </Button>
+              <Button active badge vertical>
+                <Badge ><Text>51</Text></Badge>
+                <Icon active name="chatbubbles" />
+                <Text>Chat</Text>
+              </Button>
+            </FooterTab>
+          </Footer>
+        </Container>
       </Provider>
     );
   }
