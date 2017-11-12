@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { View } from 'react-native'
+import { View, TouchableHighlight, Image } from 'react-native'
 import { Button } from 'native-base'
 import { connect } from 'react-redux'
-import { newArray } from './store/store'
+import { newArray, setCount, setWinner } from './store/store'
 
 class Buttons extends Component {
   constructor(props) {
@@ -11,19 +11,23 @@ class Buttons extends Component {
   }
 
   toggleColor() {
-    //nested for loops, cross color change, light blue or blue
-    // four by four cells / when clicked
+    let countNum = this.props && this.props.count.count
+    //sets count in store
+    this.props.setCount({ count: countNum + 1 })
+
+    //sets width and height to values set in store, sets totalSquares to these numbers multiplied
     this.width = this.props.dimensions && this.props.dimensions.width
     this.height = this.props.dimensions && this.props.dimensions.height
-    console.log(this.props.dimensions && this.props.dimensions.width)
-    console.log('width', this.width, 'height', this.height)
     let totalSquares = this.width * this.height
-    console.log(totalSquares)
+
+    //sets iNum to index number of button (passed in from grid)
     const iNum = this.props.iNum
+
+    //creates temp array to edit
     let tempArr = this.props.bool.slice()
     tempArr.splice(iNum, 1, !this.props.bool[iNum])
-    //console.log('iNum', iNum)
 
+    //if statements that make changes to state, changing color on grid
     if (iNum - 1 >= 0 && iNum % this.width !== 0) {
       let oneBeforeNum = iNum - 1
       tempArr.splice(oneBeforeNum, 1, !this.props.bool[oneBeforeNum])
@@ -35,7 +39,6 @@ class Buttons extends Component {
       // console.log('iNum + 1 !== width && (iNum + 1) % width !== 0', iNum)
     }
     if (iNum < totalSquares) {
-      console.log('LESS', this.width)
       if (iNum - this.width >= 0) {
         let widthLessNum = iNum - this.width
         tempArr.splice(widthLessNum, 1, !this.props.bool[widthLessNum])
@@ -43,22 +46,22 @@ class Buttons extends Component {
       }
     }
     if (iNum < totalSquares) {
-      console.log('MORE', this.width)
       let widthPlusNum = iNum + this.width
-      tempArr.splice(widthPlusNum, 1, !this.props.bool[widthPlusNum])
-      // console.log('iNum < totalSquares', iNum)
+      if (widthPlusNum < totalSquares) {
+        tempArr.splice(widthPlusNum, 1, !this.props.bool[widthPlusNum])
+        // console.log('iNum < totalSquares', iNum)
+      }
     }
-    // console.log('______________________________')
     this.props.newArray(tempArr)
   }
 
   render() {
     const displayBool = !!this.props.bool[this.props.iNum]
-    let color = displayBool ? '#A8E1FD' : '#CCEEFE'
+    // let color = displayBool ? '../wei-chi-29466_1280.jpg' : '../NoraTired.png'
 
     return (
       <View>
-        <Button transparent light onPress={this.toggleColor}>
+        {/* <Button transparent light onPress={this.toggleColor}>
           <View
             style={{
               width: 50,
@@ -68,7 +71,26 @@ class Buttons extends Component {
               borderColor: 'white'
             }}
           />
-        </Button>
+        </Button> */}
+        <TouchableHighlight onPress={this.toggleColor}>
+          {displayBool ? (
+            <Image
+              style={{
+                width: 50,
+                height: 50
+              }}
+              source={require('../rock.png')}
+            />
+          ) : (
+            <Image
+              style={{
+                width: 50,
+                height: 50
+              }}
+              source={require('../gem.png')}
+            />
+          )}
+        </TouchableHighlight>
       </View>
     )
   }
@@ -77,13 +99,16 @@ class Buttons extends Component {
 const mapstate = state => {
   return {
     bool: state.bool,
-    dimensions: state.dimensions
+    dimensions: state.dimensions,
+    count: state.count
   }
 }
 
 const mapDispatch = dispatch => {
   return {
-    newArray: array => dispatch(newArray(array))
+    newArray: array => dispatch(newArray(array)),
+    setCount: num => dispatch(setCount(num)),
+    setWinner: won => dispatch(setWinner(won))
   }
 }
 

@@ -12,24 +12,30 @@ import { StackNavigator } from 'react-navigation'
 import GameMenu from './scene/GameMenu'
 import GameScreen from './scene/GameScreen'
 import LevelSelector from './scene/LevelSelector'
+import Levels from './scene/Levels'
+import store from './components/store/store'
+import { Provider } from 'react-redux'
 import GameSettings from './scene/GameSettings'
 import About from './scene/About'
-import store from './components/store/store';
-import { Provider } from 'react-redux';
-
 
 class HomeScreen extends Component {
+  constructor(props) {
+    super(props)
+    this.pressHandler = this.pressHandler.bind(this)
+  }
   static navigationOptions = {
     title: 'Home'
   }
+
+  pressHandler() {
+    this.props.navigation.navigate('GameMenu')
+  }
+
   render() {
     return (
       <Provider store={store}>
         <View style={styles.container}>
-          <Text> Lets Play! </Text>
-          <TouchableHighlight
-            onPress={() => this.props.navigation.navigate('GameMenu')}
-          >
+          <TouchableHighlight onPress={this.pressHandler} title="Press Me">
             <Image
               style={styles.button}
               source={require('./wei-chi-29466_1280.jpg')}
@@ -52,16 +58,18 @@ const ModalStack = StackNavigator({
     screen: GameScreen
   },
   LevelSelector: {
-    screen: LevelSelector,
+    screen: LevelSelector
+  },
+  Levels: {
+    screen: Levels
   },
   GameSettings: {
-    screen: GameSettings,
+    screen: GameSettings
   },
-  About:{
+  About: {
     screen: About
   }
-});
-
+})
 
 let styles = StyleSheet.create({
   container: {

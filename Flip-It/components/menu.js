@@ -15,15 +15,16 @@ class Menu extends Component {
   render() {
     let styles = StyleSheet.create({
       container: {
-        justifyContent: 'center',
-        flexDirection: 'row',
-        flexWrap: 'wrap'
+        justifyContent: 'center'
+        // flexDirection: 'row',
+        // flexWrap: 'wrap'
       }
     })
     let buttonArr = []
     for (let i = 2; i < 8; i++) {
       buttonArr.push(
         <Button
+          primary
           style={{
             backgroundColor: 'white',
             borderRadius: 5,

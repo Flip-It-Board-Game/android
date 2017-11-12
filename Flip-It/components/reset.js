@@ -2,11 +2,7 @@ import React, { Component } from 'react'
 import { View, Text } from 'react-native'
 import { Button } from 'native-base'
 import { connect } from 'react-redux'
-import { reset } from './store/store'
-
-const width = 4
-const height = 4
-const totalSquares = width * height
+import { reset, setBoard } from './store/store'
 
 class Reset extends Component {
   constructor(props) {
@@ -17,22 +13,43 @@ class Reset extends Component {
     return (
       <View>
         <Button
+          transparent
           light
           onPress={() => {
-            this.props.reset()
+            this.props.setBoard({
+              width: this.props.dimensions.width,
+              height: this.props.dimensions.height
+            })
           }}
         >
-          <Text>Reset Board</Text>
+          <Text
+            style={{
+              fontFamily: 'Cochin',
+              fontSize: 27,
+              fontWeight: 'bold',
+              textAlign: 'center'
+            }}
+            key="moveCount"
+          >
+            Reset Board
+          </Text>
         </Button>
       </View>
     )
   }
 }
 
-const mapDispatch = dispatch => {
+const mapState = state => {
   return {
-    reset: () => dispatch(reset())
+    dimensions: state.dimensions
   }
 }
 
-export default connect(null, mapDispatch)(Reset)
+const mapDispatch = dispatch => {
+  return {
+    reset: () => dispatch(reset()),
+    setBoard: board => dispatch(setBoard(board))
+  }
+}
+
+export default connect(mapState, mapDispatch)(Reset)
