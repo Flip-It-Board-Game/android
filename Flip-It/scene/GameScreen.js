@@ -1,10 +1,10 @@
-import { StyleSheet, TabNavigator, View, Text } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import React, { Component } from 'react';
 import { connect, Provider } from 'react-redux';
 import Grid from '../components/grid';
 import store from '../components/store/store';
 import {
-  Container, Header, Content, Footer, FooterTab, Button, Icon,
+  Container, Content, Footer, FooterTab, Button, Icon,
   Badge
 } from 'native-base';
 
@@ -13,17 +13,17 @@ class GameScreen extends Component {
     return (
       <Provider store={store}>
         <Container>
-
           <Content>
             <View>
-              <Text>Counter Placeholder</Text>
+              <Text>Number of Move || Time </Text>
+              <Text>Best Number of Move || Best Time </Text>
               <Grid />
             </View>
           </Content>
           <Footer>
             <FooterTab>
               <Button badge vertical>
-               
+
                 <Icon name="apps" />
                 <Text>Back To Game</Text>
               </Button>
@@ -36,11 +36,11 @@ class GameScreen extends Component {
           </Footer>
         </Container>
       </Provider>
-    )
+    );
   }
 }
 
-export default GameScreen
+export default GameScreen;
 
 // const mapstate = state => {
 //   return {

@@ -29,6 +29,11 @@ class GameMenu extends Component {
               title="About"
               color="#841584"
             />
+            <Button 
+            onPress={() => this.props.navigation.navigate('Test')}
+              title="AsyncStorage Test"
+              color="orange"
+            />
           </View>
     );
   }
