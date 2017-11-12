@@ -1,12 +1,6 @@
 import React, { Component } from 'react'
 import {
-  AppRegistry,
-  Button,
-  Text,
-  View,
-  Image,
-  StyleSheet,
-  TouchableHighlight
+  AppRegistry, Button,Text,View,Image,StyleSheet,TouchableHighlight
 } from 'react-native'
 import { StackNavigator } from 'react-navigation'
 import GameMenu from './scene/GameMenu'
@@ -17,6 +11,8 @@ import store from './components/store/store'
 import { Provider } from 'react-redux'
 import GameSettings from './scene/GameSettings'
 import About from './scene/About'
+import Test from './scene/Test'
+
 
 class HomeScreen extends Component {
   constructor(props) {
@@ -68,6 +64,9 @@ const ModalStack = StackNavigator({
   },
   About: {
     screen: About
+  },
+  Test:{
+    screen: Test
   }
 })
 
