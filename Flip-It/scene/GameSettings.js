@@ -9,7 +9,10 @@ import {
 export default class Profile extends Component {
   constructor(props) {
    super(props)
-   this.state = { volume: 1 }
+   this.state = { 
+     volume: 1,
+     sx: 1
+    }
   } 
   getVal(val){
   console.warn(val);
@@ -21,7 +24,7 @@ export default class Profile extends Component {
         <Slider
          style={{ width: 300 }}
          step={1}
-         minimumValue={1}
+         minimumValue={0}
          maximumValue={100}
          value={this.state.volume}
          onValueChange={val => this.setState({ volume: val })}
@@ -32,6 +35,21 @@ export default class Profile extends Component {
         </Text>            
         <Text style={styles.instructions}>
           Slide to change volume
+        </Text>
+        <Slider
+         style={{ width: 300 }}
+         step={1}
+         minimumValue={0}
+         maximumValue={100}
+         value={this.state.sx}
+         onValueChange={val => this.setState({ sx: val })}
+         onSlidingComplete={ val => this.getVal(val)}
+        />
+        <Text style={styles.welcome}>
+          {this.state.sx}
+        </Text>            
+        <Text style={styles.instructions}>
+          Slide to change effects
         </Text>
       </View>
     );
