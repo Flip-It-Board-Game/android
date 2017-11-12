@@ -4,10 +4,6 @@ import { Button } from 'native-base'
 import { connect } from 'react-redux'
 import { reset, setBoard } from './store/store'
 
-const width = 4
-const height = 4
-const totalSquares = width * height
-
 class Reset extends Component {
   constructor(props) {
     super(props)
@@ -17,6 +13,7 @@ class Reset extends Component {
     return (
       <View>
         <Button
+          transparent
           light
           onPress={() => {
             this.props.setBoard({
@@ -25,7 +22,17 @@ class Reset extends Component {
             })
           }}
         >
-          <Text>Reset Board</Text>
+          <Text
+            style={{
+              fontFamily: 'Cochin',
+              fontSize: 27,
+              fontWeight: 'bold',
+              textAlign: 'center'
+            }}
+            key="moveCount"
+          >
+            Reset Board
+          </Text>
         </Button>
       </View>
     )

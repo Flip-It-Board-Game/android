@@ -15,7 +15,7 @@ class tableView extends Component {
   }
 
   render() {
-    console.log('COUNT - Grid', this.props.count)
+    console.log(this.props.bool)
     //Renders table based on user input
     const width = this.props.dimensions && this.props.dimensions.width
     const height = this.props.dimensions && this.props.dimensions.height
@@ -29,12 +29,14 @@ class tableView extends Component {
         rowButtons = []
       }
     }
+
+    //style sheet
     const rowWidth = width * 50
     const styles = StyleSheet.create({
       TopBuffer: { height: 300, backgroundColor: 'white', borderWidth: 0 },
       text: { marginLeft: 5 },
       row: { height: 50, width: rowWidth },
-      top: { height: 60, width: rowWidth },
+      top: { height: 180, width: rowWidth },
       app: {
         justifyContent: 'center',
         alignItems: 'center',
@@ -42,10 +44,31 @@ class tableView extends Component {
       }
     })
     const datas = [
-      [<Text>{'\n'}</Text>],
-      [<Text key="moveCount">Number of Moves: {this.props.count.count}</Text>]
+      [
+        <View>
+          <Text>{'\n'}</Text>
+          <Text>{'\n'}</Text>
+          <Text>{'\n'}</Text>
+          <Text>{'\n'}</Text>
+          <Text
+            style={{
+              fontFamily: 'Cochin',
+              fontSize: 40,
+              fontWeight: 'bold',
+              textAlign: 'center'
+            }}
+            key="moveCount"
+          >
+            Number of Moves: {this.props.count.count}
+          </Text>
+          <Text>{'\n'}</Text>
+          <Text>{'\n'}</Text>
+          <Text>{'\n'}</Text>
+          <Text>{'\n'}</Text>
+        </View>
+      ]
     ]
-    console.log(this.props && this.props.won)
+
     return (
       <View style={{ backgroundColor: 'white' }}>
         {this.props && this.props.bool.indexOf(true) === -1 ? (
@@ -55,7 +78,9 @@ class tableView extends Component {
           </View>
         ) : (
           <View style={styles.app}>
-            <Table borderStyle={{ borderWidth: 0, borderColor: 'white' }}>
+            <Table
+              borderStyle={{ height: 79, borderWidth: 0, borderColor: 'white' }}
+            >
               <Rows data={datas} style={styles.top} textStyle={styles.text} />
             </Table>
             <Table borderStyle={{ borderWidth: 0, borderColor: 'white' }}>
@@ -66,8 +91,19 @@ class tableView extends Component {
               />
             </Table>
             <Text>{'\n'}</Text>
+            <Text>{'\n'}</Text>
             <Reset />
-            <Solution />
+            {/* <Solution /> */}
+            <Text>{'\n'}</Text>
+            <Text>{'\n'}</Text>
+            <Text>{'\n'}</Text>
+            <Text>{'\n'}</Text>
+            <Text>{'\n'}</Text>
+            <Text>{'\n'}</Text>
+            <Text>{'\n'}</Text>
+            <Text>{'\n'}</Text>
+            <Text>{'\n'}</Text>
+            <Text>{'\n'}</Text>
           </View>
         )}
       </View>

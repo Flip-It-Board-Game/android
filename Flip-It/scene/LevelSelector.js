@@ -78,21 +78,18 @@ class Menu extends Component {
   render() {
     let styles = StyleSheet.create({
       container: {
-        justifyContent: 'center',
-        flexDirection: 'row',
-        flexWrap: 'wrap'
+        justifyContent: 'center'
+        // flexDirection: 'row',
+        // flexWrap: 'wrap',
+        // backgroundColor: 'white'
       }
     })
     let buttonArr = []
     for (let i = 2; i < 8; i++) {
       buttonArr.push(
         <Button
-          style={{
-            backgroundColor: 'white',
-            borderRadius: 5,
-            borderWidth: 0.5,
-            borderColor: '#d6d7da'
-          }}
+          block
+          info
           onPress={() => {
             this.props.setBoard({ width: i, height: i })
             this.props.setDimensions({ width: i, height: i })
@@ -107,7 +104,11 @@ class Menu extends Component {
       )
     }
     return (
-      <View style={styles.container}>{buttonArr.map(button => button)}</View>
+      <View style={styles.container}>
+        <Text>{'\n'}</Text>
+        {buttonArr.map(button => button)}
+        <Text>{'\n'}</Text>
+      </View>
     )
   }
 }

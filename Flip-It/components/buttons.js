@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View } from 'react-native'
+import { View, TouchableHighlight, Image } from 'react-native'
 import { Button } from 'native-base'
 import { connect } from 'react-redux'
 import { newArray, setCount, setWinner } from './store/store'
@@ -57,11 +57,11 @@ class Buttons extends Component {
 
   render() {
     const displayBool = !!this.props.bool[this.props.iNum]
-    let color = displayBool ? '#A8E1FD' : '#CCEEFE'
+    // let color = displayBool ? '../wei-chi-29466_1280.jpg' : '../NoraTired.png'
 
     return (
       <View>
-        <Button transparent light onPress={this.toggleColor}>
+        {/* <Button transparent light onPress={this.toggleColor}>
           <View
             style={{
               width: 50,
@@ -71,7 +71,26 @@ class Buttons extends Component {
               borderColor: 'white'
             }}
           />
-        </Button>
+        </Button> */}
+        <TouchableHighlight onPress={this.toggleColor}>
+          {displayBool ? (
+            <Image
+              style={{
+                width: 50,
+                height: 50
+              }}
+              source={require('../rock.png')}
+            />
+          ) : (
+            <Image
+              style={{
+                width: 50,
+                height: 50
+              }}
+              source={require('../gem.png')}
+            />
+          )}
+        </TouchableHighlight>
       </View>
     )
   }
