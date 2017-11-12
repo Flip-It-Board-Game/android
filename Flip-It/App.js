@@ -19,7 +19,6 @@ import { Provider } from 'react-redux'
 import GameSettings from './scene/GameSettings'
 import About from './scene/About'
 
-
 class HomeScreen extends Component {
   static navigationOptions = {
     title: 'Home'
@@ -53,23 +52,18 @@ const ModalStack = StackNavigator({
     screen: GameScreen
   },
   LevelSelector: {
-<<<<<<< HEAD
     screen: LevelSelector
   },
   Levels: {
     screen: Levels
-=======
-    screen: LevelSelector,
   },
   GameSettings: {
-    screen: GameSettings,
+    screen: GameSettings
   },
-  About:{
+  About: {
     screen: About
->>>>>>> master
   }
-});
-
+})
 
 let styles = StyleSheet.create({
   container: {

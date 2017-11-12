@@ -8,9 +8,11 @@ import Grid from '../components/grid'
 class Levels extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <LevelSelector />
-      </View>
+      <Provider store={store}>
+        <View style={styles.container}>
+          <LevelSelector />
+        </View>
+      </Provider>
     )
   }
 }
