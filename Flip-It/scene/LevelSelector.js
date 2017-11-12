@@ -65,10 +65,11 @@ import React, { Component } from 'react'
 import { View, StyleSheet, Text } from 'react-native'
 import { Table, Row, Rows } from 'react-native-table-component'
 import { Button } from 'native-base'
-import { connect } from 'react-redux'
+// import { connect } from 'react-redux'
 // import Reset from './reset'
 // import Solution from './solution'
-import { setBoard, setDimensions } from '../components/store/store'
+import store, { setBoard, setDimensions } from '../components/store/store'
+import GameScreen from './GameScreen'
 
 class Menu extends Component {
   constructor(props) {
@@ -91,8 +92,9 @@ class Menu extends Component {
           block
           info
           onPress={() => {
-            this.props.setBoard({ width: i, height: i })
-            this.props.setDimensions({ width: i, height: i })
+            store.dispatch(setBoard({ width: i, height: i }))
+            store.dispatch(setDimensions({ width: i, height: i }))
+            this.props.navigation.navigate('GameScreen')
           }}
         >
           <Text>
@@ -113,18 +115,18 @@ class Menu extends Component {
   }
 }
 
-const mapstate = state => {
-  return {
-    bool: state.bool,
-    dimensions: state.dimensions
-  }
-}
+// const mapstate = state => {
+//   return {
+//     bool: state.bool,
+//     dimensions: state.dimensions
+//   }
+// }
 
-const mapDispatch = dispatch => {
-  return {
-    setBoard: board => dispatch(setBoard(board)),
-    setDimensions: board => dispatch(setDimensions(board))
-  }
-}
+// const mapDispatch = dispatch => {
+//   return {
+//     setBoard: board => dispatch(setBoard(board)),
+//     setDimensions: board => dispatch(setDimensions(board))
+//   }
+// }
 
-export default connect(mapstate, mapDispatch)(Menu)
+export default Menu

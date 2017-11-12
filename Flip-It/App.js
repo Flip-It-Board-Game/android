@@ -12,7 +12,7 @@ import { StackNavigator } from 'react-navigation'
 import GameMenu from './scene/GameMenu'
 import GameScreen from './scene/GameScreen'
 import LevelSelector from './scene/LevelSelector'
-import Levels from './scene/Levels'
+// import Levels from './scene/Levels'
 import store from './components/store/store'
 import { Provider } from 'react-redux'
 import GameSettings from './scene/GameSettings'
@@ -60,9 +60,9 @@ const ModalStack = StackNavigator({
   LevelSelector: {
     screen: LevelSelector
   },
-  Levels: {
-    screen: Levels
-  },
+  // Levels: {
+  //   screen: Levels
+  // },
   GameSettings: {
     screen: GameSettings
   },

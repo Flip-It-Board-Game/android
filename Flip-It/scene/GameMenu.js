@@ -2,16 +2,11 @@ import React, { Component } from 'react'
 import { View, Button, StyleSheet, Text } from 'react-native'
 import GameScreen from './GameScreen'
 import LevelSelector from './LevelSelector'
-import Levels from './Levels'
+// import Levels from './Levels'
 
 class GameMenu extends Component {
   constructor(props) {
     super(props)
-    this.clickAction = this.clickAction.bind(this)
-  }
-
-  clickAction() {
-    this.props.navigation.navigate('GameScreen')
   }
 
   render() {
@@ -22,7 +17,7 @@ class GameMenu extends Component {
           title="Start"
         />
         <Button
-          onPress={() => this.props.navigation.navigate('Levels')}
+          onPress={() => this.props.navigation.navigate('LevelSelector')}
           title="Level Select"
           color="#841584"
         />
