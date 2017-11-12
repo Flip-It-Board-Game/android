@@ -8,6 +8,7 @@ import Reset from './reset'
 import Solution from './solution'
 // import Menu from './menu'
 
+
 class tableView extends Component {
   constructor(props) {
     super(props)

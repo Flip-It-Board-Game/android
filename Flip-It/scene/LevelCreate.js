@@ -29,10 +29,10 @@
 
 // export default LevelSelector
 
-import React, { Component } from 'react'
-import { View, StyleSheet, Text } from 'react-native'
-import { Button } from 'native-base'
-import { connect } from 'react-redux'
+import React, { Component } from 'react';
+import { View, StyleSheet, Text } from 'react-native';
+import { Button } from 'native-base';
+import { connect } from 'react-redux';
 
 class LevelCreate extends Component {
   constructor(props) {
@@ -60,13 +60,13 @@ class LevelCreate extends Component {
         <Button
           title="level 1"
           onPress={() => {
-            this.props.navigation.navigate('GameScreen')
+            this.props.navigation.navigate('GameScreen');
           }}
         >
           <Text>BUTTON</Text>
         </Button>
       </View>
-    )
+    );
   }
 }
 
@@ -75,12 +75,12 @@ let styles = StyleSheet.create({
     backgroundColor: '#C0C0C0',
     justifyContent: 'center'
   }
-})
+});
 
 const mapstate = state => {
   return {
     bool: state.bool
-  }
-}
+  };
+};
 
-export default connect(mapstate)(LevelCreate)
+export default connect(mapstate)(LevelCreate);
