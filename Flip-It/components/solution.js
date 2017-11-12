@@ -81,7 +81,16 @@ class Solution extends Component {
             }
           }}
         >
-          <Text>'See Solution' : Square #: {this.iNum}}</Text>
+          <Text
+            style={{
+              fontFamily: 'Cochin',
+              fontSize: 16,
+              fontWeight: 'bold',
+              textAlign: 'center'
+            }}
+          >
+            See Solution
+          </Text>
         </Button>
       </View>
     )

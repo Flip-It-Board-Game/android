@@ -6,8 +6,8 @@ import { Button } from 'native-base'
 import { connect } from 'react-redux'
 import Reset from './reset'
 import Solution from './solution'
+import YouWon from './youWon'
 // import Menu from './menu'
-
 
 class tableView extends Component {
   constructor(props) {
@@ -74,7 +74,17 @@ class tableView extends Component {
       <View style={{ backgroundColor: 'white' }}>
         {this.props && this.props.bool.indexOf(true) === -1 ? (
           <View>
-            <Text>You Won!</Text>
+            <Text
+              style={{
+                fontFamily: 'Cochin',
+                fontSize: 70,
+                fontWeight: 'bold',
+                textAlign: 'center'
+              }}
+            >
+              You Won!
+            </Text>
+            <YouWon />
             <Reset />
           </View>
         ) : (
@@ -94,13 +104,11 @@ class tableView extends Component {
             <Text>{'\n'}</Text>
             <Text>{'\n'}</Text>
             <Reset />
-            {/* <Solution /> */}
-            <Text>{'\n'}</Text>
-            <Text>{'\n'}</Text>
-            <Text>{'\n'}</Text>
-            <Text>{'\n'}</Text>
-            <Text>{'\n'}</Text>
-            <Text>{'\n'}</Text>
+            {this.props && this.props.count.count === 0 ? (
+              <Solution />
+            ) : (
+              <Text>{'\n'}</Text>
+            )}
             <Text>{'\n'}</Text>
             <Text>{'\n'}</Text>
             <Text>{'\n'}</Text>
