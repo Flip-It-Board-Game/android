@@ -19,27 +19,24 @@ class GameMenu extends Component {
         <Button
           onPress={() => this.props.navigation.navigate('LevelSelector')}
           title="Level Select"
-          color="#841584"
         />
 
-        <Button title="My Awesome Stats" color="#841584" />
+        <Button title="My Awesome Stats" />
         <Button
           onPress={() => this.props.navigation.navigate('GameSettings')}
           title="Settings"
         />
 
-            <Button 
-            onPress={() => this.props.navigation.navigate('About')}
-              title="About"
-              color="#841584"
-            />
-            <Button 
-            onPress={() => this.props.navigation.navigate('Test')}
-              title="AsyncStorage Test"
-              color="orange"
-            />
-          </View>
-    );
+        <Button
+          onPress={() => this.props.navigation.navigate('About')}
+          title="About"
+        />
+        <Button
+          onPress={() => this.props.navigation.navigate('Test')}
+          title="AsyncStorage Test"
+        />
+      </View>
+    )
   }
 }
 

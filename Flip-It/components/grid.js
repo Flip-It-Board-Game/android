@@ -72,7 +72,7 @@ class Grid extends Component {
             <Text
               style={{
                 fontFamily: 'Cochin',
-                fontSize: 70,
+                fontSize: 65,
                 fontWeight: 'bold',
                 textAlign: 'center'
               }}
@@ -96,8 +96,7 @@ class Grid extends Component {
                 textStyle={styles.text}
               />
             </Table>
-            <Text>{'\n'}</Text>
-            <Text>{'\n'}</Text>
+            <Text style={{ fontSize: 5 }}>{'\n'}</Text>
             <Reset />
             <Reveal />
             {this.props && this.props.count.count === 0 ? (

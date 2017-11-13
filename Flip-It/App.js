@@ -1,6 +1,12 @@
 import React, { Component } from 'react'
 import {
-  AppRegistry, Button,Text,View,Image,StyleSheet,TouchableHighlight
+  AppRegistry,
+  Button,
+  Text,
+  View,
+  Image,
+  StyleSheet,
+  TouchableHighlight
 } from 'react-native'
 import { StackNavigator } from 'react-navigation'
 import GameMenu from './scene/GameMenu'
@@ -12,7 +18,7 @@ import { Provider } from 'react-redux'
 import GameSettings from './scene/GameSettings'
 import About from './scene/About'
 import Test from './scene/Test'
-
+console.disableYellowBox = true
 
 class HomeScreen extends Component {
   constructor(props) {
@@ -32,10 +38,7 @@ class HomeScreen extends Component {
       <Provider store={store}>
         <View style={styles.container}>
           <TouchableHighlight onPress={this.pressHandler} title="Press Me">
-            <Image
-              style={styles.button}
-              source={require('./wei-chi-29466_1280.jpg')}
-            />
+            <Image style={styles.button} source={require('./gemspic.png')} />
           </TouchableHighlight>
         </View>
       </Provider>
@@ -65,7 +68,7 @@ const ModalStack = StackNavigator({
   About: {
     screen: About
   },
-  Test:{
+  Test: {
     screen: Test
   }
 })
@@ -78,6 +81,11 @@ let styles = StyleSheet.create({
   },
   backdrop: {
     resizeMode: 'cover'
+  },
+  button: {
+    width: 375,
+    height: 370,
+    justifyContent: 'center'
   }
 })
 
