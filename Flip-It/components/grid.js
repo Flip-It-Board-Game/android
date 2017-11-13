@@ -1,22 +1,20 @@
 import React, { Component } from 'react'
 import { View, StyleSheet, Text } from 'react-native'
-import { Table, Row, Rows } from 'react-native-table-component'
+import { Table, Rows } from 'react-native-table-component'
 import Buttons from './buttons'
-import { Button } from 'native-base'
 import { connect } from 'react-redux'
 import Reset from './reset'
 import Solution from './solution'
-// import Menu from './menu'
+import YouWon from './youWon'
+import Reveal from './reveal'
 
-
-class tableView extends Component {
+class Grid extends Component {
   constructor(props) {
     super(props)
-    this.number = 0
+    this.num = 0
   }
 
   render() {
-    console.log(this.props.bool)
     //Renders table based on user input
     const width = this.props.dimensions && this.props.dimensions.width
     const height = this.props.dimensions && this.props.dimensions.height
@@ -30,14 +28,12 @@ class tableView extends Component {
         rowButtons = []
       }
     }
-
-    //style sheet
     const rowWidth = width * 50
     const styles = StyleSheet.create({
       TopBuffer: { height: 300, backgroundColor: 'white', borderWidth: 0 },
       text: { marginLeft: 5 },
       row: { height: 50, width: rowWidth },
-      top: { height: 180, width: rowWidth },
+      top: { height: 180, width: 300 },
       app: {
         justifyContent: 'center',
         alignItems: 'center',
@@ -69,12 +65,21 @@ class tableView extends Component {
         </View>
       ]
     ]
-
     return (
       <View style={{ backgroundColor: 'white' }}>
         {this.props && this.props.bool.indexOf(true) === -1 ? (
           <View>
-            <Text>You Won!</Text>
+            <Text
+              style={{
+                fontFamily: 'Cochin',
+                fontSize: 65,
+                fontWeight: 'bold',
+                textAlign: 'center'
+              }}
+            >
+              You Won!
+            </Text>
+            <YouWon />
             <Reset />
           </View>
         ) : (
@@ -91,16 +96,14 @@ class tableView extends Component {
                 textStyle={styles.text}
               />
             </Table>
-            <Text>{'\n'}</Text>
-            <Text>{'\n'}</Text>
+            <Text style={{ fontSize: 5 }}>{'\n'}</Text>
             <Reset />
-            {/* <Solution /> */}
-            <Text>{'\n'}</Text>
-            <Text>{'\n'}</Text>
-            <Text>{'\n'}</Text>
-            <Text>{'\n'}</Text>
-            <Text>{'\n'}</Text>
-            <Text>{'\n'}</Text>
+            <Reveal />
+            {this.props && this.props.count.count === 0 ? (
+              <Solution />
+            ) : (
+              <Text>{'\n'}</Text>
+            )}
             <Text>{'\n'}</Text>
             <Text>{'\n'}</Text>
             <Text>{'\n'}</Text>
@@ -121,4 +124,4 @@ const mapstate = state => {
   }
 }
 
-export default connect(mapstate)(tableView)
+export default connect(mapstate)(Grid)

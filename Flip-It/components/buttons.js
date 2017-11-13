@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import { View, TouchableHighlight, Image } from 'react-native'
-import { Button } from 'native-base'
 import { connect } from 'react-redux'
 import { newArray, setCount, setWinner } from './store/store'
+import SocketIOClient from 'socket.io-client'
 
 class Buttons extends Component {
   constructor(props) {
     super(props)
     this.toggleColor = this.toggleColor.bind(this)
+    this.socket = SocketIOClient('http://localhost:3005')
   }
 
   toggleColor() {
@@ -53,25 +54,19 @@ class Buttons extends Component {
       }
     }
     this.props.newArray(tempArr)
+    this.socket.emit('sendState', tempArr)
   }
 
   render() {
     const displayBool = !!this.props.bool[this.props.iNum]
-    // let color = displayBool ? '../wei-chi-29466_1280.jpg' : '../NoraTired.png'
+    const dispArr = this.props.newArray
+    this.socket.on('newState', receiveState => {
+      console.log('SOCKET BOTTOM', receiveState)
+      dispArr(receiveState)
+    })
 
     return (
       <View>
-        {/* <Button transparent light onPress={this.toggleColor}>
-          <View
-            style={{
-              width: 50,
-              height: 50,
-              backgroundColor: color,
-              borderWidth: 1,
-              borderColor: 'white'
-            }}
-          />
-        </Button> */}
         <TouchableHighlight onPress={this.toggleColor}>
           {displayBool ? (
             <Image
