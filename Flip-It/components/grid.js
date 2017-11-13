@@ -1,22 +1,20 @@
 import React, { Component } from 'react'
 import { View, StyleSheet, Text } from 'react-native'
-import { Table, Row, Rows } from 'react-native-table-component'
+import { Table, Rows } from 'react-native-table-component'
 import Buttons from './buttons'
-import { Button } from 'native-base'
 import { connect } from 'react-redux'
 import Reset from './reset'
 import Solution from './solution'
 import YouWon from './youWon'
-// import Menu from './menu'
+import Reveal from './reveal'
 
-class tableView extends Component {
+class Grid extends Component {
   constructor(props) {
     super(props)
-    this.number = 0
+    this.num = 0
   }
 
   render() {
-    console.log(this.props.bool)
     //Renders table based on user input
     const width = this.props.dimensions && this.props.dimensions.width
     const height = this.props.dimensions && this.props.dimensions.height
@@ -30,14 +28,12 @@ class tableView extends Component {
         rowButtons = []
       }
     }
-
-    //style sheet
     const rowWidth = width * 50
     const styles = StyleSheet.create({
       TopBuffer: { height: 300, backgroundColor: 'white', borderWidth: 0 },
       text: { marginLeft: 5 },
       row: { height: 50, width: rowWidth },
-      top: { height: 180, width: rowWidth },
+      top: { height: 180, width: 300 },
       app: {
         justifyContent: 'center',
         alignItems: 'center',
@@ -69,7 +65,6 @@ class tableView extends Component {
         </View>
       ]
     ]
-
     return (
       <View style={{ backgroundColor: 'white' }}>
         {this.props && this.props.bool.indexOf(true) === -1 ? (
@@ -104,6 +99,7 @@ class tableView extends Component {
             <Text>{'\n'}</Text>
             <Text>{'\n'}</Text>
             <Reset />
+            <Reveal />
             {this.props && this.props.count.count === 0 ? (
               <Solution />
             ) : (
@@ -129,4 +125,4 @@ const mapstate = state => {
   }
 }
 
-export default connect(mapstate)(tableView)
+export default connect(mapstate)(Grid)

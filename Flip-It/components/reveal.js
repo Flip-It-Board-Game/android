@@ -7,46 +7,40 @@ import { reset, setBoard, setCount } from './store/store'
 class Reset extends Component {
   constructor(props) {
     super(props)
-    this.saveData = this.saveData.bind(this)
+    this.displayData = this.displayData.bind(this)
   }
 
-  saveData() {
-    let moves = this.props && this.props.count.count
-    let num = moves.toString()
-    let user = 'Andrew'
-    let time = '4 days, 18 hours, 39 minutes, 20 seconds'
-    AsyncStorage.setItem('key_User', user)
-    AsyncStorage.setItem('key_time', time)
-    AsyncStorage.setItem('key_bestMoves', num)
+  displayData = async () => {
+    try {
+      let user = await AsyncStorage.getItem('key_User')
+      let time = await AsyncStorage.getItem('key_time')
+      let moves = await AsyncStorage.getItem('key_bestMoves')
+      alert(user + ' last completed this level in ' + moves + ' moves.')
+    } catch (error) {
+      alert(error)
+    }
   }
 
   render() {
-    let moves = this.props && this.props.count.count
-    console.log(moves)
     return (
       <View>
         <Button
           transparent
           light
           onPress={() => {
-            this.props.setBoard({
-              width: this.props.dimensions.width,
-              height: this.props.dimensions.height
-            })
-            this.props.setCount({ count: 0 })
-            this.saveData()
+            this.displayData()
           }}
         >
           <Text
             style={{
               fontFamily: 'Cochin',
-              fontSize: 27,
+              fontSize: 16,
               fontWeight: 'bold',
               textAlign: 'center'
             }}
             key="moveCount"
           >
-            Reset Board
+            Display Stats
           </Text>
         </Button>
       </View>
