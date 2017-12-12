@@ -21,7 +21,12 @@ class GameMenu extends Component {
           title="Level Select"
         />
 
-        <Button title="My Awesome Stats" />
+
+        <Button
+          onPress={() => this.props.navigation.navigate('GameStats')}
+          title="GameStats"
+        />
+
         <Button
           onPress={() => this.props.navigation.navigate('GameSettings')}
           title="Settings"
