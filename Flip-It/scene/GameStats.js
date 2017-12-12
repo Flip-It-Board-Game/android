@@ -1,28 +1,43 @@
 import React, { Component } from 'react';
 import { Container, Header, Content, Button, Text } from 'native-base';
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Image} from 'react-native';
+import { Col, Row, Grid } from 'react-native-easy-grid';
 
 export default class GameStats extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+        userName: "Bob"
+    };
   }
 
   render() {
     return (
         <Container style={styles.container} >
-          <Header />
+          <Header><Text>Profile</Text></Header>
           <Content>
+          <Grid>
+            <Col style={{ backgroundColor: '#635DB7', height: 200 }}>
+                <Text>{this.state.userName}</Text>
+                <Image
+                style={{width: 50, height: 50}}
+                source={require('../user.jpg')}>
+                </Image>
+            </Col>
+            <Col style={{ backgroundColor: '#00CE9F', height: 200 }}></Col>
+          </Grid>
+
             <Button rounded light>
-              <Text>Light</Text>
+              <Text>Time Played</Text>
             </Button>
             <Button rounded>
-              <Text>Primary</Text>
+              <Text>Number of Hints Used</Text>
             </Button>
             <Button rounded success>
-              <Text>Success</Text>
+              <Text>Skins</Text>
             </Button>
             <Button rounded info>
-              <Text>Info</Text>
+              <Text>Average Time of Completion</Text>
             </Button>
             <Button rounded warning>
               <Text>Warning</Text>
