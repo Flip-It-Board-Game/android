@@ -96,17 +96,7 @@ class Grid extends Component {
               />
             </Table>
             <Text style={{ fontSize: 5 }}>{'\n'}</Text>
-            <Reset />
-            <Reveal />
-            {this.props && this.props.count.count === 0 ? (
-              <Solution />
-            ) : (
-              <Text>{'\n'}</Text>
-            )}
-            <Text>{'\n'}</Text>
-            <Text>{'\n'}</Text>
-            <Text>{'\n'}</Text>
-            <Text>{'\n'}</Text>
+            <Reset style={{ marginBottom: 300 }} />
           </View>
         )}
       </View>

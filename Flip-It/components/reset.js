@@ -12,17 +12,10 @@ class Reset extends Component {
 
   saveData() {
     let moves = this.props && this.props.count.count
-    let num = moves.toString()
-    let user = 'Andrew'
-    let time = '4 days, 18 hours, 39 minutes, 20 seconds'
-    AsyncStorage.setItem('key_User', user)
-    AsyncStorage.setItem('key_time', time)
-    AsyncStorage.setItem('key_bestMoves', num)
+    AsyncStorage.setItem('key_bestMoves', moves.toString())
   }
 
   render() {
-    let moves = this.props && this.props.count.count
-    console.log(moves)
     return (
       <View>
         <Button
