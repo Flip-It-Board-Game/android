@@ -7,11 +7,16 @@ import Reset from './reset'
 import Solution from './solution'
 import YouWon from './youWon'
 import Reveal from './reveal'
+import { setCount } from './store/store'
 
 class Grid extends Component {
   constructor(props) {
     super(props)
     this.num = 0
+  }
+
+  componentWillMount() {
+    this.props.setCount({ count: 0 })
   }
 
   render() {
@@ -43,25 +48,19 @@ class Grid extends Component {
     const datas = [
       [
         <View>
-          <Text>{'\n'}</Text>
-          <Text>{'\n'}</Text>
-          <Text>{'\n'}</Text>
-          <Text>{'\n'}</Text>
           <Text
             style={{
               fontFamily: 'Cochin',
               fontSize: 40,
               fontWeight: 'bold',
-              textAlign: 'center'
+              textAlign: 'center',
+              marginBottom: 150,
+              marginTop: 150
             }}
             key="moveCount"
           >
             Number of Moves: {this.props.count.count}
           </Text>
-          <Text>{'\n'}</Text>
-          <Text>{'\n'}</Text>
-          <Text>{'\n'}</Text>
-          <Text>{'\n'}</Text>
         </View>
       ]
     ]
@@ -97,17 +96,7 @@ class Grid extends Component {
               />
             </Table>
             <Text style={{ fontSize: 5 }}>{'\n'}</Text>
-            <Reset />
-            <Reveal />
-            {this.props && this.props.count.count === 0 ? (
-              <Solution />
-            ) : (
-              <Text>{'\n'}</Text>
-            )}
-            <Text>{'\n'}</Text>
-            <Text>{'\n'}</Text>
-            <Text>{'\n'}</Text>
-            <Text>{'\n'}</Text>
+            <Reset style={{ marginBottom: 300 }} />
           </View>
         )}
       </View>
@@ -115,7 +104,7 @@ class Grid extends Component {
   }
 }
 
-const mapstate = state => {
+const mapState = state => {
   return {
     bool: state.bool,
     dimensions: state.dimensions,
@@ -124,4 +113,10 @@ const mapstate = state => {
   }
 }
 
-export default connect(mapstate)(Grid)
+const mapDispatch = dispatch => {
+  return {
+    setCount: count => dispatch(setCount(count))
+  }
+}
+
+export default connect(mapState, mapDispatch)(Grid)
