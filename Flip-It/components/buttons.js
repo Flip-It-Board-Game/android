@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { View, TouchableHighlight, Image } from 'react-native'
+import { View, TouchableHighlight, Image, Animated } from 'react-native'
 import { connect } from 'react-redux'
 import { newArray, setCount, setWinner } from './store/store'
 import SocketIOClient from 'socket.io-client'
+import Canvas from 'react-native-canvas';
 
 class Buttons extends Component {
   constructor(props) {
@@ -11,7 +12,14 @@ class Buttons extends Component {
     this.socket = SocketIOClient('http://localhost:3005')
   }
 
+  handleCanvas(canvas)  {
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = 'purple';
+    ctx.fillRect(0, 0, 100, 100);
+  }
+ 
   toggleColor() {
+
     let countNum = this.props && this.props.count.count
     //sets count in store
     this.props.setCount({ count: countNum + 1 })
@@ -67,6 +75,7 @@ class Buttons extends Component {
 
     return (
       <View>
+        <Canvas ref={this.handleCanvas}/>
         <TouchableHighlight onPress={this.toggleColor}>
           {displayBool ? (
             <Image
