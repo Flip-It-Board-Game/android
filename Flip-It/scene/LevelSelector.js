@@ -11,31 +11,46 @@ class Menu extends Component {
   render() {
     let styles = StyleSheet.create({
       container: {
+        marginTop: 40,
         justifyContent: 'center'
       }
     })
     let buttonArr = []
     for (let i = 2; i < 8; i++) {
       buttonArr.push(
-        <Button
-          title={`Level ${i - 1}`}
-          onPress={() => {
-            store.dispatch(setBoard({ width: i, height: i }))
-            store.dispatch(setDimensions({ width: i, height: i }))
-            this.props.navigation.navigate('GameScreen')
-          }}
-        >
-          <Text>
-            {'  '}
-            {i} X {i}
-            {'  '}
-          </Text>
-        </Button>
+        <View>
+          <Button
+            title={`${i} X ${i}`}
+            onPress={() => {
+              store.dispatch(setBoard({ width: i, height: i }))
+              store.dispatch(setDimensions({ width: i, height: i }))
+              this.props.navigation.navigate('GameScreen')
+            }}
+          />
+          <Button
+            title={`${i} X ${i + 1}`}
+            onPress={() => {
+              store.dispatch(setBoard({ width: i, height: i + 1 }))
+              store.dispatch(setDimensions({ width: i, height: i + 1 }))
+              this.props.navigation.navigate('GameScreen')
+            }}
+          />
+        </View>
       )
     }
     return (
       <View style={styles.container}>
-        <Text>{'\n'}</Text>
+        <Text
+          style={{
+            color: '#1a8cff',
+            textAlign: 'center',
+            marginBottom: 15,
+            marginTop: 15,
+            fontSize: 25
+          }}
+        >
+          Select Layout
+        </Text>
         {buttonArr.map(button => button)}
         <Text>{'\n'}</Text>
       </View>
