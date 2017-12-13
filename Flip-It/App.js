@@ -39,7 +39,7 @@ class HomeScreen extends Component {
       <Provider store={store}>
         <View style={styles.container}>
           <TouchableHighlight onPress={this.pressHandler} title="Press Me">
-            <Image style={styles.button} source={require('./gemspic.png')} />
+            <Image style={styles.button} source={require('./images/gemspic.png')} />
           </TouchableHighlight>
         </View>
       </Provider>
