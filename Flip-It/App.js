@@ -18,6 +18,7 @@ import { Provider } from 'react-redux'
 import GameSettings from './scene/GameSettings'
 import About from './scene/About'
 import Test from './scene/Test'
+import GameStats from './scene/GameStats'
 console.disableYellowBox = true
 
 class HomeScreen extends Component {
@@ -59,9 +60,9 @@ const ModalStack = StackNavigator({
   LevelSelector: {
     screen: LevelSelector
   },
-  // Levels: {
-  //   screen: Levels
-  // },
+  GameStats: {
+    screen: GameStats
+  },
   GameSettings: {
     screen: GameSettings
   },
