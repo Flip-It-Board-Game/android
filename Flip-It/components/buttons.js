@@ -75,7 +75,7 @@ class Buttons extends Component {
 
     return (
       <View>
-        <Canvas ref={this.handleCanvas}/>
+        {/* <Canvas ref={this.handleCanvas}/> */}
         <TouchableHighlight onPress={this.toggleColor}>
           {displayBool ? (
             <Image
