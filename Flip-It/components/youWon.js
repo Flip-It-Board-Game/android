@@ -1,5 +1,12 @@
 import React, { Component } from 'react'
-import { View, StyleSheet, Text, Animated, Image, Easing } from 'react-native'
+import {
+  View,
+  StyleSheet,
+  Text,
+  Animated,
+  AsyncStorage,
+  Easing
+} from 'react-native'
 import { Table, Row, Rows } from 'react-native-table-component'
 import Buttons from './buttons'
 import { Button } from 'native-base'
@@ -27,6 +34,46 @@ class youWon extends Component {
   }
 
   render() {
+    let moves = this.props && this.props.count.count
+    let dimensions = this.props && this.props.dimensions
+    if (dimensions.height === 2 && dimensions.width === 2) {
+      AsyncStorage.setItem('twoTwo', moves.toString())
+    }
+    if (dimensions.height === 3 && dimensions.width === 2) {
+      console.log('hererere')
+      AsyncStorage.setItem('twoThree', moves.toString())
+    }
+    if (dimensions.height === 3 && dimensions.width === 3) {
+      AsyncStorage.setItem('threeThree', moves.toString())
+    }
+    if (dimensions.height === 4 && dimensions.width === 3) {
+      AsyncStorage.setItem('threeFour', moves.toString())
+    }
+    if (dimensions.height === 4 && dimensions.width === 4) {
+      AsyncStorage.setItem('fourFour', moves.toString())
+    }
+    if (dimensions.height === 5 && dimensions.width === 4) {
+      AsyncStorage.setItem('fourFive', moves.toString())
+    }
+    if (dimensions.height === 5 && dimensions.width === 5) {
+      AsyncStorage.setItem('fiveFive', moves.toString())
+    }
+    if (dimensions.height === 6 && dimensions.width === 5) {
+      AsyncStorage.setItem('fiveSix', moves.toString())
+    }
+    if (dimensions.height === 6 && dimensions.width === 6) {
+      AsyncStorage.setItem('sixSix', moves.toString())
+    }
+    if (dimensions.height === 7 && dimensions.width === 6) {
+      AsyncStorage.setItem('sixSeven', moves.toString())
+    }
+    if (dimensions.height === 7 && dimensions.width === 7) {
+      AsyncStorage.setItem('sevenSeven', moves.toString())
+    }
+    if (dimensions.height === 8 && dimensions.width === 7) {
+      AsyncStorage.setItem('sevenEight', moves.toString())
+    }
+
     const styles = StyleSheet.create({
       container: {
         flex: 1,
@@ -49,8 +96,6 @@ class youWon extends Component {
           }}
           source={require('../images/CartRuby.png')}
         />
-
-        <Text>{'\n'}</Text>
       </View>
     )
   }

@@ -4,7 +4,7 @@ import { Table, Rows } from 'react-native-table-component'
 import Buttons from './buttons'
 import { connect } from 'react-redux'
 import Reset from './reset'
-import Solution from './solution'
+import Timer from './timer2'
 import YouWon from './youWon'
 import Reveal from './reveal'
 import { setCount } from './store/store'
@@ -50,7 +50,6 @@ class Grid extends Component {
         <View>
           <Text
             style={{
-              fontFamily: 'Cochin',
               fontSize: 40,
               fontWeight: 'bold',
               textAlign: 'center',
@@ -70,7 +69,6 @@ class Grid extends Component {
           <View>
             <Text
               style={{
-                fontFamily: 'Cochin',
                 fontSize: 65,
                 fontWeight: 'bold',
                 textAlign: 'center'
@@ -96,7 +94,9 @@ class Grid extends Component {
               />
             </Table>
             <Text style={{ fontSize: 5 }}>{'\n'}</Text>
-            <Reset style={{ marginBottom: 300 }} />
+            <Reset />
+            <Timer />
+            <Reveal />
           </View>
         )}
       </View>

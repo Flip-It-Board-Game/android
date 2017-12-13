@@ -12,10 +12,9 @@ class Reset extends Component {
 
   displayData = async () => {
     try {
-      let user = await AsyncStorage.getItem('key_User')
-      let time = await AsyncStorage.getItem('key_time')
-      let moves = await AsyncStorage.getItem('key_bestMoves')
-      alert(user + ' last completed this level in ' + moves + ' moves.')
+      let moves_2X2 = await AsyncStorage.getItem('key_bestMoves_2x2')
+      let moves_4X4 = await AsyncStorage.getItem('key_bestMoves_4x4')
+      alert(moves_4X4)
     } catch (error) {
       alert(error)
     }
@@ -33,7 +32,6 @@ class Reset extends Component {
         >
           <Text
             style={{
-              fontFamily: 'Cochin',
               fontSize: 16,
               fontWeight: 'bold',
               textAlign: 'center'

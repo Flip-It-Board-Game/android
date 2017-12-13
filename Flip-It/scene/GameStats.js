@@ -1,56 +1,125 @@
-import React, { Component } from 'react';
-import { Container, Header, Content, Button, Text } from 'native-base';
-import {StyleSheet, Image} from 'react-native';
-import { Col, Row, Grid } from 'react-native-easy-grid';
+//
+import React, { Component } from 'react'
+import {
+  Container,
+  Header,
+  Content,
+  Button,
+  Text,
+  Table,
+  Rows
+} from 'native-base'
+import { View, StyleSheet, Image, AsyncStorage } from 'react-native'
+import { Col, Row, Grid } from 'react-native-easy-grid'
 
 export default class GameStats extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-        userName: "Bob"
-    };
+      userName: 'Bob',
+      displayStats: false
+    }
+    this.seeStats = this.seeStats.bind(this)
+  }
+
+  seeStats = async () => {
+    try {
+      this.moves_2X2 = await AsyncStorage.getItem('twoTwo')
+      this.moves_2X3 = await AsyncStorage.getItem('twoThree')
+      this.moves_3X3 = await AsyncStorage.getItem('threeThree')
+      this.moves_3X4 = await AsyncStorage.getItem('threeFour')
+      this.moves_4X4 = await AsyncStorage.getItem('fourFour')
+      this.moves_4X5 = await AsyncStorage.getItem('fourFive')
+      this.moves_5X5 = await AsyncStorage.getItem('fiveFive')
+      this.moves_5X6 = await AsyncStorage.getItem('fiveSix')
+      this.moves_6X6 = await AsyncStorage.getItem('sixSix')
+      this.moves_6X7 = await AsyncStorage.getItem('sixSeven')
+      this.moves_7X7 = await AsyncStorage.getItem('sevenSeven')
+      this.moves_7X8 = await AsyncStorage.getItem('sevenEight')
+      this.setState({ displayStats: !this.state.displayStats })
+    } catch (error) {
+      alert(error)
+    }
   }
 
   render() {
-    return (
-        <Container style={styles.container} >
-          <Header><Text>Profile</Text></Header>
-          <Content>
-          <Grid>
-            <Col style={{ backgroundColor: '#635DB7', height: 200 }}>
-                <Text>{this.state.userName}</Text>
-                <Image
-                style={{width: 50, height: 50}}
-                source={require('../images/user.jpg')}>
-                </Image>
+    let statArray = []
+    for (let i = 2; i < 8; i++) {
+      statArray.push(
+        <View>
+          <Row style={{ height: 30 }}>
+            <Col>
+              <Text>
+                {i}X{i}
+              </Text>
             </Col>
-            <Col style={{ backgroundColor: '#00CE9F', height: 200 }}></Col>
+            <Col>
+              <Text>{eval(`this.moves_${i}X${i}`) || 'Incomplete'}</Text>
+            </Col>
+            <Col>
+              <Text>{eval(`this.moves_${i}X${i}`) || 'Incomplete'}</Text>
+            </Col>
+          </Row>
+          <Row style={{ height: 30 }}>
+            <Col>
+              <Text>
+                {i}X{i + 1}
+              </Text>
+            </Col>
+            <Col>
+              <Text>{eval(`this.moves_${i}X${i + 1}`) || 'Incomplete'}</Text>
+            </Col>
+            <Col>
+              <Text>{eval(`this.moves_${i}X${i + 1}`) || 'Incomplete'}</Text>
+            </Col>
+          </Row>
+        </View>
+      )
+    }
+    return (
+      <Container style={styles.container}>
+        <Header>
+          <Text>Profile</Text>
+        </Header>
+        <Content>
+          <Grid>
+            <Col style={{ backgroundColor: '#635DB7', height: 100 }}>
+              <Text>{this.state.userName}</Text>
+              <Image
+                style={{ width: 50, height: 50 }}
+                source={require('../images/user.jpg')}
+              />
+            </Col>
+            <Col style={{ backgroundColor: '#00CE9F', height: 100 }} />
           </Grid>
-
-            <Button rounded light>
-              <Text>Time Played</Text>
-            </Button>
-            <Button rounded>
-              <Text>Number of Hints Used</Text>
-            </Button>
-            <Button rounded success>
-              <Text>Skins</Text>
-            </Button>
-            <Button rounded info>
-              <Text>Average Time of Completion</Text>
-            </Button>
-            <Button rounded warning>
-              <Text>Warning</Text>
-            </Button>
-            <Button rounded danger>
-              <Text>Danger</Text>
-            </Button>
-            <Button rounded dark>
-              <Text>Dark</Text>
-            </Button>
-          </Content>
-        </Container>
-      );
+          <Button
+            onPress={() => {
+              this.seeStats()
+            }}
+          >
+            <Text>See Stats</Text>
+          </Button>
+          {this.state.displayStats ? (
+            <Grid>
+              <Row style={{ height: 30 }}>
+                <Col>
+                  <Text>Board</Text>
+                </Col>
+                <Col>
+                  <Text># Moves</Text>
+                </Col>
+                <Col>
+                  <Text>Time</Text>
+                </Col>
+              </Row>
+              {statArray.map(ele => ele)}
+            </Grid>
+          ) : (
+            <View />
+          )}
+        </Content>
+      </Container>
+    )
   }
 }
 
@@ -60,4 +129,4 @@ let styles = StyleSheet.create({
     backgroundColor: 'white',
     justifyContent: 'center'
   }
-});
+})
