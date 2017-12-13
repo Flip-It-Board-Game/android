@@ -21,7 +21,7 @@ export default class GameStats extends Component {
                 <Text>{this.state.userName}</Text>
                 <Image
                 style={{width: 50, height: 50}}
-                source={require('../user.jpg')}>
+                source={require('../images/user.jpg')}>
                 </Image>
             </Col>
             <Col style={{ backgroundColor: '#00CE9F', height: 200 }}></Col>

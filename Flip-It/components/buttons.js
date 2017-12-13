@@ -83,7 +83,7 @@ class Buttons extends Component {
                 width: 50,
                 height: 50
               }}
-              source={require('../rock.png')}
+              source={require('../images/rock.png')}
             />
           ) : (
             <Image
@@ -91,7 +91,7 @@ class Buttons extends Component {
                 width: 50,
                 height: 50
               }}
-              source={require('../gem.png')}
+              source={require('../images/gem.png')}
             />
           )}
         </TouchableHighlight>

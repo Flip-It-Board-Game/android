@@ -47,7 +47,7 @@ class youWon extends Component {
             margin: 100,
             transform: [{ rotate: spin }]
           }}
-          source={require('../CartRuby.png')}
+          source={require('../images/CartRuby.png')}
         />
 
         <Text>{'\n'}</Text>
