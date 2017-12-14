@@ -18,10 +18,10 @@ export default class GameStats extends Component {
       userName: 'Bob',
       displayStats: false
     }
-    this.count = 0
+    this.limitPush = 0
     this.seeStats = this.seeStats.bind(this)
     this.statArray = [
-      <Row style={{ height: 31 }}>
+      <Row key={'array'} style={{ height: 31 }}>
         <Col>
           <Text>Board</Text>
         </Col>
@@ -42,9 +42,9 @@ export default class GameStats extends Component {
         let move_2Stat = await AsyncStorage.getItem(`${i}${i + 1}`)
         let timeStat = await AsyncStorage.getItem(`${i}${i}Time`)
         let time_2Stat = await AsyncStorage.getItem(`${i}${i + 1}Time`)
-        if (this.count < 1) {
+        if (this.limitPush < 1) {
           this.statArray.push(
-            <View>
+            <View key={i}>
               <Row style={{ height: 30 }}>
                 <Col>
                   <Text>
@@ -75,7 +75,7 @@ export default class GameStats extends Component {
           )
         }
       }
-      this.count++
+      this.limitPush++
       this.setState({ displayStats: !this.state.displayStats })
     } catch (error) {
       alert(error)
