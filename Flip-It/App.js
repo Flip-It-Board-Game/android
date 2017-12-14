@@ -8,6 +8,7 @@ import {
   StyleSheet,
   TouchableHighlight
 } from 'react-native'
+import Expo from 'expo';
 import { StackNavigator } from 'react-navigation'
 import Login from './scene/Login'
 import Menu from './scene/Menu'
