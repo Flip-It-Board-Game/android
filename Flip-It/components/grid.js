@@ -94,8 +94,9 @@ class Grid extends Component {
               />
             </Table>
             <Text style={{ fontSize: 5 }}>{'\n'}</Text>
-            <Reset />
+
             <Timer />
+            <Reset />
           </View>
         )}
       </View>
