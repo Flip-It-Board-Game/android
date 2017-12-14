@@ -13,7 +13,6 @@ import { Button } from 'native-base'
 import { connect } from 'react-redux'
 import Reset from './reset'
 import Solution from './solution'
-// import Menu from './menu'
 
 class youWon extends Component {
   constructor(props) {
@@ -36,25 +35,49 @@ class youWon extends Component {
 
   seeStats = async () => {
     try {
+      //Sets incoming move count to moves variable
       let moves = this.props.count.count
+      //Sets incoming board dimensions to dimensions variable
       let dimensions = this.props.dimensions
-      //Checks if player's current performance stat is 'better' than stat on file, if so saves new stat
+      //Sets incoming time to gameTime variable
+      let gameTime = this.props && this.props.completedTime
       for (let i = 2; i < 8; i++) {
-        let currentStat = await AsyncStorage.getItem(`${i}${i}`)
-        let currentStat_2 = await AsyncStorage.getItem(`${i}${i + 1}`)
+        //Get current state for Moves
+        let currentStatMoves = await AsyncStorage.getItem(`${i}${i}`)
+        let currentStat_2Moves = await AsyncStorage.getItem(`${i}${i + 1}`)
+        let currentStatTime = await AsyncStorage.getItem(`${i}${i}Time`)
+        let currentStat_2Time = await AsyncStorage.getItem(`${i}${i + 1}Time`)
+        //compare current vs incoming moves stat, save incoming if better performance than current
         if (
           dimensions.height === i &&
           dimensions.width === i &&
-          currentStat > moves
+          (currentStatMoves > moves || currentStatMoves === null)
         ) {
           AsyncStorage.setItem(`${i}${i}`, moves.toString())
         }
+        //compare current vs incoming moves stat, save incoming if better performance than current
         if (
           dimensions.height === i + 1 &&
           dimensions.width === i &&
-          currentStat_2 > moves
+          (currentStat_2Moves > moves || currentStat_2Moves === null)
         ) {
           AsyncStorage.setItem(`${i}${i + 1}`, moves.toString())
+        }
+        //compare current vs incoming time stat, save incoming if better performance than current
+        if (
+          dimensions.height === i &&
+          dimensions.width === i &&
+          (currentStatTime > gameTime || currentStatTime === null)
+        ) {
+          AsyncStorage.setItem(`${i}${i}Time`, gameTime.toString())
+        }
+        //compare current vs incoming time stat, save incoming if better performance than current
+        if (
+          dimensions.height === i + 1 &&
+          dimensions.width === i &&
+          (currentStat_2Time > gameTime || currentStat_2Time === null)
+        ) {
+          AsyncStorage.setItem(`${i}${i + 1}Time`, gameTime.toString())
         }
       }
 
