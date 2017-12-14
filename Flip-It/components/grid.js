@@ -6,7 +6,6 @@ import { connect } from 'react-redux'
 import Reset from './reset'
 import Timer from './timer2'
 import YouWon from './youWon'
-import Reveal from './reveal'
 import { setCount } from './store/store'
 
 class Grid extends Component {
@@ -23,21 +22,23 @@ class Grid extends Component {
     //Renders table based on user input
     const width = this.props.dimensions && this.props.dimensions.width
     const height = this.props.dimensions && this.props.dimensions.height
+    let gamePieceSize = 300 / width
+    console.log(gamePieceSize)
     let num = width * height
     let rowButtons = []
     let tableData = []
     for (let i = 0; i < num; i++) {
-      rowButtons.push(<Buttons iNum={i} />)
+      rowButtons.push(<Buttons iNum={i} size={gamePieceSize} />)
       if ((i + 1) % width === 0) {
         tableData.push(rowButtons)
         rowButtons = []
       }
     }
-    const rowWidth = width * 50 + width * 2
+    const rowWidth = width * gamePieceSize + width * 2
     const styles = StyleSheet.create({
       TopBuffer: { height: 300, backgroundColor: 'white', borderWidth: 0 },
       text: { marginLeft: 5 },
-      row: { height: 50, width: rowWidth },
+      row: { height: gamePieceSize, width: rowWidth },
       top: { height: 180, width: 300 },
       app: {
         justifyContent: 'center',
