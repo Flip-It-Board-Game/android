@@ -9,8 +9,8 @@ import {
   TouchableHighlight
 } from 'react-native'
 import { StackNavigator } from 'react-navigation'
-import GameMenu from './scene/GameMenu'
 import Login from './scene/Login'
+import Menu from './scene/Menu'
 import GameScreen from './scene/GameScreen'
 import LevelSelector from './scene/LevelSelector'
 // import Levels from './scene/Levels'
@@ -18,7 +18,6 @@ import store from './components/store/store'
 import { Provider } from 'react-redux'
 import GameSettings from './scene/GameSettings'
 import About from './scene/About'
-import Test from './scene/Test'
 import GameStats from './scene/GameStats'
 console.disableYellowBox = true
 
@@ -36,7 +35,7 @@ class HomeScreen extends Component {
     this.props.navigation.navigate('Login')
   }
   guest() {
-    this.props.navigation.navigate('GameMenu')
+    this.props.navigation.navigate('Menu')
   }
 
   render() {
@@ -69,8 +68,8 @@ const ModalStack = StackNavigator({
   Login: {
     screen: Login
   },
-  GameMenu: {
-    screen: GameMenu
+  Menu: {
+    screen: Menu
   },
   GameScreen: {
     screen: GameScreen
@@ -86,9 +85,6 @@ const ModalStack = StackNavigator({
   },
   About: {
     screen: About
-  },
-  Test: {
-    screen: Test
   }
 })
 

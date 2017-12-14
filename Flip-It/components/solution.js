@@ -83,7 +83,6 @@ class Solution extends Component {
         >
           <Text
             style={{
-              fontFamily: 'Cochin',
               fontSize: 16,
               fontWeight: 'bold',
               textAlign: 'center'
