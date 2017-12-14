@@ -96,7 +96,6 @@ class Grid extends Component {
             <Text style={{ fontSize: 5 }}>{'\n'}</Text>
             <Reset />
             <Timer />
-            <command />{' '}
           </View>
         )}
       </View>
