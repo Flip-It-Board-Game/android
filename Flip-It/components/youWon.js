@@ -80,17 +80,6 @@ class youWon extends Component {
           AsyncStorage.setItem(`${i}${i + 1}Time`, gameTime.toString())
         }
       }
-
-      // if (
-      //   dimensions.height === 8 &&
-      //   dimensions.width === 7 &&
-      //   this.time_7X8 > this.props.completedTime.toString()
-      // ) {
-      //   AsyncStorage.setItem(
-      //     'sevenEightTime',
-      //     this.props.completedTime.toString()
-      //   )
-      // }
     } catch (error) {}
   }
 
