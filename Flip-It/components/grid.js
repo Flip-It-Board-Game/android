@@ -33,7 +33,7 @@ class Grid extends Component {
         rowButtons = []
       }
     }
-    const rowWidth = width * 50
+    const rowWidth = width * 50 + width * 2
     const styles = StyleSheet.create({
       TopBuffer: { height: 300, backgroundColor: 'white', borderWidth: 0 },
       text: { marginLeft: 5 },
