@@ -78,14 +78,13 @@ class Buttons extends Component {
       <View>
         {/* <Canvas ref={this.handleCanvas}/> */}
         <TouchableHighlight onPress={this.toggleColor}>
-        <Sound source={'../sounds/buttonclick.wav'} />
           {displayBool ? (
             <Image
               style={{
                 width: 50,
                 height: 50
               }}
-              source={require('../images/whiteDot.png')}
+              source={require('../images/Santa_Hat.jpg')}
             />
           ) : (
             <Image
@@ -93,7 +92,7 @@ class Buttons extends Component {
                 width: 50,
                 height: 50
               }}
-              source={require('../images/blackDot.png')}
+              source={require('../images/present.png')}
             />
           )}
         </TouchableHighlight>

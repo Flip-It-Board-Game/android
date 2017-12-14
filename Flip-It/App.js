@@ -14,7 +14,6 @@ import Login from './scene/Login'
 import Menu from './scene/Menu'
 import GameScreen from './scene/GameScreen'
 import LevelSelector from './scene/LevelSelector'
-// import Levels from './scene/Levels'
 import store from './components/store/store'
 import { Provider } from 'react-redux'
 import GameSettings from './scene/GameSettings'
@@ -103,7 +102,7 @@ let styles = StyleSheet.create({
     // position: 'absolute',
     width: '100%',
     height: '100%',
-     justifyContent: 'center',
+    justifyContent: 'center',
     flex: 1,
     // resizeMode: 'cover',
     // backgroundImage: '50';
