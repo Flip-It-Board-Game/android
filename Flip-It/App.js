@@ -4,7 +4,7 @@ import {
   TouchableOpacity,
   Text,
   View,
-  Image,
+  ImageBackground,
   StyleSheet,
   TouchableHighlight
 } from 'react-native'
@@ -42,8 +42,8 @@ class HomeScreen extends Component {
   render() {
     return (
       <Provider store={store}>
-       <Image style={styles.image} 
-       source={require('./images/gemspic.png')}>
+       <ImageBackground style={styles.image} 
+       source={require('./images/snowman.jpg')}>
         <View style={styles.container}> 
           <View style={styles.button}>
             <TouchableOpacity onPress={this.login}>
@@ -56,7 +56,7 @@ class HomeScreen extends Component {
             </TouchableOpacity>
           </View>
         </View>
-        </Image>
+        </ImageBackground>
       </Provider>
     )
   }
@@ -100,12 +100,14 @@ let styles = StyleSheet.create({
     backgroundColor: 'rgba(135,135,135,0.7)'
   },
   image: {
-    flex: 1,
-    resizeMode: 'cover',
-    position: 'absolute',
+    // position: 'absolute',
     width: '100%',
     height: '100%',
-    justifyContent: 'center',
+     justifyContent: 'center',
+    flex: 1,
+    // resizeMode: 'cover',
+    // backgroundImage: '50';
+    // alignItems: 'center', 
   },
   text: {
     textAlign: 'center',
