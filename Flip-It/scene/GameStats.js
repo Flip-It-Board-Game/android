@@ -135,7 +135,7 @@ export default class GameStats extends Component {
               <Text>{eval(`this.moves_${i}X${i}`) || 'Incomplete'}</Text>
             </Col>
             <Col>
-              <Text>{eval(`this.time_${i}X${i}`) || 'Incomplete'}</Text>
+              <Text>{eval(`this.time_${i}X${i}`)}</Text>
             </Col>
           </Row>
           <Row style={{ height: 30 }}>
@@ -148,7 +148,7 @@ export default class GameStats extends Component {
               <Text>{eval(`this.moves_${i}X${i + 1}`) || 'Incomplete'}</Text>
             </Col>
             <Col>
-              <Text>{eval(`this.time_${i}X${i + 1}`) || 'Incomplete'}</Text>
+              <Text>{eval(`this.time_${i}X${i + 1}`)}</Text>
             </Col>
           </Row>
         </View>
