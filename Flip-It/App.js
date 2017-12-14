@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {
   AppRegistry,
-  Button,
+  TouchableOpacity,
   Text,
   View,
   Image,
@@ -10,6 +10,7 @@ import {
 } from 'react-native'
 import { StackNavigator } from 'react-navigation'
 import GameMenu from './scene/GameMenu'
+import Login from './scene/Login'
 import GameScreen from './scene/GameScreen'
 import LevelSelector from './scene/LevelSelector'
 // import Levels from './scene/Levels'
@@ -24,24 +25,38 @@ console.disableYellowBox = true
 class HomeScreen extends Component {
   constructor(props) {
     super(props)
-    this.pressHandler = this.pressHandler.bind(this)
+    this.login = this.login.bind(this)
+    this.guest = this.guest.bind(this)
   }
   static navigationOptions = {
     title: 'Home'
   }
 
-  pressHandler() {
+  login() {
+    this.props.navigation.navigate('Login')
+  }
+  guest() {
     this.props.navigation.navigate('GameMenu')
   }
 
   render() {
     return (
       <Provider store={store}>
-        <View style={styles.container}>
-          <TouchableHighlight onPress={this.pressHandler} title="Press Me">
-            <Image style={styles.button} source={require('./images/gemspic.png')} />
-          </TouchableHighlight>
+       <Image style={styles.image} 
+       source={require('./images/gemspic.png')}>
+        <View style={styles.container}> 
+          <View style={styles.button}>
+            <TouchableOpacity onPress={this.login}>
+              <Text style={styles.text}>Login</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.button}>
+            <TouchableOpacity onPress={this.guest}>
+              <Text style={styles.text}>Lets play now!</Text>
+            </TouchableOpacity>
+          </View>
         </View>
+        </Image>
       </Provider>
     )
   }
@@ -50,6 +65,9 @@ class HomeScreen extends Component {
 const ModalStack = StackNavigator({
   Home: {
     screen: HomeScreen
+  },
+  Login: {
+    screen: Login
   },
   GameMenu: {
     screen: GameMenu
@@ -76,19 +94,27 @@ const ModalStack = StackNavigator({
 
 let styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    backgroundColor: 'white'
-  },
-  backdrop: {
-    resizeMode: 'cover'
+    paddingLeft: 120,
+    paddingRight: 120,
   },
   button: {
-    width: 375,
-    height: 370,
-    justifyContent: 'center'
-  }
+    paddingBottom: 10,
+    paddingTop: 10,
+    backgroundColor: 'rgba(135,135,135,0.7)'
+  },
+  image: {
+    flex: 1,
+    resizeMode: 'cover',
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    justifyContent: 'center',
+  },
+  text: {
+    textAlign: 'center',
+    color: 'white',
+    fontWeight: '700'
+}
 })
 
 export default ModalStack
-// AppRegistry.registerComponent('Flip-it', () => MyHomeScreen);
