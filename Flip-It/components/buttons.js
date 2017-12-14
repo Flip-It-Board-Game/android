@@ -3,7 +3,7 @@ import { View, TouchableHighlight, Image, Animated } from 'react-native'
 import { connect } from 'react-redux'
 import { newArray, setCount, setWinner } from './store/store'
 import SocketIOClient from 'socket.io-client'
-import Canvas from 'react-native-canvas';
+import Canvas from 'react-native-canvas'
 
 class Buttons extends Component {
   constructor(props) {
@@ -12,14 +12,13 @@ class Buttons extends Component {
     this.socket = SocketIOClient('http://localhost:3005')
   }
 
-  handleCanvas(canvas)  {
-    const ctx = canvas.getContext('2d');
-    ctx.fillStyle = 'purple';
-    ctx.fillRect(0, 0, 100, 100);
+  handleCanvas(canvas) {
+    const ctx = canvas.getContext('2d')
+    ctx.fillStyle = 'purple'
+    ctx.fillRect(0, 0, 100, 100)
   }
- 
-  toggleColor() {
 
+  toggleColor() {
     let countNum = this.props && this.props.count.count
     //sets count in store
     this.props.setCount({ count: countNum + 1 })
@@ -117,5 +116,3 @@ const mapDispatch = dispatch => {
 }
 
 export default connect(mapstate, mapDispatch)(Buttons)
-
-// if props i === j = flip color

@@ -23,21 +23,6 @@ class GameScreen extends Component {
               <Grid />
             </View>
           </Content>
-          <Footer>
-            <FooterTab>
-              <Button badge vertical>
-                <Icon name="apps" />
-                <Text>Back To Game</Text>
-              </Button>
-              <Button active badge vertical>
-                <Badge>
-                  <Text>51</Text>
-                </Badge>
-                <Icon active name="chatbubbles" />
-                <Text>Chat</Text>
-              </Button>
-            </FooterTab>
-          </Footer>
         </Container>
       </Provider>
     )
