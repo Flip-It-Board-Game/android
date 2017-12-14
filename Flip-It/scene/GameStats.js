@@ -112,7 +112,7 @@ export default class GameStats extends Component {
           </Button>
           {this.state.displayStats ? (
             <Grid>
-              <Row style={{ height: 30 }}>
+              <Row style={{ height: 31 }}>
                 <Col>
                   <Text>Board</Text>
                 </Col>
