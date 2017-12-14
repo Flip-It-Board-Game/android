@@ -1,67 +1,3 @@
-// import React, { Component } from 'react';
-// import { Container, Header, Content, Button, Text } from 'native-base';
-// import {StyleSheet, Image} from 'react-native';
-// import { Col, Row, Grid } from 'react-native-easy-grid';
-
-// export default class GameStats extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//         userName: "Bob"
-//     };
-//   }
-
-//   render() {
-//     return (
-//         <Container style={styles.container} >
-//           <Header><Text>Profile</Text></Header>
-//           <Content>
-//           <Grid>
-//             <Col style={{ backgroundColor: '#635DB7', height: 200 }}>
-//                 <Text>{this.state.userName}</Text>
-//                 <Image
-//                 style={{width: 50, height: 50}}
-//                 source={require('../images/user.jpg')}>
-//                 </Image>
-//             </Col>
-//             <Col style={{ backgroundColor: '#00CE9F', height: 200 }}></Col>
-//           </Grid>
-
-//             <Button rounded light>
-//               <Text>Time Played</Text>
-//             </Button>
-//             <Button rounded>
-//               <Text>Number of Hints Used</Text>
-//             </Button>
-//             <Button rounded success>
-//               <Text>Skins</Text>
-//             </Button>
-//             <Button rounded info>
-//               <Text>Average Time of Completion</Text>
-//             </Button>
-//             <Button rounded warning>
-//               <Text>Warning</Text>
-//             </Button>
-//             <Button rounded danger>
-//               <Text>Danger</Text>
-//             </Button>
-//             <Button rounded dark>
-//               <Text>Dark</Text>
-//             </Button>
-//           </Content>
-//         </Container>
-//       );
-//   }
-// }
-
-// let styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: 'white',
-//     justifyContent: 'center'
-//   }
-// });
-
 import React, { Component } from 'react'
 import {
   Container,
@@ -82,38 +18,64 @@ export default class GameStats extends Component {
       userName: 'Bob',
       displayStats: false
     }
+    this.limitPush = 0
     this.seeStats = this.seeStats.bind(this)
+    this.statArray = [
+      <Row key={'array'} style={{ height: 31 }}>
+        <Col>
+          <Text>Board</Text>
+        </Col>
+        <Col>
+          <Text># Moves</Text>
+        </Col>
+        <Col>
+          <Text>Time</Text>
+        </Col>
+      </Row>
+    ]
   }
 
   seeStats = async () => {
     try {
-      //move load
-      this.moves_2X2 = await AsyncStorage.getItem('twoTwo')
-      this.moves_2X3 = await AsyncStorage.getItem('twoThree')
-      this.moves_3X3 = await AsyncStorage.getItem('threeThree')
-      this.moves_3X4 = await AsyncStorage.getItem('threeFour')
-      this.moves_4X4 = await AsyncStorage.getItem('fourFour')
-      this.moves_4X5 = await AsyncStorage.getItem('fourFive')
-      this.moves_5X5 = await AsyncStorage.getItem('fiveFive')
-      this.moves_5X6 = await AsyncStorage.getItem('fiveSix')
-      this.moves_6X6 = await AsyncStorage.getItem('sixSix')
-      this.moves_6X7 = await AsyncStorage.getItem('sixSeven')
-      this.moves_7X7 = await AsyncStorage.getItem('sevenSeven')
-      this.moves_7X8 = await AsyncStorage.getItem('sevenEight')
-      //time load
-      this.time_2X2 = await AsyncStorage.getItem('twoTwoTime')
-      this.time_2X3 = await AsyncStorage.getItem('twoThreeTime')
-      this.time_3X3 = await AsyncStorage.getItem('threeThreeTime')
-      this.time_3X4 = await AsyncStorage.getItem('threeFourTime')
-      this.time_4X4 = await AsyncStorage.getItem('fourFourTime')
-      this.time_4X5 = await AsyncStorage.getItem('fourFiveTime')
-      this.time_5X5 = await AsyncStorage.getItem('fiveFiveTime')
-      this.time_5X6 = await AsyncStorage.getItem('fiveSixTime')
-      this.time_6X6 = await AsyncStorage.getItem('sixSixTime')
-      this.time_6X7 = await AsyncStorage.getItem('sixSevenTime')
-      this.time_7X7 = await AsyncStorage.getItem('sevenSevenTime')
-      this.time_7X8 = await AsyncStorage.getItem('sevenEightTime')
-      //show stats toggle
+      for (let i = 2; i < 8; i++) {
+        let moveStat = await AsyncStorage.getItem(`${i}${i}`)
+        let move_2Stat = await AsyncStorage.getItem(`${i}${i + 1}`)
+        let timeStat = await AsyncStorage.getItem(`${i}${i}Time`)
+        let time_2Stat = await AsyncStorage.getItem(`${i}${i + 1}Time`)
+        if (this.limitPush < 1) {
+          this.statArray.push(
+            <View key={i}>
+              <Row style={{ height: 30 }}>
+                <Col>
+                  <Text>
+                    {i}X{i}
+                  </Text>
+                </Col>
+                <Col>
+                  <Text>{moveStat || 'N/A'}</Text>
+                </Col>
+                <Col>
+                  <Text>{timeStat}</Text>
+                </Col>
+              </Row>
+              <Row style={{ height: 30 }}>
+                <Col>
+                  <Text>
+                    {i}X{i + 1}
+                  </Text>
+                </Col>
+                <Col>
+                  <Text>{move_2Stat || 'N/A'}</Text>
+                </Col>
+                <Col>
+                  <Text>{time_2Stat}</Text>
+                </Col>
+              </Row>
+            </View>
+          )
+        }
+      }
+      this.limitPush++
       this.setState({ displayStats: !this.state.displayStats })
     } catch (error) {
       alert(error)
@@ -121,39 +83,6 @@ export default class GameStats extends Component {
   }
 
   render() {
-    let statArray = []
-    for (let i = 2; i < 8; i++) {
-      statArray.push(
-        <View>
-          <Row style={{ height: 30 }}>
-            <Col>
-              <Text>
-                {i}X{i}
-              </Text>
-            </Col>
-            <Col>
-              <Text>{eval(`this.moves_${i}X${i}`) || 'Incomplete'}</Text>
-            </Col>
-            <Col>
-              <Text>{eval(`this.time_${i}X${i}`)}</Text>
-            </Col>
-          </Row>
-          <Row style={{ height: 30 }}>
-            <Col>
-              <Text>
-                {i}X{i + 1}
-              </Text>
-            </Col>
-            <Col>
-              <Text>{eval(`this.moves_${i}X${i + 1}`) || 'Incomplete'}</Text>
-            </Col>
-            <Col>
-              <Text>{eval(`this.time_${i}X${i + 1}`)}</Text>
-            </Col>
-          </Row>
-        </View>
-      )
-    }
     return (
       <Container style={styles.container}>
         <Header>
@@ -174,20 +103,7 @@ export default class GameStats extends Component {
             <Text>See Stats</Text>
           </Button>
           {this.state.displayStats ? (
-            <Grid>
-              <Row style={{ height: 31 }}>
-                <Col>
-                  <Text>Board</Text>
-                </Col>
-                <Col>
-                  <Text># Moves</Text>
-                </Col>
-                <Col>
-                  <Text>Time</Text>
-                </Col>
-              </Row>
-              {statArray.map(ele => ele)}
-            </Grid>
+            <Grid>{this.statArray.map(ele => ele)}</Grid>
           ) : (
             <View />
           )}

@@ -13,7 +13,6 @@ import { Button } from 'native-base'
 import { connect } from 'react-redux'
 import Reset from './reset'
 import Solution from './solution'
-// import Menu from './menu'
 
 class youWon extends Component {
   constructor(props) {
@@ -36,231 +35,50 @@ class youWon extends Component {
 
   seeStats = async () => {
     try {
+      //Sets incoming move count to moves variable
       let moves = this.props.count.count
+      //Sets incoming board dimensions to dimensions variable
       let dimensions = this.props.dimensions
-      //move load
-      this.moves_2X2 = await AsyncStorage.getItem('twoTwo')
-      this.moves_2X3 = await AsyncStorage.getItem('twoThree')
-      this.moves_3X3 = await AsyncStorage.getItem('threeThree')
-      this.moves_3X4 = await AsyncStorage.getItem('threeFour')
-      this.moves_4X4 = await AsyncStorage.getItem('fourFour')
-      this.moves_4X5 = await AsyncStorage.getItem('fourFive')
-      this.moves_5X5 = await AsyncStorage.getItem('fiveFive')
-      this.moves_5X6 = await AsyncStorage.getItem('fiveSix')
-      this.moves_6X6 = await AsyncStorage.getItem('sixSix')
-      this.moves_6X7 = await AsyncStorage.getItem('sixSeven')
-      this.moves_7X7 = await AsyncStorage.getItem('sevenSeven')
-      this.moves_7X8 = await AsyncStorage.getItem('sevenEight')
-      //time load
-      this.time_2X2 = await AsyncStorage.getItem('twoTwoTime')
-      this.time_2X3 = await AsyncStorage.getItem('twoThreeTime')
-      this.time_3X3 = await AsyncStorage.getItem('threeThreeTime')
-      this.time_3X4 = await AsyncStorage.getItem('threeFourTime')
-      this.time_4X4 = await AsyncStorage.getItem('fourFourTime')
-      this.time_4X5 = await AsyncStorage.getItem('fourFiveTime')
-      this.time_5X5 = await AsyncStorage.getItem('fiveFiveTime')
-      this.time_5X6 = await AsyncStorage.getItem('fiveSixTime')
-      this.time_6X6 = await AsyncStorage.getItem('sixSixTime')
-      this.time_6X7 = await AsyncStorage.getItem('sixSevenTime')
-      this.time_7X7 = await AsyncStorage.getItem('sevenSevenTime')
-      this.time_7X8 = await AsyncStorage.getItem('sevenEightTime')
-      //show stats toggle
-      //Save Move Count
-      if (
-        dimensions.height === 2 &&
-        dimensions.width === 2 &&
-        this.moves_2X2 > moves
-      ) {
-        AsyncStorage.setItem('twoTwo', moves.toString())
-      }
-      if (
-        dimensions.height === 3 &&
-        dimensions.width === 2 &&
-        this.moves_2X3 > moves
-      ) {
-        AsyncStorage.setItem('twoThree', moves.toString())
-      }
-      if (
-        dimensions.height === 3 &&
-        dimensions.width === 3 &&
-        this.moves_3X3 > moves
-      ) {
-        AsyncStorage.setItem('threeThree', moves.toString())
-      }
-      if (
-        dimensions.height === 4 &&
-        dimensions.width === 3 &&
-        this.moves_3X4 > moves
-      ) {
-        AsyncStorage.setItem('threeFour', moves.toString())
-      }
-      if (
-        dimensions.height === 4 &&
-        dimensions.width === 4 &&
-        this.moves_4X4 > moves
-      ) {
-        AsyncStorage.setItem('fourFour', moves.toString())
-      }
-      if (
-        dimensions.height === 5 &&
-        dimensions.width === 4 &&
-        this.moves_4X5 > moves
-      ) {
-        AsyncStorage.setItem('fourFive', moves.toString())
-      }
-      if (
-        dimensions.height === 5 &&
-        dimensions.width === 5 &&
-        this.moves_5X5 > moves
-      ) {
-        AsyncStorage.setItem('fiveFive', moves.toString())
-      }
-      if (
-        dimensions.height === 6 &&
-        dimensions.width === 5 &&
-        this.moves_5X6 > moves
-      ) {
-        AsyncStorage.setItem('fiveSix', moves.toString())
-      }
-      if (
-        dimensions.height === 6 &&
-        dimensions.width === 6 &&
-        this.moves_6X6 > moves
-      ) {
-        AsyncStorage.setItem('sixSix', moves.toString())
-      }
-      if (
-        dimensions.height === 7 &&
-        dimensions.width === 6 &&
-        this.moves_6X7 > moves
-      ) {
-        AsyncStorage.setItem('sixSeven', moves.toString())
-      }
-      if (
-        dimensions.height === 7 &&
-        dimensions.width === 7 &&
-        this.moves_7X7 > moves
-      ) {
-        AsyncStorage.setItem('sevenSeven', moves.toString())
-      }
-      if (
-        dimensions.height === 8 &&
-        dimensions.width === 7 &&
-        this.moves_7X8 > moves
-      ) {
-        AsyncStorage.setItem('sevenEight', moves.toString())
-      }
-      //Save Completion Time
-      if (
-        dimensions.height === 2 &&
-        dimensions.width === 2 &&
-        this.time_2X2 > this.props.completedTime.toString()
-      ) {
-        AsyncStorage.setItem('twoTwoTime', this.props.completedTime.toString())
-      }
-      if (
-        dimensions.height === 3 &&
-        dimensions.width === 2 &&
-        this.time_2X3 > this.props.completedTime.toString()
-      ) {
-        AsyncStorage.setItem(
-          'twoThreeTime',
-          this.props.completedTime.toString()
-        )
-      }
-      if (
-        dimensions.height === 3 &&
-        dimensions.width === 3 &&
-        this.time_3X3 > this.props.completedTime.toString()
-      ) {
-        AsyncStorage.setItem(
-          'threeThreeTime',
-          this.props.completedTime.toString()
-        )
-      }
-      if (
-        dimensions.height === 4 &&
-        dimensions.width === 3 &&
-        this.time_3X4 > this.props.completedTime.toString()
-      ) {
-        AsyncStorage.setItem(
-          'threeFourTime',
-          this.props.completedTime.toString()
-        )
-      }
-      if (
-        dimensions.height === 4 &&
-        dimensions.width === 4 &&
-        this.time_4X4 > this.props.completedTime.toString()
-      ) {
-        AsyncStorage.setItem(
-          'fourFourTime',
-          this.props.completedTime.toString()
-        )
-      }
-      if (
-        dimensions.height === 5 &&
-        dimensions.width === 4 &&
-        this.time_4X5 > this.props.completedTime.toString()
-      ) {
-        AsyncStorage.setItem(
-          'fourFiveTime',
-          this.props.completedTime.toString()
-        )
-      }
-      if (
-        dimensions.height === 5 &&
-        dimensions.width === 5 &&
-        this.time_5X5 > this.props.completedTime.toString()
-      ) {
-        AsyncStorage.setItem(
-          'fiveFiveTime',
-          this.props.completedTime.toString()
-        )
-      }
-      if (
-        dimensions.height === 6 &&
-        dimensions.width === 5 &&
-        this.time_5X6 > this.props.completedTime.toString()
-      ) {
-        AsyncStorage.setItem('fiveSixTime', this.props.completedTime.toString())
-      }
-      if (
-        dimensions.height === 6 &&
-        dimensions.width === 6 &&
-        this.time_6X6 > this.props.completedTime.toString()
-      ) {
-        AsyncStorage.setItem('sixSixTime', this.props.completedTime.toString())
-      }
-      if (
-        dimensions.height === 7 &&
-        dimensions.width === 6 &&
-        this.time_6X7 > this.props.completedTime.toString()
-      ) {
-        AsyncStorage.setItem(
-          'sixSevenTime',
-          this.props.completedTime.toString()
-        )
-      }
-      if (
-        dimensions.height === 7 &&
-        dimensions.width === 7 &&
-        this.time_7X7 > this.props.completedTime.toString()
-      ) {
-        AsyncStorage.setItem(
-          'sevenSevenTime',
-          this.props.completedTime.toString()
-        )
-      }
-      if (
-        dimensions.height === 8 &&
-        dimensions.width === 7 &&
-        this.time_7X8 > this.props.completedTime.toString()
-      ) {
-        AsyncStorage.setItem(
-          'sevenEightTime',
-          this.props.completedTime.toString()
-        )
+      //Sets incoming time to gameTime variable
+      let gameTime = this.props && this.props.completedTime
+      for (let i = 2; i < 8; i++) {
+        //Get current state for Moves
+        let currentStatMoves = await AsyncStorage.getItem(`${i}${i}`)
+        let currentStat_2Moves = await AsyncStorage.getItem(`${i}${i + 1}`)
+        let currentStatTime = await AsyncStorage.getItem(`${i}${i}Time`)
+        let currentStat_2Time = await AsyncStorage.getItem(`${i}${i + 1}Time`)
+        //compare current vs incoming moves stat, save incoming if better performance than current
+        if (
+          dimensions.height === i &&
+          dimensions.width === i &&
+          (currentStatMoves > moves || currentStatMoves === null)
+        ) {
+          AsyncStorage.setItem(`${i}${i}`, moves.toString())
+        }
+        //compare current vs incoming moves stat, save incoming if better performance than current
+        if (
+          dimensions.height === i + 1 &&
+          dimensions.width === i &&
+          (currentStat_2Moves > moves || currentStat_2Moves === null)
+        ) {
+          AsyncStorage.setItem(`${i}${i + 1}`, moves.toString())
+        }
+        //compare current vs incoming time stat, save incoming if better performance than current
+        if (
+          dimensions.height === i &&
+          dimensions.width === i &&
+          (currentStatTime > gameTime || currentStatTime === null)
+        ) {
+          AsyncStorage.setItem(`${i}${i}Time`, gameTime.toString())
+        }
+        //compare current vs incoming time stat, save incoming if better performance than current
+        if (
+          dimensions.height === i + 1 &&
+          dimensions.width === i &&
+          (currentStat_2Time > gameTime || currentStat_2Time === null)
+        ) {
+          AsyncStorage.setItem(`${i}${i + 1}Time`, gameTime.toString())
+        }
       }
     } catch (error) {}
   }

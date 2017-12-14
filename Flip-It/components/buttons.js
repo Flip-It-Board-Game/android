@@ -79,16 +79,16 @@ class Buttons extends Component {
           {displayBool ? (
             <Image
               style={{
-                width: 50,
-                height: 50
+                width: this.props.size,
+                height: this.props.size
               }}
               source={require('../images/whiteDot.png')}
             />
           ) : (
             <Image
               style={{
-                width: 50,
-                height: 50
+                width: this.props.size,
+                height: this.props.size
               }}
               source={require('../images/blackDot.png')}
             />
