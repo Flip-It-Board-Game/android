@@ -23,7 +23,6 @@ class Grid extends Component {
     const width = this.props.dimensions && this.props.dimensions.width
     const height = this.props.dimensions && this.props.dimensions.height
     let gamePieceSize = 300 / width
-    console.log(gamePieceSize)
     let num = width * height
     let rowButtons = []
     let tableData = []
