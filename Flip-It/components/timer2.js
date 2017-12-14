@@ -10,9 +10,11 @@ class Timer extends Component {
       seconds: this.props.nowTime
     }
     this.tick = this.tick.bind(this)
+    this.gameTime = 0
   }
 
   componentWillMount() {
+    setInterval(() => this.props.completionTime(this.gameTime), 1000)
     this.props.setTime(Date.now())
   }
 
@@ -39,11 +41,10 @@ class Timer extends Component {
       Math.floor(seconds / 60).length > 1
         ? Math.floor(seconds / 60)
         : '0'.concat(Math.floor(seconds / 60))
-    let gameTime = dispMinutes + ':' + dispSeconds
-    this.props.completionTime(gameTime)
+    this.gameTime = dispMinutes + ':' + dispSeconds
     return (
       <View>
-        <Text style={{ fontSize: 40 }}>{gameTime}</Text>
+        <Text style={{ fontSize: 40 }}>{this.gameTime}</Text>
       </View>
     )
   }

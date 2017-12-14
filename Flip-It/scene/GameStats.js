@@ -24,6 +24,7 @@ export default class GameStats extends Component {
 
   seeStats = async () => {
     try {
+      //move load
       this.moves_2X2 = await AsyncStorage.getItem('twoTwo')
       this.moves_2X3 = await AsyncStorage.getItem('twoThree')
       this.moves_3X3 = await AsyncStorage.getItem('threeThree')
@@ -36,6 +37,20 @@ export default class GameStats extends Component {
       this.moves_6X7 = await AsyncStorage.getItem('sixSeven')
       this.moves_7X7 = await AsyncStorage.getItem('sevenSeven')
       this.moves_7X8 = await AsyncStorage.getItem('sevenEight')
+      //time load
+      this.time_2X2 = await AsyncStorage.getItem('twoTwoTime')
+      this.time_2X3 = await AsyncStorage.getItem('twoThreeTime')
+      this.time_3X3 = await AsyncStorage.getItem('threeThreeTime')
+      this.time_3X4 = await AsyncStorage.getItem('threeFourTime')
+      this.time_4X4 = await AsyncStorage.getItem('fourFourTime')
+      this.time_4X5 = await AsyncStorage.getItem('fourFiveTime')
+      this.time_5X5 = await AsyncStorage.getItem('fiveFiveTime')
+      this.time_5X6 = await AsyncStorage.getItem('fiveSixTime')
+      this.time_6X6 = await AsyncStorage.getItem('sixSixTime')
+      this.time_6X7 = await AsyncStorage.getItem('sixSevenTime')
+      this.time_7X7 = await AsyncStorage.getItem('sevenSevenTime')
+      this.time_7X8 = await AsyncStorage.getItem('sevenEightTime')
+      //show stats toggle
       this.setState({ displayStats: !this.state.displayStats })
     } catch (error) {
       alert(error)
@@ -57,7 +72,7 @@ export default class GameStats extends Component {
               <Text>{eval(`this.moves_${i}X${i}`) || 'Incomplete'}</Text>
             </Col>
             <Col>
-              <Text>{eval(`this.moves_${i}X${i}`) || 'Incomplete'}</Text>
+              <Text>{eval(`this.time_${i}X${i}`) || 'Incomplete'}</Text>
             </Col>
           </Row>
           <Row style={{ height: 30 }}>
@@ -70,7 +85,7 @@ export default class GameStats extends Component {
               <Text>{eval(`this.moves_${i}X${i + 1}`) || 'Incomplete'}</Text>
             </Col>
             <Col>
-              <Text>{eval(`this.moves_${i}X${i + 1}`) || 'Incomplete'}</Text>
+              <Text>{eval(`this.time_${i}X${i + 1}`) || 'Incomplete'}</Text>
             </Col>
           </Row>
         </View>
@@ -92,11 +107,7 @@ export default class GameStats extends Component {
             </Col>
             <Col style={{ backgroundColor: '#00CE9F', height: 100 }} />
           </Grid>
-          <Button
-            onPress={() => {
-              this.seeStats()
-            }}
-          >
+          <Button onPress={this.seeStats}>
             <Text>See Stats</Text>
           </Button>
           {this.state.displayStats ? (
