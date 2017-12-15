@@ -45,32 +45,36 @@ class Menu extends Component {
               {i}X{i}
             </Text>
           </Button>
-          <Button
-            transparent
-            light
-            onPress={() => {
-              store.dispatch(setBoard({ width: i, height: i + 1 }));
-              store.dispatch(setDimensions({ width: i, height: i + 1 }));
-              this.props.navigation.navigate('GameScreen');
-            }}
-          >
-            <Text
-              style={{
-                fontSize: 17,
-                fontWeight: '900',
-                color: 'black',
-                backgroundColor: 'rgba(0,0,0,0)',
-                borderWidth: 1,
-                paddingLeft: 65,
-                paddingRight: 63,
-                paddingTop: 3,
-                borderColor: 'black',
-                textAlign: 'center'
+          {i !== 7 ? (
+            <Button
+              transparent
+              light
+              onPress={() => {
+                store.dispatch(setBoard({ width: i, height: i + 1 }));
+                store.dispatch(setDimensions({ width: i, height: i + 1 }));
+                this.props.navigation.navigate('GameScreen');
               }}
             >
-              {i}X{i + 1}
-            </Text>
-          </Button>
+              <Text
+                style={{
+                  fontSize: 17,
+                  fontWeight: '900',
+                  color: 'black',
+                  backgroundColor: 'rgba(0,0,0,0)',
+                  borderWidth: 1,
+                  paddingLeft: 65,
+                  paddingRight: 63,
+                  paddingTop: 3,
+                  borderColor: 'black',
+                  textAlign: 'center'
+                }}
+              >
+                {i}X{i + 1}
+              </Text>
+            </Button>
+          ) : (
+            <View />
+          )}
         </View>
       );
     }
@@ -102,19 +106,5 @@ class Menu extends Component {
     );
   }
 }
-
-// const mapstate = state => {
-//   return {
-//     bool: state.bool,
-//     dimensions: state.dimensions
-//   }
-// }
-
-// const mapDispatch = dispatch => {
-//   return {
-//     setBoard: board => dispatch(setBoard(board)),
-//     setDimensions: board => dispatch(setDimensions(board))
-//   }
-// }
 
 export default Menu;
