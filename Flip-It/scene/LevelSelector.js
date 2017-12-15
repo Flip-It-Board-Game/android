@@ -84,7 +84,7 @@ class Menu extends Component {
             width: 380,
             height: 650
           }}
-          source={require('../images/cheap_diagonal_fabric.png')}
+          source={require('../images/snowman.jpg')}
         >
           {buttonArr.map(button => button)}
           <Text>{'\n'}</Text>

@@ -92,7 +92,7 @@ class Grid extends Component {
               width: 380,
               height: 600
             }}
-            source={require('../images/cheap_diagonal_fabric.png')}
+            source={require('../images/snowman.jpg')}
           >
             <Text
               style={{
