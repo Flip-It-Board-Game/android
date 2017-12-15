@@ -2,7 +2,10 @@ import React, { Component } from 'react'
 import { View, StyleSheet, Text, Image } from 'react-native'
 import { Button } from 'native-base'
 import store, { setBoard, setDimensions } from '../components/store/store'
-import GameScreen from './GameScreen'
+const Dimensions = require('Dimensions')
+let { height, width } = Dimensions.get('window')
+let tHeight = height
+let tWidth = width
 
 class Menu extends Component {
   constructor(props) {
@@ -81,8 +84,8 @@ class Menu extends Component {
           style={{
             justifyContent: 'center',
             alignItems: 'center',
-            width: 380,
-            height: 650
+            width: tWidth,
+            height: tHeight
           }}
           source={require('../images/snowman.jpg')}
         >

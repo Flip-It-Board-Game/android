@@ -89,8 +89,8 @@ class Grid extends Component {
             style={{
               justifyContent: 'center',
               alignItems: 'center',
-              width: 380,
-              height: 600
+              width: tWidth,
+              height: tHeight
             }}
             source={require('../images/snowman.jpg')}
           >

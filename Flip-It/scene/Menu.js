@@ -3,6 +3,10 @@ import { View, StyleSheet, Image, Text } from 'react-native'
 import { Button } from 'native-base'
 import GameScreen from './GameScreen'
 import LevelSelector from './LevelSelector'
+const Dimensions = require('Dimensions')
+let { height, width } = Dimensions.get('window')
+let tHeight = height
+let tWidth = width
 
 class GameMenu extends Component {
   constructor(props) {
@@ -19,8 +23,8 @@ class GameMenu extends Component {
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
-            width: 380,
-            height: 650
+            width: tWidth,
+            height: tHeight
           }}
           source={require('../images/snowman.jpg')}
         >
