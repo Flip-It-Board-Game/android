@@ -76,7 +76,7 @@ export default class GameStats extends Component {
                   <Text>{moveStat || 'N/A'}</Text>
                 </Col>
                 <Col style={{ borderWidth: 1 }}>
-                  <Text>{timeStat}</Text>
+                  <Text>{timeStat || 'N/A'}</Text>
                 </Col>
               </Row>
               {i !== 7 ? (
@@ -98,7 +98,7 @@ export default class GameStats extends Component {
                     <Text>{move_2Stat || 'N/A'}</Text>
                   </Col>
                   <Col style={{ borderWidth: 1 }}>
-                    <Text>{time_2Stat}</Text>
+                    <Text>{time_2Stat || 'N/A'}</Text>
                   </Col>
                 </Row>
               ) : (

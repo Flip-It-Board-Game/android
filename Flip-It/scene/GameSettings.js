@@ -1,76 +1,99 @@
-import React, { Component } from 'react';
-import {    
-  StyleSheet,
-  Text,
-  View,
-  Slider
-} from 'react-native';
+import React, { Component } from 'react'
+import { View, AsyncStorage, Image, Text } from 'react-native'
+import { Button } from 'native-base'
+const Dimensions = require('Dimensions')
+let { height, width } = Dimensions.get('window')
+let tHeight = height
+let tWidth = width
 
-export default class Profile extends Component {
+class GameMenu extends Component {
   constructor(props) {
-   super(props)
-   this.state = { 
-     volume: 1,
-     sx: 1
-    }
-  } 
-  getVal(val){
-  console.warn(val);
-  }     
-  render() {    
+    super(props)
+    this.resetGameStats = this.resetGameStats.bind(this)
+  }
 
+  resetGameStats() {
+    for (let i = 2; i < 8; i++) {
+      AsyncStorage.setItem(`${i}${i}`, 'N/A')
+      AsyncStorage.setItem(`${i}${i + 1}`, 'N/A')
+      AsyncStorage.setItem(`${i}${i}Time`, 'N/A')
+      AsyncStorage.setItem(`${i}${i + 1}Time`, 'N/A')
+    }
+  }
+
+  render() {
     return (
-      <View style={styles.container}>
-        <Slider
-         style={{ width: 300 }}
-         step={1}
-         minimumValue={0}
-         maximumValue={100}
-         value={this.state.volume}
-         onValueChange={val => this.setState({ volume: val })}
-         onSlidingComplete={ val => this.getVal(val)}
-        />
-        <Text style={styles.welcome}>
-          {this.state.volume}
-        </Text>            
-        <Text style={styles.instructions}>
-          Slide to change volume
-        </Text>
-        <Slider
-         style={{ width: 300 }}
-         step={1}
-         minimumValue={0}
-         maximumValue={100}
-         value={this.state.sx}
-         onValueChange={val => this.setState({ sx: val })}
-         onSlidingComplete={ val => this.getVal(val)}
-        />
-        <Text style={styles.welcome}>
-          {this.state.sx}
-        </Text>            
-        <Text style={styles.instructions}>
-          Slide to change effects
-        </Text>
+      <View>
+        <Image
+          style={{
+            flex: 1,
+            position: 'absolute',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: tWidth,
+            height: tHeight
+          }}
+          source={require('../images/snowman.jpg')}
+        >
+          <Image
+            style={{
+              justifyContent: 'center',
+              alignItems: 'center',
+              width: tWidth,
+              height: tHeight
+            }}
+            source={require('../images/snowgif.gif')}
+          >
+            <View>
+              <Button transparent light onPress={this.resetGameStats}>
+                <Text
+                  style={{
+                    fontSize: 17,
+                    fontWeight: '900',
+                    color: 'black',
+                    backgroundColor: 'rgba(0,0,0,0)',
+                    borderWidth: 1,
+                    paddingLeft: 25,
+                    paddingRight: 23,
+                    paddingTop: 3,
+                    borderColor: 'black',
+                    width: 170,
+                    textAlign: 'center'
+                  }}
+                >
+                  Reset Game Stats
+                </Text>
+              </Button>
+              <Button
+                transparent
+                light
+                onPress={() => this.props.navigation.navigate('LevelSelector')}
+              >
+                <Text
+                  style={{
+                    fontSize: 17,
+                    fontWeight: '900',
+                    color: 'black',
+                    backgroundColor: 'rgba(0,0,0,0)',
+                    borderWidth: 1,
+                    paddingLeft: 25,
+                    paddingRight: 23,
+                    paddingTop: 3,
+                    borderColor: 'black',
+                    width: 170,
+                    textAlign: 'center'
+                  }}
+                >
+                  Level Select
+                </Text>
+              </Button>
+            </View>
+          </Image>
+        </Image>
       </View>
-    );
+    )
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+export default GameMenu
