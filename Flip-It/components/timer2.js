@@ -44,7 +44,19 @@ class Timer extends Component {
     this.gameTime = dispMinutes + ':' + dispSeconds
     return (
       <View>
-        <Text style={{ fontSize: 40 }}>{this.gameTime}</Text>
+        <Text
+          style={{
+            fontSize: 40,
+            backgroundColor: 'rgba(0,0,0,0)',
+            color: 'white',
+            borderWidth: 3,
+            paddingLeft: 10,
+            paddingRight: 10,
+            borderColor: 'white'
+          }}
+        >
+          {this.gameTime}
+        </Text>
       </View>
     )
   }

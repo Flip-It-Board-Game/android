@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, StyleSheet, Text } from 'react-native'
+import { Image, View, StyleSheet, Text } from 'react-native'
 import { Table, Rows } from 'react-native-table-component'
 import Buttons from './buttons'
 import { connect } from 'react-redux'
@@ -7,6 +7,10 @@ import Reset from './reset'
 import Timer from './timer2'
 import YouWon from './youWon'
 import { setCount } from './store/store'
+const Dimensions = require('Dimensions')
+let { height, width } = Dimensions.get('window')
+let tHeight = height
+let tWidth = width
 
 class Grid extends Component {
   constructor(props) {
@@ -20,9 +24,9 @@ class Grid extends Component {
 
   render() {
     //Renders table based on user input
-    const width = this.props.dimensions && this.props.dimensions.width
-    const height = this.props.dimensions && this.props.dimensions.height
-    let gamePieceSize = 300 / width
+    let width = this.props.dimensions && this.props.dimensions.width
+    let height = this.props.dimensions && this.props.dimensions.height
+    let gamePieceSize = tWidth * 0.81 / width
     let num = width * height
     let rowButtons = []
     let tableData = []
@@ -54,7 +58,8 @@ class Grid extends Component {
               fontWeight: 'bold',
               textAlign: 'center',
               marginBottom: 150,
-              marginTop: 150
+              marginTop: 150,
+              backgroundColor: 'rgba(0,0,0,0)'
             }}
             key="moveCount"
           >
@@ -80,12 +85,28 @@ class Grid extends Component {
             <Reset />
           </View>
         ) : (
-          <View style={styles.app}>
-            <Table
-              borderStyle={{ height: 79, borderWidth: 0, borderColor: 'white' }}
+          <Image
+            style={{
+              justifyContent: 'center',
+              alignItems: 'center',
+              width: 380,
+              height: 600
+            }}
+            source={require('../images/cheap_diagonal_fabric.png')}
+          >
+            <Text
+              style={{
+                color: 'white',
+                fontSize: 40,
+                fontWeight: 'bold',
+                textAlign: 'center',
+                backgroundColor: 'rgba(0,0,0,0)',
+                marginBottom: 20
+              }}
+              key="moveCount"
             >
-              <Rows data={datas} style={styles.top} textStyle={styles.text} />
-            </Table>
+              Moves: {this.props.count.count}
+            </Text>
             <Table borderStyle={{ borderWidth: 0, borderColor: 'white' }}>
               <Rows
                 data={tableData}
@@ -97,7 +118,7 @@ class Grid extends Component {
 
             <Timer />
             <Reset />
-          </View>
+          </Image>
         )}
       </View>
     )
