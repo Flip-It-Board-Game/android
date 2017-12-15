@@ -5,7 +5,8 @@ import {
   Text,
   Animated,
   AsyncStorage,
-  Easing
+  Easing,
+  Image
 } from 'react-native'
 import { Table, Row, Rows } from 'react-native-table-component'
 import Buttons from './buttons'
@@ -13,6 +14,10 @@ import { Button } from 'native-base'
 import { connect } from 'react-redux'
 import Reset from './reset'
 import Solution from './solution'
+const Dimensions = require('Dimensions')
+let { height, width } = Dimensions.get('window')
+let tHeight = height
+let tWidth = width
 
 class youWon extends Component {
   constructor(props) {
@@ -97,16 +102,38 @@ class youWon extends Component {
     })
     return (
       <View style={styles.container}>
-        <Animated.Image
+        <Image
           style={{
-            width: 227,
-            height: 200,
-            margin: 100,
-            transform: [{ rotate: spin }]
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: tWidth,
+            height: tHeight
           }}
-          source={require('../images/CartRuby.png')}
-          onPress={this.seeStats()}
-        />
+          source={require('../images/snowgif.gif')}
+        >
+          <Text
+            style={{
+              fontSize: 45,
+              fontWeight: 'bold',
+              textAlign: 'center',
+              marginBottom: 4,
+              backgroundColor: 'rgba(0,0,0,0)',
+              color: 'green'
+            }}
+          >
+            You Won!
+          </Text>
+          <Animated.Image
+            style={{
+              width: 227,
+              height: 200,
+              margin: 100,
+              transform: [{ rotate: spin }]
+            }}
+            source={require('../images/present.png')}
+            onPress={this.seeStats()}
+          />
+        </Image>
       </View>
     )
   }

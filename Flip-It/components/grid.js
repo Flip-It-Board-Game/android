@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, StyleSheet, Text } from 'react-native'
+import { Image, View, StyleSheet, Text } from 'react-native'
 import { Table, Rows } from 'react-native-table-component'
 import Buttons from './buttons'
 import { connect } from 'react-redux'
@@ -7,6 +7,10 @@ import Reset from './reset'
 import Timer from './timer2'
 import YouWon from './youWon'
 import { setCount } from './store/store'
+const Dimensions = require('Dimensions')
+let { height, width } = Dimensions.get('window')
+let tHeight = height
+let tWidth = width
 
 class Grid extends Component {
   constructor(props) {
@@ -20,9 +24,9 @@ class Grid extends Component {
 
   render() {
     //Renders table based on user input
-    const width = this.props.dimensions && this.props.dimensions.width
-    const height = this.props.dimensions && this.props.dimensions.height
-    let gamePieceSize = 300 / width
+    let width = this.props.dimensions && this.props.dimensions.width
+    let height = this.props.dimensions && this.props.dimensions.height
+    let gamePieceSize = tWidth * 0.81 / width
     let num = width * height
     let rowButtons = []
     let tableData = []
@@ -54,7 +58,8 @@ class Grid extends Component {
               fontWeight: 'bold',
               textAlign: 'center',
               marginBottom: 150,
-              marginTop: 150
+              marginTop: 150,
+              backgroundColor: 'rgba(0,0,0,0)'
             }}
             key="moveCount"
           >
@@ -67,37 +72,54 @@ class Grid extends Component {
       <View style={{ backgroundColor: 'white' }}>
         {this.props && this.props.bool.indexOf(true) === -1 ? (
           <View>
-            <Text
-              style={{
-                fontSize: 65,
-                fontWeight: 'bold',
-                textAlign: 'center'
-              }}
-            >
-              You Won!
-            </Text>
             <YouWon />
             <Reset />
           </View>
         ) : (
-          <View style={styles.app}>
-            <Table
-              borderStyle={{ height: 79, borderWidth: 0, borderColor: 'white' }}
+          <Image
+            style={{
+              justifyContent: 'center',
+              alignItems: 'center',
+              width: tWidth,
+              height: tHeight
+            }}
+            source={require('../images/snowman.jpg')}
+          >
+            <Image
+              style={{
+                justifyContent: 'center',
+                alignItems: 'center',
+                width: tWidth,
+                height: tHeight
+              }}
+              source={require('../images/snowgif.gif')}
             >
-              <Rows data={datas} style={styles.top} textStyle={styles.text} />
-            </Table>
-            <Table borderStyle={{ borderWidth: 0, borderColor: 'white' }}>
-              <Rows
-                data={tableData}
-                style={styles.row}
-                textStyle={styles.text}
-              />
-            </Table>
-            <Text style={{ fontSize: 5 }}>{'\n'}</Text>
+              <Text
+                style={{
+                  color: 'white',
+                  fontSize: 40,
+                  fontWeight: 'bold',
+                  textAlign: 'center',
+                  backgroundColor: 'rgba(0,0,0,0)',
+                  marginBottom: 20
+                }}
+                key="moveCount"
+              >
+                Moves: {this.props.count.count}
+              </Text>
+              <Table borderStyle={{ borderWidth: 0, borderColor: 'white' }}>
+                <Rows
+                  data={tableData}
+                  style={styles.row}
+                  textStyle={styles.text}
+                />
+              </Table>
+              <Text style={{ fontSize: 5 }}>{'\n'}</Text>
 
-            <Timer />
-            <Reset />
-          </View>
+              <Timer />
+              <Reset />
+            </Image>
+          </Image>
         )}
       </View>
     )

@@ -32,9 +32,11 @@ class Reset extends Component {
         >
           <Text
             style={{
-              fontSize: 27,
+              fontSize: 20,
               fontWeight: 'bold',
-              textAlign: 'center'
+              textAlign: 'center',
+              color: 'white',
+              backgroundColor: 'rgba(0,0,0,0)'
             }}
             key="moveCount"
           >
