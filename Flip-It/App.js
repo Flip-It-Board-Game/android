@@ -4,16 +4,16 @@ import {
   TouchableOpacity,
   Text,
   View,
-  Image,
+  ImageBackground,
   StyleSheet,
   TouchableHighlight
 } from 'react-native'
+import Expo from 'expo';
 import { StackNavigator } from 'react-navigation'
 import Login from './scene/Login'
 import Menu from './scene/Menu'
 import GameScreen from './scene/GameScreen'
 import LevelSelector from './scene/LevelSelector'
-// import Levels from './scene/Levels'
 import store from './components/store/store'
 import { Provider } from 'react-redux'
 import GameSettings from './scene/GameSettings'
@@ -41,8 +41,8 @@ class HomeScreen extends Component {
   render() {
     return (
       <Provider store={store}>
-       <Image style={styles.image} 
-       source={require('./images/gemspic.png')}>
+       <ImageBackground style={styles.image} 
+       source={require('./images/snowman.jpg')}>
         <View style={styles.container}> 
           <View style={styles.button}>
             <TouchableOpacity onPress={this.login}>
@@ -55,7 +55,7 @@ class HomeScreen extends Component {
             </TouchableOpacity>
           </View>
         </View>
-        </Image>
+        </ImageBackground>
       </Provider>
     )
   }
@@ -99,12 +99,14 @@ let styles = StyleSheet.create({
     backgroundColor: 'rgba(135,135,135,0.7)'
   },
   image: {
-    flex: 1,
-    resizeMode: 'cover',
-    position: 'absolute',
+    // position: 'absolute',
     width: '100%',
     height: '100%',
     justifyContent: 'center',
+    flex: 1,
+    // resizeMode: 'cover',
+    // backgroundImage: '50';
+    // alignItems: 'center', 
   },
   text: {
     textAlign: 'center',
