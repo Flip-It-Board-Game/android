@@ -65,29 +65,6 @@ class GameMenu extends Component {
                   Reset Game Stats
                 </Text>
               </Button>
-              <Button
-                transparent
-                light
-                onPress={() => this.props.navigation.navigate('LevelSelector')}
-              >
-                <Text
-                  style={{
-                    fontSize: 17,
-                    fontWeight: '900',
-                    color: 'black',
-                    backgroundColor: 'rgba(0,0,0,0)',
-                    borderWidth: 1,
-                    paddingLeft: 25,
-                    paddingRight: 23,
-                    paddingTop: 3,
-                    borderColor: 'black',
-                    width: 170,
-                    textAlign: 'center'
-                  }}
-                >
-                  Level Select
-                </Text>
-              </Button>
             </View>
           </Image>
         </Image>

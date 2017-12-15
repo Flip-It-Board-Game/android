@@ -27,7 +27,32 @@ export default class GameStats extends Component {
       <Row
         key={'array'}
         style={{
-          marginTop: 100,
+          marginTop: 80,
+          backgroundColor: '#95dbf4',
+          borderWidth: 2,
+          height: 50,
+          marginLeft: 35,
+          marginRight: 35
+        }}
+      >
+        <Col style={{ borderWidth: 1 }}>
+          <Text
+            style={{
+              marginTop: 5,
+              textAlign: 'center',
+              fontWeight: 'bold',
+              fontSize: 28,
+              color: 'white'
+            }}
+          >
+            G a m e - S t a t s
+          </Text>
+        </Col>
+      </Row>,
+      <Row
+        key={'array'}
+        style={{
+          marginTop: 8,
           backgroundColor: 'white',
           borderWidth: 2,
           height: 30,
@@ -36,13 +61,13 @@ export default class GameStats extends Component {
         }}
       >
         <Col style={{ borderWidth: 1 }}>
-          <Text>Board</Text>
+          <Text style={{ textAlign: 'center' }}>Board</Text>
         </Col>
         <Col style={{ borderWidth: 1 }}>
-          <Text># Moves</Text>
+          <Text style={{ textAlign: 'center' }}># Moves</Text>
         </Col>
         <Col style={{ borderWidth: 1 }}>
-          <Text>Time</Text>
+          <Text style={{ textAlign: 'center' }}>Time</Text>
         </Col>
       </Row>
     ]
@@ -60,7 +85,8 @@ export default class GameStats extends Component {
             <View key={i}>
               <Row
                 style={{
-                  backgroundColor: 'white',
+                  marginTop: 8,
+                  backgroundColor: '#6bbedb',
                   borderWidth: 2,
                   height: 30,
                   marginLeft: 35,
@@ -68,20 +94,25 @@ export default class GameStats extends Component {
                 }}
               >
                 <Col style={{ borderWidth: 1 }}>
-                  <Text>
+                  <Text style={{ textAlign: 'center' }}>
                     {i}X{i}
                   </Text>
                 </Col>
                 <Col style={{ borderWidth: 1 }}>
-                  <Text>{moveStat || 'N/A'}</Text>
+                  <Text style={{ textAlign: 'center' }}>
+                    {moveStat || 'N/A'}
+                  </Text>
                 </Col>
                 <Col style={{ borderWidth: 1 }}>
-                  <Text>{timeStat || 'N/A'}</Text>
+                  <Text style={{ textAlign: 'center' }}>
+                    {timeStat || 'N/A'}
+                  </Text>
                 </Col>
               </Row>
               {i !== 7 ? (
                 <Row
                   style={{
+                    marginTop: 8,
                     backgroundColor: 'white',
                     borderWidth: 1,
                     height: 30,
@@ -90,15 +121,19 @@ export default class GameStats extends Component {
                   }}
                 >
                   <Col style={{ borderWidth: 1 }}>
-                    <Text>
+                    <Text style={{ textAlign: 'center' }}>
                       {i}X{i + 1}
                     </Text>
                   </Col>
                   <Col style={{ borderWidth: 1 }}>
-                    <Text>{move_2Stat || 'N/A'}</Text>
+                    <Text style={{ textAlign: 'center' }}>
+                      {move_2Stat || 'N/A'}
+                    </Text>
                   </Col>
                   <Col style={{ borderWidth: 1 }}>
-                    <Text>{time_2Stat || 'N/A'}</Text>
+                    <Text style={{ textAlign: 'center' }}>
+                      {time_2Stat || 'N/A'}
+                    </Text>
                   </Col>
                 </Row>
               ) : (
