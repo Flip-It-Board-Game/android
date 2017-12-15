@@ -56,7 +56,9 @@ class youWon extends Component {
         if (
           dimensions.height === i &&
           dimensions.width === i &&
-          (currentStatMoves > moves || currentStatMoves === null)
+          (currentStatMoves > moves ||
+            currentStatMoves === null ||
+            currentStatMoves === 'N/A')
         ) {
           AsyncStorage.setItem(`${i}${i}`, moves.toString())
         }
@@ -64,7 +66,9 @@ class youWon extends Component {
         if (
           dimensions.height === i + 1 &&
           dimensions.width === i &&
-          (currentStat_2Moves > moves || currentStat_2Moves === null)
+          (currentStat_2Moves > moves ||
+            currentStat_2Moves === null ||
+            currentStatMoves === 'N/A')
         ) {
           AsyncStorage.setItem(`${i}${i + 1}`, moves.toString())
         }
@@ -72,7 +76,9 @@ class youWon extends Component {
         if (
           dimensions.height === i &&
           dimensions.width === i &&
-          (currentStatTime > gameTime || currentStatTime === null)
+          (currentStatTime > gameTime ||
+            currentStatTime === null ||
+            currentStatMoves === 'N/A')
         ) {
           AsyncStorage.setItem(`${i}${i}Time`, gameTime.toString())
         }
@@ -80,7 +86,9 @@ class youWon extends Component {
         if (
           dimensions.height === i + 1 &&
           dimensions.width === i &&
-          (currentStat_2Time > gameTime || currentStat_2Time === null)
+          (currentStat_2Time > gameTime ||
+            currentStat_2Time === null ||
+            currentStatMoves === 'N/A')
         ) {
           AsyncStorage.setItem(`${i}${i + 1}Time`, gameTime.toString())
         }
