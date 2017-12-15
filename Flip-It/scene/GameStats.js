@@ -124,15 +124,7 @@ export default class GameStats extends Component {
                 </Col>
                 <Col style={{ backgroundColor: '#00CE9F', height: 100 }} />
               </Grid>
-              <Button
-                style={{
-                  justifyContent: 'center',
-                  alignItems: 'center'
-                }}
-                transparent
-                light
-                onPress={this.seeStats}
-              >
+              <Button transparent light onPress={this.seeStats}>
                 {this.state.displayStats ? (
                   <Text
                     style={{
