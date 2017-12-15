@@ -23,26 +23,57 @@ export default class GameStats extends Component {
       displayStats: false
     }
     this.limitPush = 0
-    this.seeStats = this.seeStats.bind(this)
     this.statArray = [
       <Row
         key={'array'}
-        style={{ backgroundColor: 'white', borderWidth: 2, height: 30 }}
+        style={{
+          marginTop: 80,
+          backgroundColor: '#95dbf4',
+          borderWidth: 2,
+          height: 50,
+          marginLeft: 35,
+          marginRight: 35
+        }}
       >
         <Col style={{ borderWidth: 1 }}>
-          <Text style={{ alignText: 'center' }}>Board</Text>
+          <Text
+            style={{
+              marginTop: 5,
+              textAlign: 'center',
+              fontWeight: 'bold',
+              fontSize: 28,
+              color: 'white'
+            }}
+          >
+            G a m e - S t a t s
+          </Text>
+        </Col>
+      </Row>,
+      <Row
+        key={'array'}
+        style={{
+          marginTop: 8,
+          backgroundColor: 'white',
+          borderWidth: 2,
+          height: 30,
+          marginLeft: 35,
+          marginRight: 35
+        }}
+      >
+        <Col style={{ borderWidth: 1 }}>
+          <Text style={{ textAlign: 'center' }}>Board</Text>
         </Col>
         <Col style={{ borderWidth: 1 }}>
-          <Text># Moves</Text>
+          <Text style={{ textAlign: 'center' }}># Moves</Text>
         </Col>
         <Col style={{ borderWidth: 1 }}>
-          <Text>Time</Text>
+          <Text style={{ textAlign: 'center' }}>Time</Text>
         </Col>
       </Row>
     ]
   }
 
-  seeStats = async () => {
+  componentWillMount = async () => {
     try {
       for (let i = 2; i < 8; i++) {
         let moveStat = await AsyncStorage.getItem(`${i}${i}`)
@@ -53,35 +84,61 @@ export default class GameStats extends Component {
           this.statArray.push(
             <View key={i}>
               <Row
-                style={{ backgroundColor: 'white', borderWidth: 2, height: 30 }}
+                style={{
+                  marginTop: 8,
+                  backgroundColor: '#6bbedb',
+                  borderWidth: 2,
+                  height: 30,
+                  marginLeft: 35,
+                  marginRight: 35
+                }}
               >
                 <Col style={{ borderWidth: 1 }}>
-                  <Text>
+                  <Text style={{ textAlign: 'center' }}>
                     {i}X{i}
                   </Text>
                 </Col>
                 <Col style={{ borderWidth: 1 }}>
-                  <Text>{moveStat || 'N/A'}</Text>
-                </Col>
-                <Col style={{ borderWidth: 1 }}>
-                  <Text>{timeStat}</Text>
-                </Col>
-              </Row>
-              <Row
-                style={{ backgroundColor: 'white', borderWidth: 2, height: 30 }}
-              >
-                <Col style={{ borderWidth: 1 }}>
-                  <Text>
-                    {i}X{i + 1}
+                  <Text style={{ textAlign: 'center' }}>
+                    {moveStat || 'N/A'}
                   </Text>
                 </Col>
                 <Col style={{ borderWidth: 1 }}>
-                  <Text>{move_2Stat || 'N/A'}</Text>
-                </Col>
-                <Col style={{ borderWidth: 1 }}>
-                  <Text>{time_2Stat}</Text>
+                  <Text style={{ textAlign: 'center' }}>
+                    {timeStat || 'N/A'}
+                  </Text>
                 </Col>
               </Row>
+              {i !== 7 ? (
+                <Row
+                  style={{
+                    marginTop: 8,
+                    backgroundColor: 'white',
+                    borderWidth: 1,
+                    height: 30,
+                    marginLeft: 35,
+                    marginRight: 35
+                  }}
+                >
+                  <Col style={{ borderWidth: 1 }}>
+                    <Text style={{ textAlign: 'center' }}>
+                      {i}X{i + 1}
+                    </Text>
+                  </Col>
+                  <Col style={{ borderWidth: 1 }}>
+                    <Text style={{ textAlign: 'center' }}>
+                      {move_2Stat || 'N/A'}
+                    </Text>
+                  </Col>
+                  <Col style={{ borderWidth: 1 }}>
+                    <Text style={{ textAlign: 'center' }}>
+                      {time_2Stat || 'N/A'}
+                    </Text>
+                  </Col>
+                </Row>
+              ) : (
+                <View />
+              )}
             </View>
           )
         }
@@ -110,11 +167,11 @@ export default class GameStats extends Component {
             }}
             source={require('../images/snowgif.gif')}
           >
-            <Header>
+            {/* <Header>
               <Text>Profile</Text>
-            </Header>
+            </Header> */}
             <Content>
-              <Grid>
+              {/* <Grid>
                 <Col style={{ backgroundColor: '#635DB7', height: 100 }}>
                   <Text>{this.state.userName}</Text>
                   <Image
@@ -123,46 +180,8 @@ export default class GameStats extends Component {
                   />
                 </Col>
                 <Col style={{ backgroundColor: '#00CE9F', height: 100 }} />
-              </Grid>
-              <Button transparent light onPress={this.seeStats}>
-                {this.state.displayStats ? (
-                  <Text
-                    style={{
-                      fontSize: 17,
-                      fontWeight: '900',
-                      color: 'black',
-                      backgroundColor: 'rgba(0,0,0,0)',
-                      borderWidth: 1,
-                      paddingLeft: 25,
-                      paddingRight: 23,
-                      paddingTop: 3,
-                      borderColor: 'black',
-                      width: 170,
-                      textAlign: 'center'
-                    }}
-                  >
-                    Hide Stats
-                  </Text>
-                ) : (
-                  <Text
-                    style={{
-                      fontSize: 17,
-                      fontWeight: '900',
-                      color: 'black',
-                      backgroundColor: 'rgba(0,0,0,0)',
-                      borderWidth: 1,
-                      paddingLeft: 25,
-                      paddingRight: 23,
-                      paddingTop: 3,
-                      borderColor: 'black',
-                      width: 170,
-                      textAlign: 'center'
-                    }}
-                  >
-                    Show Stats
-                  </Text>
-                )}
-              </Button>
+              </Grid> */}
+
               {this.state.displayStats ? (
                 <Grid>{this.statArray.map(ele => ele)}</Grid>
               ) : (
