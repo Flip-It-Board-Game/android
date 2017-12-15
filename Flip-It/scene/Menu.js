@@ -24,17 +24,6 @@ class GameMenu extends Component {
           }}
           source={require('../images/cheap_diagonal_fabric.png')}
         >
-          <Image
-            style={{
-              justifyContent: 'center',
-              alignItems: 'center',
-              width: 100,
-              height: 100,
-              textAlign: 'center',
-              marginBottom: 36
-            }}
-            source={require('../images/plainwhiteround.png')}
-          />
           <View>
             <Button
               transparent
@@ -158,16 +147,6 @@ class GameMenu extends Component {
               title="AsyncStorage Test"
             />
           </View>
-          <Image
-            style={{
-              justifyContent: 'center',
-              alignItems: 'center',
-              width: 100,
-              height: 100,
-              textAlign: 'center'
-            }}
-            source={require('../images/plainblackround.png')}
-          />
         </Image>
       </View>
     )
