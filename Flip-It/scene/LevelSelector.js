@@ -89,8 +89,18 @@ class Menu extends Component {
           }}
           source={require('../images/snowman.jpg')}
         >
-          {buttonArr.map(button => button)}
-          <Text>{'\n'}</Text>
+          <Image
+            style={{
+              justifyContent: 'center',
+              alignItems: 'center',
+              width: tWidth,
+              height: tHeight
+            }}
+            source={require('../images/snowgif.gif')}
+          >
+            {buttonArr.map(button => button)}
+            <Text>{'\n'}</Text>
+          </Image>
         </Image>
       </View>
     )

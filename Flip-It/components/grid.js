@@ -72,15 +72,6 @@ class Grid extends Component {
       <View style={{ backgroundColor: 'white' }}>
         {this.props && this.props.bool.indexOf(true) === -1 ? (
           <View>
-            <Text
-              style={{
-                fontSize: 65,
-                fontWeight: 'bold',
-                textAlign: 'center'
-              }}
-            >
-              You Won!
-            </Text>
             <YouWon />
             <Reset />
           </View>
@@ -94,30 +85,40 @@ class Grid extends Component {
             }}
             source={require('../images/snowman.jpg')}
           >
-            <Text
+            <Image
               style={{
-                color: 'white',
-                fontSize: 40,
-                fontWeight: 'bold',
-                textAlign: 'center',
-                backgroundColor: 'rgba(0,0,0,0)',
-                marginBottom: 20
+                justifyContent: 'center',
+                alignItems: 'center',
+                width: tWidth,
+                height: tHeight
               }}
-              key="moveCount"
+              source={require('../images/snowgif.gif')}
             >
-              Moves: {this.props.count.count}
-            </Text>
-            <Table borderStyle={{ borderWidth: 0, borderColor: 'white' }}>
-              <Rows
-                data={tableData}
-                style={styles.row}
-                textStyle={styles.text}
-              />
-            </Table>
-            <Text style={{ fontSize: 5 }}>{'\n'}</Text>
+              <Text
+                style={{
+                  color: 'white',
+                  fontSize: 40,
+                  fontWeight: 'bold',
+                  textAlign: 'center',
+                  backgroundColor: 'rgba(0,0,0,0)',
+                  marginBottom: 20
+                }}
+                key="moveCount"
+              >
+                Moves: {this.props.count.count}
+              </Text>
+              <Table borderStyle={{ borderWidth: 0, borderColor: 'white' }}>
+                <Rows
+                  data={tableData}
+                  style={styles.row}
+                  textStyle={styles.text}
+                />
+              </Table>
+              <Text style={{ fontSize: 5 }}>{'\n'}</Text>
 
-            <Timer />
-            <Reset />
+              <Timer />
+              <Reset />
+            </Image>
           </Image>
         )}
       </View>

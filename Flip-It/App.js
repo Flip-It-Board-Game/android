@@ -6,9 +6,10 @@ import {
   View,
   ImageBackground,
   StyleSheet,
-  TouchableHighlight
+  TouchableHighlight,
+  Image
 } from 'react-native'
-import Expo from 'expo';
+import Expo from 'expo'
 import { StackNavigator } from 'react-navigation'
 import Login from './scene/Login'
 import Menu from './scene/Menu'
@@ -19,6 +20,10 @@ import { Provider } from 'react-redux'
 import GameSettings from './scene/GameSettings'
 import About from './scene/About'
 import GameStats from './scene/GameStats'
+const Dimensions = require('Dimensions')
+let { height, width } = Dimensions.get('window')
+let tHeight = height
+let tWidth = width
 console.disableYellowBox = true
 
 class HomeScreen extends Component {
@@ -41,20 +46,32 @@ class HomeScreen extends Component {
   render() {
     return (
       <Provider store={store}>
-       <ImageBackground style={styles.image} 
-       source={require('./images/snowman.jpg')}>
-        <View style={styles.container}> 
-          <View style={styles.button}>
-            <TouchableOpacity onPress={this.login}>
-              <Text style={styles.text}>Login</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.button}>
-            <TouchableOpacity onPress={this.guest}>
-              <Text style={styles.text}>Lets play now!</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
+        <ImageBackground
+          style={styles.image}
+          source={require('./images/snowman.jpg')}
+        >
+          <Image
+            style={{
+              justifyContent: 'center',
+              alignItems: 'center',
+              width: tWidth,
+              height: tHeight
+            }}
+            source={require('./images/snowgif.gif')}
+          >
+            <View style={styles.container}>
+              <View style={styles.button}>
+                <TouchableOpacity onPress={this.login}>
+                  <Text style={styles.text}>Login</Text>
+                </TouchableOpacity>
+              </View>
+              <View style={styles.button}>
+                <TouchableOpacity onPress={this.guest}>
+                  <Text style={styles.text}>Lets play now!</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </Image>
         </ImageBackground>
       </Provider>
     )
@@ -91,7 +108,7 @@ const ModalStack = StackNavigator({
 let styles = StyleSheet.create({
   container: {
     paddingLeft: 120,
-    paddingRight: 120,
+    paddingRight: 120
   },
   button: {
     paddingBottom: 10,
@@ -103,16 +120,16 @@ let styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     justifyContent: 'center',
-    flex: 1,
+    flex: 1
     // resizeMode: 'cover',
     // backgroundImage: '50';
-    // alignItems: 'center', 
+    // alignItems: 'center',
   },
   text: {
     textAlign: 'center',
     color: 'white',
     fontWeight: '700'
-}
+  }
 })
 
 export default ModalStack

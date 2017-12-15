@@ -28,129 +28,139 @@ class GameMenu extends Component {
           }}
           source={require('../images/snowman.jpg')}
         >
-          <View>
-            <Button
-              transparent
-              light
-              onPress={() => this.props.navigation.navigate('GameScreen')}
-            >
-              <Text
-                style={{
-                  fontSize: 17,
-                  fontWeight: '900',
-                  color: 'black',
-                  backgroundColor: 'rgba(0,0,0,0)',
-                  borderWidth: 1,
-                  paddingLeft: 25,
-                  paddingRight: 23,
-                  paddingTop: 3,
-                  borderColor: 'black',
-                  width: 170,
-                  textAlign: 'center'
-                }}
+          <Image
+            style={{
+              justifyContent: 'center',
+              alignItems: 'center',
+              width: tWidth,
+              height: tHeight
+            }}
+            source={require('../images/snowgif.gif')}
+          >
+            <View>
+              <Button
+                transparent
+                light
+                onPress={() => this.props.navigation.navigate('GameScreen')}
               >
-                Start
-              </Text>
-            </Button>
-            <Button
-              transparent
-              light
-              onPress={() => this.props.navigation.navigate('LevelSelector')}
-            >
-              <Text
-                style={{
-                  fontSize: 17,
-                  fontWeight: '900',
-                  color: 'black',
-                  backgroundColor: 'rgba(0,0,0,0)',
-                  borderWidth: 1,
-                  paddingLeft: 25,
-                  paddingRight: 23,
-                  paddingTop: 3,
-                  borderColor: 'black',
-                  width: 170,
-                  textAlign: 'center'
-                }}
+                <Text
+                  style={{
+                    fontSize: 17,
+                    fontWeight: '900',
+                    color: 'black',
+                    backgroundColor: 'rgba(0,0,0,0)',
+                    borderWidth: 1,
+                    paddingLeft: 25,
+                    paddingRight: 23,
+                    paddingTop: 3,
+                    borderColor: 'black',
+                    width: 170,
+                    textAlign: 'center'
+                  }}
+                >
+                  Start
+                </Text>
+              </Button>
+              <Button
+                transparent
+                light
+                onPress={() => this.props.navigation.navigate('LevelSelector')}
               >
-                Level Select
-              </Text>
-            </Button>
-            <Button
-              transparent
-              light
-              onPress={() => this.props.navigation.navigate('GameStats')}
-            >
-              <Text
-                style={{
-                  fontSize: 17,
-                  fontWeight: '900',
-                  color: 'black',
-                  backgroundColor: 'rgba(0,0,0,0)',
-                  borderWidth: 1,
-                  paddingLeft: 25,
-                  paddingRight: 23,
-                  paddingTop: 3,
-                  borderColor: 'black',
-                  width: 170,
-                  textAlign: 'center'
-                }}
+                <Text
+                  style={{
+                    fontSize: 17,
+                    fontWeight: '900',
+                    color: 'black',
+                    backgroundColor: 'rgba(0,0,0,0)',
+                    borderWidth: 1,
+                    paddingLeft: 25,
+                    paddingRight: 23,
+                    paddingTop: 3,
+                    borderColor: 'black',
+                    width: 170,
+                    textAlign: 'center'
+                  }}
+                >
+                  Level Select
+                </Text>
+              </Button>
+              <Button
+                transparent
+                light
+                onPress={() => this.props.navigation.navigate('GameStats')}
               >
-                Game Stats
-              </Text>
-            </Button>
-            <Button
-              transparent
-              light
-              onPress={() => this.props.navigation.navigate('GameSettings')}
-            >
-              <Text
-                style={{
-                  fontSize: 17,
-                  fontWeight: '900',
-                  color: 'black',
-                  backgroundColor: 'rgba(0,0,0,0)',
-                  borderWidth: 1,
-                  paddingLeft: 25,
-                  paddingRight: 23,
-                  paddingTop: 3,
-                  borderColor: 'black',
-                  width: 170,
-                  textAlign: 'center'
-                }}
+                <Text
+                  style={{
+                    fontSize: 17,
+                    fontWeight: '900',
+                    color: 'black',
+                    backgroundColor: 'rgba(0,0,0,0)',
+                    borderWidth: 1,
+                    paddingLeft: 25,
+                    paddingRight: 23,
+                    paddingTop: 3,
+                    borderColor: 'black',
+                    width: 170,
+                    textAlign: 'center'
+                  }}
+                >
+                  Game Stats
+                </Text>
+              </Button>
+              <Button
+                transparent
+                light
+                onPress={() => this.props.navigation.navigate('GameSettings')}
               >
-                Settings
-              </Text>
-            </Button>
-            <Button
-              transparent
-              light
-              onPress={() => this.props.navigation.navigate('About')}
-            >
-              <Text
-                style={{
-                  fontSize: 17,
-                  fontWeight: '900',
-                  color: 'black',
-                  backgroundColor: 'rgba(0,0,0,0)',
-                  borderWidth: 1,
-                  paddingLeft: 25,
-                  paddingRight: 23,
-                  paddingTop: 3,
-                  borderColor: 'black',
-                  width: 170,
-                  textAlign: 'center'
-                }}
+                <Text
+                  style={{
+                    fontSize: 17,
+                    fontWeight: '900',
+                    color: 'black',
+                    backgroundColor: 'rgba(0,0,0,0)',
+                    borderWidth: 1,
+                    paddingLeft: 25,
+                    paddingRight: 23,
+                    paddingTop: 3,
+                    borderColor: 'black',
+                    width: 170,
+                    textAlign: 'center'
+                  }}
+                >
+                  Settings
+                </Text>
+              </Button>
+              <Button
+                transparent
+                light
+                onPress={() => this.props.navigation.navigate('About')}
               >
-                About
-              </Text>
-            </Button>
-            <Button
-              transparent
-              light
-              onPress={() => this.props.navigation.navigate('Test')}
-              title="AsyncStorage Test"
-            />
-          </View>
+                <Text
+                  style={{
+                    fontSize: 17,
+                    fontWeight: '900',
+                    color: 'black',
+                    backgroundColor: 'rgba(0,0,0,0)',
+                    borderWidth: 1,
+                    paddingLeft: 25,
+                    paddingRight: 23,
+                    paddingTop: 3,
+                    borderColor: 'black',
+                    width: 170,
+                    textAlign: 'center'
+                  }}
+                >
+                  About
+                </Text>
+              </Button>
+              <Button
+                transparent
+                light
+                onPress={() => this.props.navigation.navigate('Test')}
+                title="AsyncStorage Test"
+              />
+            </View>
+          </Image>
         </Image>
       </View>
     )
