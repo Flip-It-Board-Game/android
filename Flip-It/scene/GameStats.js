@@ -24,19 +24,19 @@ export default class GameStats extends Component {
     this.limitPush = 0
     this.statArray = [
       <Row key={'array'} style={styles.row}>
-        <Col style={{ borderWidth: 1 }}>
+        <Col style={styles.colStyle}>
           <Text style={styles.text1}>G a m e - S t a t s</Text>
         </Col>
       </Row>,
       <Row key={'array'} style={styles.mainRows}>
-        <Col style={{ borderWidth: 1 }}>
-          <Text style={{ textAlign: 'center' }}>Board</Text>
+        <Col style={styles.colStyle}>
+          <Text style={styles.textCenter}>Board</Text>
         </Col>
-        <Col style={{ borderWidth: 1 }}>
-          <Text style={{ textAlign: 'center' }}># Moves</Text>
+        <Col style={styles.colStyle}>
+          <Text style={styles.textCenter}># Moves</Text>
         </Col>
-        <Col style={{ borderWidth: 1 }}>
-          <Text style={{ textAlign: 'center' }}>Time</Text>
+        <Col style={styles.colStyle}>
+          <Text style={styles.textCenter}>Time</Text>
         </Col>
       </Row>
     ]
@@ -53,38 +53,30 @@ export default class GameStats extends Component {
           this.statArray.push(
             <View key={i}>
               <Row style={styles.mainRows}>
-                <Col style={{ borderWidth: 1 }}>
-                  <Text style={{ textAlign: 'center' }}>
+                <Col style={styles.colStyle}>
+                  <Text style={styles.textCenter}>
                     {i}X{i}
                   </Text>
                 </Col>
-                <Col style={{ borderWidth: 1 }}>
-                  <Text style={{ textAlign: 'center' }}>
-                    {moveStat || 'N/A'}
-                  </Text>
+                <Col style={styles.colStyle}>
+                  <Text style={styles.textCenter}>{moveStat || 'N/A'}</Text>
                 </Col>
-                <Col style={{ borderWidth: 1 }}>
-                  <Text style={{ textAlign: 'center' }}>
-                    {timeStat || 'N/A'}
-                  </Text>
+                <Col style={styles.colStyle}>
+                  <Text style={styles.textCenter}>{timeStat || 'N/A'}</Text>
                 </Col>
               </Row>
               {i !== 7 ? (
                 <Row style={styles.mainRows}>
-                  <Col style={{ borderWidth: 1 }}>
-                    <Text style={{ textAlign: 'center' }}>
+                  <Col style={styles.colStyle}>
+                    <Text style={styles.textCenter}>
                       {i}X{i + 1}
                     </Text>
                   </Col>
-                  <Col style={{ borderWidth: 1 }}>
-                    <Text style={{ textAlign: 'center' }}>
-                      {move_2Stat || 'N/A'}
-                    </Text>
+                  <Col style={styles.colStyle}>
+                    <Text style={styles.textCenter}>{move_2Stat || 'N/A'}</Text>
                   </Col>
-                  <Col style={{ borderWidth: 1 }}>
-                    <Text style={{ textAlign: 'center' }}>
-                      {time_2Stat || 'N/A'}
-                    </Text>
+                  <Col style={styles.colStyle}>
+                    <Text style={styles.textCenter}>{time_2Stat || 'N/A'}</Text>
                   </Col>
                 </Row>
               ) : (
@@ -105,27 +97,16 @@ export default class GameStats extends Component {
     return (
       <Container style={styles.container}>
         <Image
-          style={{
-            width: tWidth,
-            height: tHeight
-          }}
+          style={styles.mainImage}
           source={require('../images/snowbackground.gif')}
         >
-          <Image
-            style={{
-              width: tWidth,
-              height: tHeight
-            }}
-            source={require('../images/snowbackground.gif')}
-          >
-            <Content>
-              {this.state.displayStats ? (
-                <Grid>{this.statArray.map(ele => ele)}</Grid>
-              ) : (
-                <View />
-              )}
-            </Content>
-          </Image>
+          <Content>
+            {this.state.displayStats ? (
+              <Grid>{this.statArray.map(ele => ele)}</Grid>
+            ) : (
+              <View />
+            )}
+          </Content>
         </Image>
       </Container>
     )
@@ -159,5 +140,11 @@ let styles = StyleSheet.create({
     height: 30,
     marginLeft: 35,
     marginRight: 35
+  },
+  colStyle: { borderWidth: 1 },
+  textCenter: { textAlign: 'center' },
+  mainImage: {
+    width: tWidth,
+    height: tHeight
   }
 })
