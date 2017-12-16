@@ -57,6 +57,14 @@ let styles = StyleSheet.create({
     textAlign: 'center',
     color: 'white',
     fontWeight: '700'
+  },
+  title:{
+    backgroundColor: '#6b92b9',
+    textAlign: 'center',
+    position: 'relative',
+    bottom:'16%',
+    color: 'white',
+    fontSize: 26
   }
 })
 class HomeScreen extends Component {
@@ -87,18 +95,21 @@ class HomeScreen extends Component {
             style={styles.image}
             source={require('./images/snowbackground.gif')}
           >
-            <View style={styles.container}>
-              <View style={styles.button}>
-                <TouchableOpacity onPress={this.login}>
+             {/* <View style={styles.container}>
+              <View style={styles.button}> */}
+              <Text style={styles.title}>
+                Title Here 
+              </Text>
+                {/*<TouchableOpacity onPress={this.login}>
                   <Text style={styles.text}>Login</Text>
-                </TouchableOpacity>
-              </View>
+                </TouchableOpacity> 
+               </View> */}
               <View style={styles.button}>
                 <TouchableOpacity onPress={this.guest}>
                   <Text style={styles.text}>Lets play now!</Text>
                 </TouchableOpacity>
               </View>
-            </View>
+            {/* </View> */}
           </Image>
         {/* </ImageBackground> */}
       </Provider>
