@@ -23,32 +23,6 @@ class Grid extends Component {
   }
 
   render() {
-    const styles = StyleSheet.create({
-      TopBuffer: { height: 300, backgroundColor: 'white', borderWidth: 0 },
-      text: { marginLeft: 5 },
-      row: { height: gamePieceSize, width: rowWidth },
-      top: { height: 180, width: 300 },
-      app: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'white'
-      },
-      textTop: {
-        fontSize: 40,
-        fontWeight: 'bold',
-        textAlign: 'center',
-        marginBottom: 150,
-        marginTop: 150,
-        backgroundColor: 'rgba(0,0,0,0)'
-      },
-      backgroundImage: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: tWidth,
-        height: tHeight
-      }
-    })
-
     let width = this.props.dimensions && this.props.dimensions.width
     let height = this.props.dimensions && this.props.dimensions.height
     const gamePieceSize = tWidth * 0.81 / width
@@ -63,6 +37,36 @@ class Grid extends Component {
       }
     }
     const rowWidth = width * gamePieceSize + width * 2
+    const styles = StyleSheet.create({
+      TopBuffer: { height: 300, backgroundColor: 'white', borderWidth: 0 },
+      text: { marginLeft: 5 },
+      row: { height: gamePieceSize, width: rowWidth },
+      top: { height: 180, width: 300 },
+      app: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'white'
+      }
+    })
+    const datas = [
+      [
+        <View>
+          <Text
+            style={{
+              fontSize: 40,
+              fontWeight: 'bold',
+              textAlign: 'center',
+              marginBottom: 150,
+              marginTop: 150,
+              backgroundColor: 'rgba(0,0,0,0)'
+            }}
+            key="moveCount"
+          >
+            Number of Moves: {this.props.count.count}
+          </Text>
+        </View>
+      ]
+    ]
     return (
       <View style={{ backgroundColor: 'white' }}>
         {this.props && this.props.bool.indexOf(true) === -1 ? (
@@ -72,10 +76,34 @@ class Grid extends Component {
           </View>
         ) : (
           <Image
-            style={styles.backgroundImage}
+            style={{
+              justifyContent: 'center',
+              alignItems: 'center',
+              width: tWidth,
+              height: tHeight
+            }}
             source={require('../images/snowbackground.gif')}
           >
-            <Text style={styles.textTop} key="moveCount">
+            {/* <Image
+              style={{
+                justifyContent: 'center',
+                alignItems: 'center',
+                width: tWidth,
+                height: tHeight
+              }}
+              source={require('../images/snowbackground.gif')}
+            > */}
+            <Text
+              style={{
+                color: 'white',
+                fontSize: 40,
+                fontWeight: 'bold',
+                textAlign: 'center',
+                backgroundColor: 'rgba(0,0,0,0)',
+                marginBottom: 20
+              }}
+              key="moveCount"
+            >
               Moves: {this.props.count.count}
             </Text>
             <Table borderStyle={{ borderWidth: 0, borderColor: 'white' }}>
@@ -86,9 +114,11 @@ class Grid extends Component {
               />
             </Table>
             <Text style={{ fontSize: 5 }}>{'\n'}</Text>
+
             <Timer />
             <Reset />
           </Image>
+          // </Image>
         )}
       </View>
     )
