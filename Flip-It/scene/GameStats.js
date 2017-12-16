@@ -10,56 +10,25 @@ import {
 } from 'native-base'
 import { View, StyleSheet, Image, AsyncStorage } from 'react-native'
 import { Col, Row, Grid } from 'react-native-easy-grid'
-const Dimensions = require('Dimensions')
-let { height, width } = Dimensions.get('window')
-let tHeight = height
-let tWidth = width
+import Dimensions from 'Dimensions'
+const { height, width } = Dimensions.get('window')
+const tHeight = height
+const tWidth = width
 
 export default class GameStats extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      userName: 'Bob',
       displayStats: false
     }
     this.limitPush = 0
     this.statArray = [
-      <Row
-        key={'array'}
-        style={{
-          marginTop: 80,
-          backgroundColor: '#95dbf4',
-          borderWidth: 2,
-          height: 50,
-          marginLeft: 35,
-          marginRight: 35
-        }}
-      >
+      <Row key={'array'} style={styles.row}>
         <Col style={{ borderWidth: 1 }}>
-          <Text
-            style={{
-              marginTop: 5,
-              textAlign: 'center',
-              fontWeight: 'bold',
-              fontSize: 28,
-              color: 'white'
-            }}
-          >
-            G a m e - S t a t s
-          </Text>
+          <Text style={styles.text1}>G a m e - S t a t s</Text>
         </Col>
       </Row>,
-      <Row
-        key={'array'}
-        style={{
-          marginTop: 8,
-          backgroundColor: 'white',
-          borderWidth: 2,
-          height: 30,
-          marginLeft: 35,
-          marginRight: 35
-        }}
-      >
+      <Row key={'array'} style={styles.mainRows}>
         <Col style={{ borderWidth: 1 }}>
           <Text style={{ textAlign: 'center' }}>Board</Text>
         </Col>
@@ -83,16 +52,7 @@ export default class GameStats extends Component {
         if (this.limitPush < 1) {
           this.statArray.push(
             <View key={i}>
-              <Row
-                style={{
-                  marginTop: 8,
-                  backgroundColor: '#6bbedb',
-                  borderWidth: 2,
-                  height: 30,
-                  marginLeft: 35,
-                  marginRight: 35
-                }}
-              >
+              <Row style={styles.mainRows}>
                 <Col style={{ borderWidth: 1 }}>
                   <Text style={{ textAlign: 'center' }}>
                     {i}X{i}
@@ -110,16 +70,7 @@ export default class GameStats extends Component {
                 </Col>
               </Row>
               {i !== 7 ? (
-                <Row
-                  style={{
-                    marginTop: 8,
-                    backgroundColor: 'white',
-                    borderWidth: 1,
-                    height: 30,
-                    marginLeft: 35,
-                    marginRight: 35
-                  }}
-                >
+                <Row style={styles.mainRows}>
                   <Col style={{ borderWidth: 1 }}>
                     <Text style={{ textAlign: 'center' }}>
                       {i}X{i + 1}
@@ -167,21 +118,7 @@ export default class GameStats extends Component {
             }}
             source={require('../images/snowbackground.gif')}
           >
-            {/* <Header>
-              <Text>Profile</Text>
-            </Header> */}
             <Content>
-              {/* <Grid>
-                <Col style={{ backgroundColor: '#635DB7', height: 100 }}>
-                  <Text>{this.state.userName}</Text>
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../images/user.jpg')}
-                  />
-                </Col>
-                <Col style={{ backgroundColor: '#00CE9F', height: 100 }} />
-              </Grid> */}
-
               {this.state.displayStats ? (
                 <Grid>{this.statArray.map(ele => ele)}</Grid>
               ) : (
@@ -199,5 +136,28 @@ let styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center'
+  },
+  row: {
+    marginTop: 80,
+    backgroundColor: '#95dbf4',
+    borderWidth: 2,
+    height: 50,
+    marginLeft: 35,
+    marginRight: 35
+  },
+  text1: {
+    marginTop: 5,
+    textAlign: 'center',
+    fontWeight: 'bold',
+    fontSize: 28,
+    color: 'white'
+  },
+  mainRows: {
+    marginTop: 8,
+    backgroundColor: 'white',
+    borderWidth: 2,
+    height: 30,
+    marginLeft: 35,
+    marginRight: 35
   }
 })
