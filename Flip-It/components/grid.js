@@ -46,27 +46,22 @@ class Grid extends Component {
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: 'white'
+      },
+      backgroundGif: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: tWidth,
+        height: tHeight
+      },
+      text2: {
+        color: 'white',
+        fontSize: 40,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        backgroundColor: 'rgba(0,0,0,0)',
+        marginBottom: 20
       }
     })
-    const datas = [
-      [
-        <View>
-          <Text
-            style={{
-              fontSize: 40,
-              fontWeight: 'bold',
-              textAlign: 'center',
-              marginBottom: 150,
-              marginTop: 150,
-              backgroundColor: 'rgba(0,0,0,0)'
-            }}
-            key="moveCount"
-          >
-            Number of Moves: {this.props.count.count}
-          </Text>
-        </View>
-      ]
-    ]
     return (
       <View style={{ backgroundColor: 'white' }}>
         {this.props && this.props.bool.indexOf(true) === -1 ? (
@@ -76,34 +71,10 @@ class Grid extends Component {
           </View>
         ) : (
           <Image
-            style={{
-              justifyContent: 'center',
-              alignItems: 'center',
-              width: tWidth,
-              height: tHeight
-            }}
+            style={styles.backgroundGif}
             source={require('../images/snowbackground.gif')}
           >
-            {/* <Image
-              style={{
-                justifyContent: 'center',
-                alignItems: 'center',
-                width: tWidth,
-                height: tHeight
-              }}
-              source={require('../images/snowbackground.gif')}
-            > */}
-            <Text
-              style={{
-                color: 'white',
-                fontSize: 40,
-                fontWeight: 'bold',
-                textAlign: 'center',
-                backgroundColor: 'rgba(0,0,0,0)',
-                marginBottom: 20
-              }}
-              key="moveCount"
-            >
+            <Text style={styles.text2} key="moveCount">
               Moves: {this.props.count.count}
             </Text>
             <Table borderStyle={{ borderWidth: 0, borderColor: 'white' }}>
@@ -118,7 +89,6 @@ class Grid extends Component {
             <Timer />
             <Reset />
           </Image>
-          // </Image>
         )}
       </View>
     )
