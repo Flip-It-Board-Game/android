@@ -2,14 +2,12 @@ import React, { Component } from 'react';
 import { View, TouchableHighlight, Image } from 'react-native';
 import { connect } from 'react-redux';
 import { newArray, setCount, setWinner } from './store/store';
-import SocketIOClient from 'socket.io-client';
 import Canvas from 'react-native-canvas';
 
 class Buttons extends Component {
   constructor(props) {
     super(props);
     this.toggleColor = this.toggleColor.bind(this);
-    this.socket = SocketIOClient('http://localhost:3005');
   }
 
   handleCanvas(canvas) {
@@ -69,11 +67,6 @@ class Buttons extends Component {
   render() {
     const displayBool = !!this.props.bool[this.props.iNum];
     const dispArr = this.props.newArray;
-    this.socket.on('newState', receiveState => {
-      console.log('SOCKET BOTTOM', receiveState);
-      dispArr(receiveState);
-    });
-
     return (
       <View>
         {/* <Canvas ref={this.handleCanvas}/> */}
