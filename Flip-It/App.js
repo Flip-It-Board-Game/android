@@ -85,7 +85,7 @@ class HomeScreen extends Component {
         > */}
           <Image
             style={styles.image}
-            source={require('./images/snowgif.gif')}
+            source={require('./images/snowbackground.gif')}
           >
             <View style={styles.container}>
               <View style={styles.button}>

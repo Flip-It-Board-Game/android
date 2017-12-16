@@ -96,7 +96,7 @@ class Menu extends Component {
               width: tWidth,
               height: tHeight
             }}
-            source={require('../images/snowgif.gif')}
+            source={require('../images/snowbackground.gif')}
           >
             {buttonArr.map(button => button)}
             <Text>{'\n'}</Text>

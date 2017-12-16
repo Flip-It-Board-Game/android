@@ -83,17 +83,17 @@ class Grid extends Component {
               width: tWidth,
               height: tHeight
             }}
-            source={require('../images/snowman.jpg')}
+            source={require('../images/snowbackground.gif')}
           >
-            <Image
+            {/* <Image
               style={{
                 justifyContent: 'center',
                 alignItems: 'center',
                 width: tWidth,
                 height: tHeight
               }}
-              source={require('../images/snowgif.gif')}
-            >
+              source={require('../images/snowbackground.gif')}
+            > */}
               <Text
                 style={{
                   color: 'white',
@@ -119,7 +119,7 @@ class Grid extends Component {
               <Timer />
               <Reset />
             </Image>
-          </Image>
+          // </Image>
         )}
       </View>
     );

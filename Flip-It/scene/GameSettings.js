@@ -62,7 +62,7 @@ class GameMenu extends Component {
               width: tWidth,
               height: tHeight
             }}
-            source={require('../images/snowgif.gif')}
+            source={require('../images/snowbackground.gif')}
           >
             <View>
               <Button transparent light onPress={this.resetGameStats}>
