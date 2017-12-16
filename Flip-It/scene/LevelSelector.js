@@ -1,20 +1,38 @@
-import React, { Component } from 'react';
-import { View, StyleSheet, Text, Image } from 'react-native';
-import { Button } from 'native-base';
-import store, { setBoard, setDimensions } from '../components/store/store';
-const Dimensions = require('Dimensions');
-let { height, width } = Dimensions.get('window');
-let tHeight = height;
-let tWidth = width;
+import React, { Component } from 'react'
+import { View, StyleSheet, Text, Image } from 'react-native'
+import { Button } from 'native-base'
+import store, { setBoard, setDimensions } from '../components/store/store'
+import Dimensions from 'Dimensions'
+const { height, width } = Dimensions.get('window')
+const tHeight = height
+const tWidth = width
 
 class Menu extends Component {
   render() {
     let styles = StyleSheet.create({
       container: {
         justifyContent: 'center'
+      },
+      text: {
+        fontSize: 17,
+        fontWeight: '900',
+        color: 'black',
+        backgroundColor: 'rgba(0,0,0,0)',
+        borderWidth: 1,
+        paddingLeft: 65,
+        paddingRight: 63,
+        paddingTop: 3,
+        borderColor: 'black',
+        textAlign: 'center'
+      },
+      image: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: tWidth,
+        height: tHeight
       }
-    });
-    let buttonArr = [];
+    })
+    let buttonArr = []
     for (let i = 2; i < 8; i++) {
       buttonArr.push(
         <View>
@@ -23,25 +41,12 @@ class Menu extends Component {
             light
             style={{ backgroundColor: 'rgba(0,0,0,0)' }}
             onPress={() => {
-              store.dispatch(setBoard({ width: i, height: i }));
-              store.dispatch(setDimensions({ width: i, height: i }));
-              this.props.navigation.navigate('GameScreen');
+              store.dispatch(setBoard({ width: i, height: i }))
+              store.dispatch(setDimensions({ width: i, height: i }))
+              this.props.navigation.navigate('GameScreen')
             }}
           >
-            <Text
-              style={{
-                fontSize: 17,
-                fontWeight: '900',
-                color: 'black',
-                backgroundColor: 'rgba(0,0,0,0)',
-                borderWidth: 1,
-                paddingLeft: 65,
-                paddingRight: 63,
-                paddingTop: 3,
-                borderColor: 'black',
-                textAlign: 'center'
-              }}
-            >
+            <Text style={styles.text}>
               {i}X{i}
             </Text>
           </Button>
@@ -50,25 +55,12 @@ class Menu extends Component {
               transparent
               light
               onPress={() => {
-                store.dispatch(setBoard({ width: i, height: i + 1 }));
-                store.dispatch(setDimensions({ width: i, height: i + 1 }));
-                this.props.navigation.navigate('GameScreen');
+                store.dispatch(setBoard({ width: i, height: i + 1 }))
+                store.dispatch(setDimensions({ width: i, height: i + 1 }))
+                this.props.navigation.navigate('GameScreen')
               }}
             >
-              <Text
-                style={{
-                  fontSize: 17,
-                  fontWeight: '900',
-                  color: 'black',
-                  backgroundColor: 'rgba(0,0,0,0)',
-                  borderWidth: 1,
-                  paddingLeft: 65,
-                  paddingRight: 63,
-                  paddingTop: 3,
-                  borderColor: 'black',
-                  textAlign: 'center'
-                }}
-              >
+              <Text style={styles.text}>
                 {i}X{i + 1}
               </Text>
             </Button>
@@ -76,35 +68,20 @@ class Menu extends Component {
             <View />
           )}
         </View>
-      );
+      )
     }
     return (
       <View style={styles.container}>
         <Image
-          style={{
-            justifyContent: 'center',
-            alignItems: 'center',
-            width: tWidth,
-            height: tHeight
-          }}
-          source={require('../images/snowman.jpg')}
+          style={styles.image}
+          source={require('../images/snowbackground.gif')}
         >
-          <Image
-            style={{
-              justifyContent: 'center',
-              alignItems: 'center',
-              width: tWidth,
-              height: tHeight
-            }}
-            source={require('../images/snowbackground.gif')}
-          >
-            {buttonArr.map(button => button)}
-            <Text>{'\n'}</Text>
-          </Image>
+          {buttonArr.map(button => button)}
+          <Text>{'\n'}</Text>
         </Image>
       </View>
-    );
+    )
   }
 }
 
-export default Menu;
+export default Menu
