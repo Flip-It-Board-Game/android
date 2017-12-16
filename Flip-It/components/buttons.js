@@ -61,7 +61,6 @@ class Buttons extends Component {
       }
     }
     this.props.newArray(tempArr);
-    this.socket.emit('sendState', tempArr);
   }
 
   render() {
