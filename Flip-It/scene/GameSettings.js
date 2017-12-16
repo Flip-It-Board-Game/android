@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, AsyncStorage, Image, Text } from 'react-native';
+import { View, AsyncStorage, Image, Text, StyleSheet } from 'react-native';
 import { Button } from 'native-base';
 const Dimensions = require('Dimensions');
 let { height, width } = Dimensions.get('window');
