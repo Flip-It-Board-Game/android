@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, TouchableHighlight, Image } from 'react-native'
+import { View, TouchableHighlight, Image, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import { newArray, setCount, setWinner } from './store/store'
 
@@ -11,7 +11,7 @@ class Buttons extends Component {
 
   toggleColor() {
     let countNum = this.props && this.props.count.count
-    //sets count in store
+    //sets move count in store
     this.props.setCount({ count: countNum + 1 })
     //sets width and height to values set in store, sets totalSquares to these numbers multiplied
     this.width = this.props.dimensions && this.props.dimensions.width
@@ -48,23 +48,23 @@ class Buttons extends Component {
 
   render() {
     const displayBool = !!this.props.bool[this.props.iNum]
+    const styles = StyleSheet.create({
+      imageStyle: {
+        width: this.props.size,
+        height: this.props.size
+      }
+    })
     return (
       <View>
         <TouchableHighlight onPress={this.toggleColor}>
           {displayBool ? (
             <Image
-              style={{
-                width: this.props.size,
-                height: this.props.size
-              }}
+              style={styles.imageStyle}
               source={require('../images/santahat2.png')}
             />
           ) : (
             <Image
-              style={{
-                width: this.props.size,
-                height: this.props.size
-              }}
+              style={styles.imageStyle}
               source={require('../images/present.png')}
             />
           )}
