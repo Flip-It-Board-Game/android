@@ -54,7 +54,7 @@ class GameMenu extends Component {
       <View>
         <Image
           style={styles.mainImage}
-          source={require('../images/snowbackground.gif')}
+          source={require('../images/faster5sec.gif')}
         >
           <View>
             <Button transparent light onPress={this.resetGameStats}>

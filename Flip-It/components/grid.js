@@ -72,7 +72,7 @@ class Grid extends Component {
         ) : (
           <Image
             style={styles.backgroundGif}
-            source={require('../images/snowbackground.gif')}
+            source={require('../images/faster5sec.gif')}
           >
             <Text style={styles.text2} key="moveCount">
               Moves: {this.props.count.count}
