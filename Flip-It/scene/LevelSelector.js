@@ -74,7 +74,7 @@ class Menu extends Component {
       <View style={styles.container}>
         <Image
           style={styles.image}
-          source={require('../images/snowbackground.gif')}
+          source={require('../images/faster5sec.gif')}
         >
           {buttonArr.map(button => button)}
           <Text>{'\n'}</Text>

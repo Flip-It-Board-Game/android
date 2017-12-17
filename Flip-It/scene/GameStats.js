@@ -98,7 +98,7 @@ export default class GameStats extends Component {
       <Container style={styles.container}>
         <Image
           style={styles.mainImage}
-          source={require('../images/snowbackground.gif')}
+          source={require('../images/faster5sec.gif')}
         >
           <Content>
             {this.state.displayStats ? (
