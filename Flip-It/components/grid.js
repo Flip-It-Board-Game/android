@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import Reset from './reset'
 import Timer from './timer2'
 import YouWon from './youWon'
-import { setCount } from './store/store'
+import { setCount, reset } from './store/store'
 import Dimensions from 'Dimensions'
 let { height, width } = Dimensions.get('window')
 const tHeight = height
@@ -20,6 +20,7 @@ class Grid extends Component {
 
   componentWillMount() {
     this.props.setCount({ count: 0 })
+    this.props.reset()
   }
 
   render() {
@@ -106,7 +107,8 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
-    setCount: count => dispatch(setCount(count))
+    setCount: count => dispatch(setCount(count)),
+    reset: () => dispatch(reset())
   }
 }
 
