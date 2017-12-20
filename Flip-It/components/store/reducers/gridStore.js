@@ -22,7 +22,6 @@ export function newArray(array) {
 }
 
 export function setBoard(board) {
-  console.log()
   let newBoolArray = []
   let newTotalSquares = board.width * board.height
   for (let i = 0; i < newTotalSquares; i++) {

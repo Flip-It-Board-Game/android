@@ -5,7 +5,6 @@ const WIDTH_HEIGHT = 'WIDTH_HEIGHT'
 
 //Action Creators
 export function setDimensions(board) {
-  console.log('HERE', board)
   const action = { type: WIDTH_HEIGHT, board }
   return action
 }
