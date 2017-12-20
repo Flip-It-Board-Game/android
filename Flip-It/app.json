@@ -1,5 +1,19 @@
 {
   "expo": {
-    "sdkVersion": "22.0.0"
+    "sdkVersion": "22.0.0",
+    "name": "FlipIt",
+    "slug": "FlipIt",
+    "privacy": "public",
+    "version": "1.0.0",
+    "orientation": "portrait"
+  },
+  "ios": {
+    "supportsTablet": true,
+    "buildNumber": "1"
+  },
+  "android": {
+    "package": "com.stackathon.flipit",
+    "permissions": [],
+    "version": 1
   }
 }
