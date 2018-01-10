@@ -54,7 +54,7 @@ class Grid extends Component {
       background: {
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'black',
+        backgroundColor: '#282828',
         width: tWidth,
         height: tHeight
       },
@@ -79,7 +79,7 @@ class Grid extends Component {
             <Text style={styles.text2} key="moveCount">
               Moves: {this.props.count.count}
             </Text>
-            <Table borderStyle={{ borderWidth: 0, borderColor: 'white' }}>
+            <Table borderStyle={{ borderWidth: 0, borderColor: '#282828' }}>
               <Rows
                 data={tableData}
                 style={styles.row}

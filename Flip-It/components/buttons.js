@@ -45,28 +45,37 @@ class Buttons extends Component {
     }
     this.props.newArray(tempArr);
   }
-
   render() {
     const displayBool = !!this.props.bool[this.props.iNum];
     const styles = StyleSheet.create({
       color1: {
-        backgroundColor: '#fd746c',
-        width: this.props.size,
-        height: this.props.size
+        backgroundColor: '#e14835',
+        width: this.props.size - 2,
+        height: this.props.size - 2
       },
       color2: {
-        backgroundColor: '#ff4a3f',
-        width: this.props.size,
-        height: this.props.size
+        backgroundColor: '#ffffff',
+        width: this.props.size - 2,
+        height: this.props.size - 2
       }
     });
+    const colors = ['#ffb38e', '#ff9866', '#ff7735', '#ff5b0c'];
+    const color = function() {
+      return colors[Math.floor(Math.random() * 4)];
+    };
     return (
       <View>
         <TouchableHighlight onPress={this.toggleColor}>
           {displayBool ? (
-            <View style={styles.color1} />
-          ) : (
             <View style={styles.color2} />
+          ) : (
+            <View
+              style={{
+                backgroundColor: color(),
+                width: this.props.size - 2,
+                height: this.props.size - 2
+              }}
+            />
           )}
         </TouchableHighlight>
       </View>
