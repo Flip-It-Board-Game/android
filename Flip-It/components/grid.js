@@ -85,35 +85,6 @@ class Grid extends Component {
           </View>
         ) : (
           <View style={styles.background}>
-            <View
-              style={{
-                display: 'flex',
-                flexDirection: 'row',
-                justifyContent: 'center',
-                alignItems: 'center',
-                marginBottom: 10
-              }}
-            >
-              <View
-                style={{
-                  backgroundColor: 'orange',
-                  height: 30,
-                  width: 30,
-                  marginLeft: 4,
-                  marginRight: 4
-                }}
-              />
-              <View
-                style={{
-                  backgroundColor: 'red',
-                  height: 30,
-                  width: 30,
-                  marginLeft: 4,
-                  marginRight: 4
-                }}
-              />
-            </View>
-
             <Text style={styles.text2} key="moveCount">
               Moves: {this.props.count.count}
             </Text>
@@ -127,6 +98,50 @@ class Grid extends Component {
             <Text style={{ fontSize: 5 }}>{'\n'}</Text>
             <Timer />
             <Reset />
+            <View
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                marginTop: 10
+              }}
+            >
+              <View
+                style={{
+                  backgroundColor: 'orange',
+                  height: 30,
+                  width: 30,
+                  marginLeft: 10,
+                  marginRight: 10
+                }}
+              />
+              <View
+                style={{
+                  backgroundColor: 'red',
+                  height: 30,
+                  width: 30,
+                  marginLeft: 10,
+                  marginRight: 10
+                }}
+              />
+              <View
+                style={{
+                  backgroundColor: 'orange',
+                  height: 30,
+                  width: 30,
+                  marginLeft: 10,
+                  marginRight: 10
+                }}
+              />
+              <View
+                style={{
+                  backgroundColor: 'red',
+                  height: 30,
+                  width: 30,
+                  marginLeft: 10,
+                  marginRight: 10
+                }}
+              />
+            </View>
           </View>
         )}
       </View>
