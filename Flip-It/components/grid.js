@@ -102,7 +102,7 @@ class Grid extends Component {
               style={{
                 display: 'flex',
                 flexDirection: 'row',
-                marginTop: 10
+                marginTop: 9
               }}
             >
               <View
