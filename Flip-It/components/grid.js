@@ -42,10 +42,8 @@ class Grid extends Component {
     }
     const rowWidth = width * gamePieceSize + width * 2;
     const styles = StyleSheet.create({
-      TopBuffer: { height: 300, backgroundColor: 'white', borderWidth: 0 },
       text: { marginLeft: 5 },
       row: { height: gamePieceSize, width: rowWidth },
-      top: { height: 180, width: 300 },
       app: {
         justifyContent: 'center',
         alignItems: 'center',
@@ -54,9 +52,9 @@ class Grid extends Component {
       background: {
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#282828',
+        backgroundColor: '#1c1c1c',
         width: tWidth,
-        height: tHeight
+        height: tHeight - 62
       },
       text2: {
         color: 'white',
@@ -65,6 +63,17 @@ class Grid extends Component {
         textAlign: 'center',
         backgroundColor: 'rgba(0,0,0,0)',
         marginBottom: 20
+      },
+      text3: {
+        color: 'white',
+        fontSize: 17,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        backgroundColor: 'rgba(0,0,0,0)',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center'
       }
     });
     return (
@@ -76,10 +85,39 @@ class Grid extends Component {
           </View>
         ) : (
           <View style={styles.background}>
+            <View
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'center',
+                alignItems: 'center',
+                marginBottom: 10
+              }}
+            >
+              <View
+                style={{
+                  backgroundColor: 'orange',
+                  height: 30,
+                  width: 30,
+                  marginLeft: 4,
+                  marginRight: 4
+                }}
+              />
+              <View
+                style={{
+                  backgroundColor: 'red',
+                  height: 30,
+                  width: 30,
+                  marginLeft: 4,
+                  marginRight: 4
+                }}
+              />
+            </View>
+
             <Text style={styles.text2} key="moveCount">
               Moves: {this.props.count.count}
             </Text>
-            <Table borderStyle={{ borderWidth: 0, borderColor: '#282828' }}>
+            <Table borderStyle={{ borderWidth: 0, borderColor: '#1c1c1c' }}>
               <Rows
                 data={tableData}
                 style={styles.row}
