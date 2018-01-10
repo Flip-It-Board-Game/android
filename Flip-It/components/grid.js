@@ -1,46 +1,46 @@
-import React, { Component } from 'react'
-import { Image, View, StyleSheet, Text } from 'react-native'
-import { Table, Rows } from 'react-native-table-component'
-import Buttons from './buttons'
-import { connect } from 'react-redux'
-import Reset from './reset'
-import Timer from './timer2'
-import YouWon from './youWon'
-import { setCount, reset } from './store/store'
-import Dimensions from 'Dimensions'
-let { height, width } = Dimensions.get('window')
-const tHeight = height
-const tWidth = width
+import React, { Component } from 'react';
+import { Image, View, StyleSheet, Text } from 'react-native';
+import { Table, Rows } from 'react-native-table-component';
+import Buttons from './buttons';
+import { connect } from 'react-redux';
+import Reset from './reset';
+import Timer from './timer2';
+import YouWon from './youWon';
+import { setCount, reset } from './store/store';
+import Dimensions from 'Dimensions';
+let { height, width } = Dimensions.get('window');
+const tHeight = height;
+const tWidth = width;
 
 class Grid extends Component {
   constructor(props) {
-    super(props)
-    this.num = 0
+    super(props);
+    this.num = 0;
   }
 
   componentWillMount() {
-    this.props.setCount({ count: 0 })
+    this.props.setCount({ count: 0 });
   }
 
   componentWillUnmount() {
-    this.props.reset()
+    this.props.reset();
   }
 
   render() {
-    let width = this.props.dimensions && this.props.dimensions.width
-    let height = this.props.dimensions && this.props.dimensions.height
-    const gamePieceSize = tWidth * 0.81 / width
-    const num = width * height
-    let rowButtons = []
-    let tableData = []
+    let width = this.props.dimensions && this.props.dimensions.width;
+    let height = this.props.dimensions && this.props.dimensions.height;
+    const gamePieceSize = tWidth * 0.81 / width;
+    const num = width * height;
+    let rowButtons = [];
+    let tableData = [];
     for (let i = 0; i < num; i++) {
-      rowButtons.push(<Buttons iNum={i} size={gamePieceSize} />)
+      rowButtons.push(<Buttons iNum={i} size={gamePieceSize} />);
       if ((i + 1) % width === 0) {
-        tableData.push(rowButtons)
-        rowButtons = []
+        tableData.push(rowButtons);
+        rowButtons = [];
       }
     }
-    const rowWidth = width * gamePieceSize + width * 2
+    const rowWidth = width * gamePieceSize + width * 2;
     const styles = StyleSheet.create({
       TopBuffer: { height: 300, backgroundColor: 'white', borderWidth: 0 },
       text: { marginLeft: 5 },
@@ -51,9 +51,10 @@ class Grid extends Component {
         alignItems: 'center',
         backgroundColor: 'white'
       },
-      backgroundGif: {
+      background: {
         justifyContent: 'center',
         alignItems: 'center',
+        backgroundColor: 'black',
         width: tWidth,
         height: tHeight
       },
@@ -65,7 +66,7 @@ class Grid extends Component {
         backgroundColor: 'rgba(0,0,0,0)',
         marginBottom: 20
       }
-    })
+    });
     return (
       <View style={{ backgroundColor: 'white' }}>
         {this.props && this.props.bool.indexOf(true) === -1 ? (
@@ -74,10 +75,7 @@ class Grid extends Component {
             <Reset />
           </View>
         ) : (
-          <Image
-            style={styles.backgroundGif}
-            source={require('../images/faster5sec.gif')}
-          >
+          <View style={styles.background}>
             <Text style={styles.text2} key="moveCount">
               Moves: {this.props.count.count}
             </Text>
@@ -89,13 +87,12 @@ class Grid extends Component {
               />
             </Table>
             <Text style={{ fontSize: 5 }}>{'\n'}</Text>
-
             <Timer />
             <Reset />
-          </Image>
+          </View>
         )}
       </View>
-    )
+    );
   }
 }
 
@@ -105,14 +102,14 @@ const mapState = state => {
     dimensions: state.dimensions,
     count: state.count,
     won: state.won
-  }
-}
+  };
+};
 
 const mapDispatch = dispatch => {
   return {
     setCount: count => dispatch(setCount(count)),
     reset: () => dispatch(reset())
-  }
-}
+  };
+};
 
-export default connect(mapState, mapDispatch)(Grid)
+export default connect(mapState, mapDispatch)(Grid);
