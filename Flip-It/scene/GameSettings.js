@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
-import { View, AsyncStorage, Image, Text, StyleSheet } from 'react-native'
-import { Button } from 'native-base'
-const Dimensions = require('Dimensions')
-let { height, width } = Dimensions.get('window')
-let tHeight = height
-let tWidth = width
+import React, { Component } from 'react';
+import { View, AsyncStorage, Image, Text, StyleSheet } from 'react-native';
+import { Button } from 'native-base';
+const Dimensions = require('Dimensions');
+let { height, width } = Dimensions.get('window');
+let tHeight = height;
+let tWidth = width;
 
 const styles = StyleSheet.create({
   container: {
@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF'
   },
   mainImage: {
+    backgroundColor: 'black',
     justifyContent: 'center',
     alignItems: 'center',
     width: tWidth,
@@ -32,39 +33,34 @@ const styles = StyleSheet.create({
     width: 170,
     textAlign: 'center'
   }
-})
+});
 
 class GameMenu extends Component {
   constructor(props) {
-    super(props)
-    this.resetGameStats = this.resetGameStats.bind(this)
+    super(props);
+    this.resetGameStats = this.resetGameStats.bind(this);
   }
 
   resetGameStats() {
     for (let i = 2; i < 8; i++) {
-      AsyncStorage.setItem(`${i}${i}`, 'N/A')
-      AsyncStorage.setItem(`${i}${i + 1}`, 'N/A')
-      AsyncStorage.setItem(`${i}${i}Time`, 'N/A')
-      AsyncStorage.setItem(`${i}${i + 1}Time`, 'N/A')
+      AsyncStorage.setItem(`${i}${i}`, 'N/A');
+      AsyncStorage.setItem(`${i}${i + 1}`, 'N/A');
+      AsyncStorage.setItem(`${i}${i}Time`, 'N/A');
+      AsyncStorage.setItem(`${i}${i + 1}Time`, 'N/A');
     }
   }
 
   render() {
     return (
-      <View>
-        <Image
-          style={styles.mainImage}
-          source={require('../images/faster5sec.gif')}
-        >
-          <View>
-            <Button transparent light onPress={this.resetGameStats}>
-              <Text style={styles.text}>Reset Game Stats</Text>
-            </Button>
-          </View>
-        </Image>
+      <View style={styles.mainImage}>
+        <View>
+          <Button transparent light onPress={this.resetGameStats}>
+            <Text style={styles.text}>Reset Game Stats</Text>
+          </Button>
+        </View>
       </View>
-    )
+    );
   }
 }
 
-export default GameMenu
+export default GameMenu;

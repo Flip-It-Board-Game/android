@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import {
   Container,
   Header,
@@ -7,21 +7,21 @@ import {
   Text,
   Table,
   Rows
-} from 'native-base'
-import { View, StyleSheet, Image, AsyncStorage } from 'react-native'
-import { Col, Row, Grid } from 'react-native-easy-grid'
-import Dimensions from 'Dimensions'
-const { height, width } = Dimensions.get('window')
-const tHeight = height
-const tWidth = width
+} from 'native-base';
+import { View, StyleSheet, Image, AsyncStorage } from 'react-native';
+import { Col, Row, Grid } from 'react-native-easy-grid';
+import Dimensions from 'Dimensions';
+const { height, width } = Dimensions.get('window');
+const tHeight = height;
+const tWidth = width;
 
 export default class GameStats extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       displayStats: false
-    }
-    this.limitPush = 0
+    };
+    this.limitPush = 0;
     this.statArray = [
       <Row key={'array'} style={styles.row}>
         <Col style={styles.colStyle}>
@@ -39,16 +39,16 @@ export default class GameStats extends Component {
           <Text style={styles.textCenter}>Time</Text>
         </Col>
       </Row>
-    ]
+    ];
   }
 
   componentWillMount = async () => {
     try {
       for (let i = 2; i < 8; i++) {
-        let moveStat = await AsyncStorage.getItem(`${i}${i}`)
-        let move_2Stat = await AsyncStorage.getItem(`${i}${i + 1}`)
-        let timeStat = await AsyncStorage.getItem(`${i}${i}Time`)
-        let time_2Stat = await AsyncStorage.getItem(`${i}${i + 1}Time`)
+        let moveStat = await AsyncStorage.getItem(`${i}${i}`);
+        let move_2Stat = await AsyncStorage.getItem(`${i}${i + 1}`);
+        let timeStat = await AsyncStorage.getItem(`${i}${i}Time`);
+        let time_2Stat = await AsyncStorage.getItem(`${i}${i + 1}Time`);
         if (this.limitPush < 1) {
           this.statArray.push(
             <View key={i}>
@@ -83,23 +83,20 @@ export default class GameStats extends Component {
                 <View />
               )}
             </View>
-          )
+          );
         }
       }
-      this.limitPush++
-      this.setState({ displayStats: !this.state.displayStats })
+      this.limitPush++;
+      this.setState({ displayStats: !this.state.displayStats });
     } catch (error) {
-      alert(error)
+      alert(error);
     }
-  }
+  };
 
   render() {
     return (
       <Container style={styles.container}>
-        <Image
-          style={styles.mainImage}
-          source={require('../images/faster5sec.gif')}
-        >
+        <View style={styles.mainImage}>
           <Content>
             {this.state.displayStats ? (
               <Grid>{this.statArray.map(ele => ele)}</Grid>
@@ -107,9 +104,9 @@ export default class GameStats extends Component {
               <View />
             )}
           </Content>
-        </Image>
+        </View>
       </Container>
-    )
+    );
   }
 }
 
@@ -147,4 +144,4 @@ let styles = StyleSheet.create({
     width: tWidth,
     height: tHeight
   }
-})
+});
